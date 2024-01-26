@@ -1,3 +1,29 @@
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to: {
+		opacity: 1;
+	}
+}
+
+
+svg, svg * {
+  pointer-events: all !important;
+  cursor: auto !important;
+}
+
+svg path {
+  fill: inherit;
+  stroke: inherit;
+  stroke-width: inherit;
+}
+
+
+#areas {
+  fill: none;
+}
+
 #floorplan  {
   padding: 10px;
 }
