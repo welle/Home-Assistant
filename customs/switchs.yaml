@@ -1,0 +1,13 @@
+- platform: wake_on_lan
+  mac: 18:C0:4D:88:BA:04
+  host: 10.191.107.159
+  name: "PC-Cha"
+  broadcast_address: 10.191.107.255
+  broadcast_port: 9
+  turn_off:
+      service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: PC-Cha
+
+    

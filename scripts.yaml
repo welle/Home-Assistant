@@ -1,0 +1,17 @@
+'1706108955914':
+  alias: wake up PC
+  sequence:
+  - service: wake_on_lan.send_magic_packet
+    data:
+      broadcast_port: 9
+      broadcast_address: 255.255.255.255
+      mac: 18:C0:4D:88:BA:04
+  mode: single
+shutdown_pc_cha:
+  alias: Shutdown PC-Cha
+  sequence:
+  - service: hassio.addon_stdin
+    data:
+      addon: core_rpc_shutdown
+      input: PC-Cha
+  mode: single

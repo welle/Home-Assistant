@@ -1,0 +1,14 @@
+debug 2024-01-05 19:48:43: Loaded state from file /config/zigbee2mqtt/state.json
+info  2024-01-05 19:48:43: Logging to console and directory: '/config/zigbee2mqtt/log/2024-01-05.19-48-43' filename: log.txt
+debug 2024-01-05 19:48:43: Removing old log directory '/config/zigbee2mqtt/log/2024-01-05.19-13-24'
+info  2024-01-05 19:48:43: Starting Zigbee2MQTT version 1.35.0 (commit #unknown)
+info  2024-01-05 19:48:43: Starting zigbee-herdsman (0.30.0)
+debug 2024-01-05 19:48:43: Using zigbee-herdsman with settings: '{"adapter":{"concurrent":null,"delay":null,"disableLED":false},"backupPath":"/config/zigbee2mqtt/coordinator_backup.json","databaseBackupPath":"/config/zigbee2mqtt/database.db.backup","databasePath":"/config/zigbee2mqtt/database.db","network":{"channelList":[11],"extendedPanID":[50,123,173,78,238,49,168,55],"networkKey":"HIDDEN","panID":26369},"serialPort":{"path":"/dev/ttyUSB0"}}'
+error 2024-01-05 19:48:43: Error while starting zigbee-herdsman
+error 2024-01-05 19:48:43: Failed to start zigbee
+error 2024-01-05 19:48:43: Check https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html for possible solutions
+error 2024-01-05 19:48:43: Exiting...
+error 2024-01-05 19:48:43: Error: Error while opening serialport 'Error: Error: No such file or directory, cannot open /dev/ttyUSB0'
+    at SerialPort.<anonymous> (/app/node_modules/zigbee-herdsman/src/adapter/z-stack/znp/znp.ts:146:28)
+    at SerialPort._error (/app/node_modules/@serialport/stream/dist/index.js:82:22)
+    at /app/node_modules/@serialport/stream/dist/index.js:118:18

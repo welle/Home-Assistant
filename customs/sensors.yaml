@@ -1,0 +1,80 @@
+# Configuration HWG-STE Ethernet Thermometer yaml entry
+- platform: snmp
+  name: "Armoire HWG-STE Temperature" 
+  host: 10.191.107.205
+  version: "2c"
+  baseoid: 1.3.6.1.4.1.21796.4.1.3.1.4.1
+  accept_errors: true
+  unit_of_measurement: "°C"
+  
+# Waste collection sensors (configuration is in configuration.yaml) 
+# next collection
+- platform: waste_collection_schedule
+  name: next_collection
+# next PMD collection
+- platform: waste_collection_schedule
+  name: next_pmd_collection
+  types:
+    - PMD
+# next Déchets résiduels collection
+- platform: waste_collection_schedule
+  name: next_residuels_collection
+  types:
+    - Déchets résiduels
+# next Déchets organiques collection
+- platform: waste_collection_schedule
+  name: next_organiques_collection
+  types:
+    - Déchets organiques
+# next Glass collection
+- platform: waste_collection_schedule
+  name: next_glass_collection
+  types:
+    - Glass
+# next Paper-cardboard collection
+- platform: waste_collection_schedule
+  name: next_paper_collection
+  types:
+    - Paper-cardboard
+
+# Time & date
+- platform: time_date
+  display_options:
+    - "time"
+    - "date"
+    - "date_time"
+    - "date_time_utc"
+    - "date_time_iso"
+    - "time_date"
+    - "time_utc"
+    - "beat"
+# Seasons
+- platform: season
+  name: "Saison"
+# Change the date display
+- platform: template
+  sensors:
+    date_long: 
+      friendly_name: "Date"
+      value_template: >
+        {% set months = ["Janvier.", "Février.", "Mars.", "Avril.", "Mai.", "Juin.", "Juillet.", "Août.", "Septembre.", "Octobre.", "Novembre.", "Décembre."] %}
+        {% set month = months[now().strftime('%m') | int -1] %}
+        {% set days = ["Dimanche, ", "Lundi, ", "Mardi, ", "Mercredi, ", "Jeudi, ", "Vendredi, ", "Samedi, "]  %}
+        {% set day = days[now().strftime('%w') | int] %}
+        {{ day + ' ' + now().strftime('%d') + '.' + now().strftime('%m') + '.' + month + ' '+ now().strftime('%Y') }}
+# Parts of the day - View the current part of the day
+- platform: template
+  sensors:
+    greeting:
+      friendly_name: 'Part of the day'
+      value_template: >
+        {% set state = states('sensor.time') %}
+        {% if '22:00' <= state < '06:00' %}
+          Nuit
+        {% elif '06:00' <= state < '08:00' %}
+          Matin
+        {% elif '08:00' <= state < '20:00' %}
+          Jour
+        {% else %}
+          Soirée
+        {% endif %} 

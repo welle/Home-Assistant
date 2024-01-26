@@ -1,0 +1,415 @@
+- id: '1703956170905'
+  alias: 'Caméras: Caméra OFF Jour'
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:00:00
+  condition:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: person.cha
+      state: not_home
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: person.kaeko
+      state: not_home
+  action:
+  - device_id: 16e4bfcda36b775cd54c43d431837295
+    domain: select
+    entity_id: a993011a58be2dfeea1faadde6e1f196
+    type: select_option
+    option: Never
+  mode: single
+- id: '1703956434932'
+  alias: 'Caméras : Living & stairs ON on detection hall'
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 16e4bfcda36b775cd54c43d431837295
+    entity_id: 28fa3cfd78fa1f6c617c9b28cedd17af
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: select.cam_hall_recording_mode
+    state: Detections
+  action:
+  - device_id: 864d62d96ac7d26431b6f115d453f508
+    domain: select
+    entity_id: 89c79ffbe473b74e747f697049b898f2
+    type: select_option
+    option: Detections
+  - device_id: 4421df9f24296b4e0edf2daea318efb5
+    domain: select
+    entity_id: 1cfae9de3ee196befee9bc23281a6a56
+    type: select_option
+    option: Detections
+  mode: single
+- id: '1703962523090'
+  alias: 'Caméras : Cha & Kaeko outside'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - person.cha
+    to: not_home
+  - platform: state
+    entity_id:
+    - person.kaeko
+    to: not_home
+  condition:
+  - condition: state
+    entity_id: person.kaeko
+    state: not_home
+  - condition: state
+    entity_id: person.cha
+    state: not_home
+  action:
+  - device_id: 16e4bfcda36b775cd54c43d431837295
+    domain: select
+    entity_id: a993011a58be2dfeea1faadde6e1f196
+    type: select_option
+    option: Detections
+  mode: single
+- id: '1703962597890'
+  alias: 'Présence : Cha est rentrée'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - person.cha
+    from: not_home
+    to: home
+  condition: []
+  action:
+  - service: notify.pushover
+    data:
+      message: Cha est rentrée
+  mode: single
+- id: '1704020780278'
+  alias: 'Notifications: Caméra hall branchée'
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 16e4bfcda36b775cd54c43d431837295
+    domain: select
+    entity_id: a993011a58be2dfeea1faadde6e1f196
+    type: current_option_changed
+    from: Never
+    to: Detections
+  condition: []
+  action:
+  - service: notify.pushover
+    data:
+      message: Caméra Hall Branchée
+  mode: single
+- id: '1704020885160'
+  alias: 'Présence : Vanessa est rentrée'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - person.kaeko
+    from: not_home
+    to: home
+  condition: []
+  action:
+  - service: notify.pushover
+    data:
+      message: Vanessa est rentrée
+  mode: single
+- id: '1704021578505'
+  alias: 'Caméras: Caméra hall OFF quand Cha et/ou Kaeko rentre'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - person.cha
+    from: not_home
+    to: home
+  - platform: state
+    entity_id:
+    - person.kaeko
+    to: home
+  - platform: state
+    entity_id:
+    - person.cha
+    to: home
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: person.cha
+      state: home
+    - condition: state
+      entity_id: person.kaeko
+      state: home
+  action:
+  - device_id: 16e4bfcda36b775cd54c43d431837295
+    domain: select
+    entity_id: a993011a58be2dfeea1faadde6e1f196
+    type: select_option
+    option: Never
+  - device_id: 4421df9f24296b4e0edf2daea318efb5
+    domain: select
+    entity_id: 1cfae9de3ee196befee9bc23281a6a56
+    type: select_option
+    option: Never
+  - device_id: 864d62d96ac7d26431b6f115d453f508
+    domain: select
+    entity_id: 89c79ffbe473b74e747f697049b898f2
+    type: select_option
+    option: Never
+  mode: single
+- id: '1704724045012'
+  alias: 'Chambre à coucher : Il fait moins de 10° et la terrasse est ouverte.'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.sonoff_a48007e0ab
+    to: 'on'
+  - platform: numeric_state
+    entity_id:
+    - weather.maison
+    attribute: temperature
+    below: '10'
+  - platform: state
+    entity_id:
+    - weather.maison
+    to: hail
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.sonoff_a48007e0ab
+      state: 'on'
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    - condition: numeric_state
+      entity_id: sensor.maison_temperature
+      below: 10
+  action:
+  - service: notify.pushover
+    metadata: {}
+    data:
+      message: Il fait moins de 10° et la terrasse est ouverte.
+  mode: single
+- id: '1704724375631'
+  alias: XXX_TEST
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.cam_living_privacy_mode
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.sonoff_a48007e0ab
+    state: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  action:
+  - service: notify.pushover
+    data:
+      message: qsdqsdqsd
+  mode: single
+- id: '1704894990550'
+  alias: 'Chambre à coucher : Il pleut et la terrasse est ouverte.'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.is_it_raining_soon
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.sonoff_a48007e0ab
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.sonoff_a48007e0ab
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.is_it_raining_soon
+      state: 'on'
+  action:
+  - service: notify.pushover
+    metadata: {}
+    data:
+      message: Il pleut et la terrasse est ouverte
+  mode: single
+- id: '1704895158390'
+  alias: 'Météo : Notifier pluie cette nuit.'
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00:00'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.maison_temperature
+    above: 18
+  - condition: state
+    entity_id: binary_sensor.is_it_raining_the_next_12_hours
+    state: 'on'
+  action:
+  - service: notify.pushover
+    metadata: {}
+    data:
+      message: Il va pleuvoir cette nuit.
+  mode: single
+- id: '1704895527173'
+  alias: 'Météo : Notifier il ne pleut pas cette nuit.'
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00:00'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.maison_temperature
+    above: 18
+  - condition: state
+    entity_id: binary_sensor.is_it_raining_the_next_12_hours
+    state: 'off'
+  action:
+  - service: notify.pushover
+    metadata: {}
+    data:
+      message: Il ne va pas pleuvoir cette nuit.
+  mode: single
+- id: '1704901128230'
+  alias: 'Antre Cha : Allumer zone PC.'
+  description: Allumer si PC allumé ou si soleil se couche.
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  - platform: state
+    entity_id:
+    - binary_sensor.10_191_107_165
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.10_191_107_165
+      state: 'on'
+    - condition: sun
+      after: sunset
+    - condition: numeric_state
+      entity_id: var.light_above_couch
+      below: 1
+  action:
+  - service: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.antre_cha_pc_allume
+  - service: var.set
+    data:
+      entity_id: var.light_above_couch
+      value: 1
+  mode: single
+- id: '1704910315679'
+  alias: 'Antre Cha : Eteindre  Zone PC'
+  description: Si le soleil est levé ou si le pc est éteint.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.10_191_107_165
+    to: 'off'
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - service: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.antre_cha_nuit
+  mode: single
+- id: '1704969141758'
+  alias: 'Caméras : Caméra hall ON la nuit.'
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:00:00
+  condition: []
+  action:
+  - device_id: 16e4bfcda36b775cd54c43d431837295
+    domain: select
+    entity_id: a993011a58be2dfeea1faadde6e1f196
+    type: select_option
+    option: Detections
+  mode: single
+- id: '1705133986150'
+  alias: 'Antre Cha : Allumer zone console.'
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  - platform: state
+    entity_id:
+    - media_player.tv_antre_cha
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: sun
+      after: sunset
+    - condition: state
+      entity_id: media_player.tv_antre_cha
+      state: 'on'
+  action:
+  - service: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.antre_cha_ambiance_jeu_consoles
+  mode: single
+- id: '1705134092418'
+  alias: 'Antre Cha : Eteindre zone console.'
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+  - platform: state
+    entity_id:
+    - media_player.tv_antre_cha
+    to: 'off'
+  condition: []
+  action:
+  - service: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.antre_cha_ambiance_jeu_consoles_eteint
+  mode: single
+- id: '1705149309632'
+  alias: 'Notifications : Caméra Hall Débranchée'
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 16e4bfcda36b775cd54c43d431837295
+    domain: select
+    entity_id: a993011a58be2dfeea1faadde6e1f196
+    type: current_option_changed
+    from: Detections
+    to: Never
+  condition: []
+  action:
+  - service: notify.pushover
+    data:
+      message: Caméra Hall Débranchée
+  mode: single

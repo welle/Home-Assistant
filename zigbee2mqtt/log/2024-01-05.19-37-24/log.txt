@@ -1,0 +1,13 @@
+debug 2024-01-05 19:37:24: Loaded state from file /config/zigbee2mqtt/state.json
+info  2024-01-05 19:37:24: Logging to console and directory: '/config/zigbee2mqtt/log/2024-01-05.19-37-24' filename: log.txt
+info  2024-01-05 19:37:24: Starting Zigbee2MQTT version 1.35.0 (commit #unknown)
+info  2024-01-05 19:37:24: Starting zigbee-herdsman (0.30.0)
+debug 2024-01-05 19:37:24: Using zigbee-herdsman with settings: '{"adapter":{"concurrent":null,"delay":null,"disableLED":false},"backupPath":"/config/zigbee2mqtt/coordinator_backup.json","databaseBackupPath":"/config/zigbee2mqtt/database.db.backup","databasePath":"/config/zigbee2mqtt/database.db","network":{"channelList":[11],"extendedPanID":[50,123,173,78,238,49,168,55],"networkKey":"HIDDEN","panID":26369},"serialPort":{}}'
+error 2024-01-05 19:37:24: Error while starting zigbee-herdsman
+error 2024-01-05 19:37:24: Failed to start zigbee
+error 2024-01-05 19:37:24: Check https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html for possible solutions
+error 2024-01-05 19:37:24: Exiting...
+error 2024-01-05 19:37:24: Error: spawn udevadm ENOENT
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:284:19)
+    at onErrorNT (node:internal/child_process:477:16)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)

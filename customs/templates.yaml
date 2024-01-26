@@ -1,0 +1,99 @@
+- sensor:
+  - name: "Sun percent"
+    state: >-
+        {%- set elevation = state_attr('sun.sun','elevation') | float %}
+        {%- set cloud_coverage = state_attr('weather.forecast_maison', 'cloud_coverage') | float %}
+        {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
+        {%- set min_elevation = -6 %}
+        {%- set max_elevation = 90 %}
+        {%- set adjusted_elevation = elevation - min_elevation %}
+        {%- set adjusted_elevation = [adjusted_elevation,0] | max %}
+        {%- set adjusted_elevation = [adjusted_elevation,max_elevation - min_elevation] | min %}
+        {%- set adjusted_elevation = adjusted_elevation / (max_elevation - min_elevation) %}
+        {%- set adjusted_elevation = adjusted_elevation %}
+        {%- set adjusted_elevation = adjusted_elevation * 100 %}
+        {%- set brightness = adjusted_elevation * cloud_factor %}
+        {{ brightness | round }}
+    unit_of_measurement: '%'
+    device_class: 'illuminance'
+- sensor:
+  - name: "Sun opacity"
+    state: >-
+        {%- set sunpct = states('sensor.sun_percent') | float %}
+        {%- set opacity = sunpct / 100 | float %}
+        {{ opacity }}      
+        
+# My Weather Entities Hourly
+- trigger:
+    - platform: time_pattern
+      hours: "/1"
+  action:
+    - service: weather.get_forecasts
+      data:
+        type: hourly
+      target:
+        entity_id: weather.forecast_maison
+      response_variable: hourly
+  sensor:
+    - name: My Weather Forecast Hourly
+      icon: mdi:weather-cloudy
+      state:  "{{ hourly['weather.forecast_maison'].forecast[0].condition }}"
+      attributes:
+        forecast: "{{ hourly['weather.forecast_maison'].forecast }}"
+# Is it raining now ? 
+- trigger:
+    - platform: time_pattern
+      minutes: "/30"
+  action:
+    - service: weather.get_forecasts
+      data:
+        type: hourly
+      target:
+        entity_id: weather.forecast_maison
+      response_variable: hourly
+  binary_sensor:
+    - name: Is it raining soon ?
+      icon: mdi:weather-cloudy
+      state: >
+        {% set currentCondition = hourly['weather.forecast_maison'].forecast[0].condition %}
+        {% set isRaining =  (currentCondition == 'lightning, rainy') 
+                                    or (currentCondition == 'rainy')
+                                    or (currentCondition == 'hail')
+                                    or (currentCondition == 'pouring')
+                                    or (currentCondition == 'lightning')
+                                    or (currentCondition == 'snowy')
+                                    or (currentCondition == 'snowy, rainy') %}
+        {{ isRaining }}
+      attributes:
+        forecast: "{{ hourly['weather.forecast_maison'].forecast }}"
+# Rain the next 12 hours ? 
+- trigger:
+    - platform: time_pattern
+      hours: "/1"
+  action:
+    - service: weather.get_forecasts
+      data:
+        type: hourly
+      target:
+        entity_id: weather.forecast_maison
+      response_variable: hourly
+  binary_sensor:
+    - name: Is it raining the next 12 hours ?
+      icon: mdi:weather-cloudy
+      state: >
+          {% set ns = namespace(isRaining = bool("false")) %}
+          {% for i in range(12) %}
+            {% set currentCondition = hourly['weather.forecast_maison'].forecast[i].condition %}
+            {% set ns.isRaining = ns.isRaining or (currentCondition == 'lightning, rainy') 
+                                              or (currentCondition == 'rainy')
+                                              or (currentCondition == 'hail')
+                                              or (currentCondition == 'pouring')
+                                              or (currentCondition == 'lightning')
+                                              or (currentCondition == 'snowy')
+                                              or (currentCondition == 'snowy, rainy') %}
+          {% endfor %}
+          {{ ns.isRaining }}
+      attributes:
+        forecast: "{{ hourly['weather.forecast_maison'].forecast }}"      
+        
+        
