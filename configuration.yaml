@@ -7,39 +7,39 @@ frontend:
   themes: !include_dir_merge_named themes 
   extra_module_url:
     - /local/card-mod.js
-
+  
 lovelace:
   mode: yaml
   resources: 
-  - url: /local/xiaomi-vacuum-map-card.js
+  - url: /local/community/lovelace-layout-card/layout-card.js
+    type: module 
+  - url: /local/community/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
     type: module
-  - url: /local/card-mod.js
+  - url: /local/community/lovelace-card-mod/card-mod.js
     type: module  
-  - url: /local/lovelace-horizon-card.js
+  - url: /local/community/lovelace-horizon-card/lovelace-horizon-card.js
     type: module  
-  - url: /local/layout-card.js
+  - url: /local/community/honeycomb-menu/honeycomb-menu.js
     type: module  
-  - url: /local/honeycomb-menu.js
-    type: module  
-  - url: /local/floorplan.js
+  - url: /local/community/ha-floorplan/floorplan.js
     type: module     
-  - url: /local/battery-state-card.js
+  - url: /local/community/battery-state-card/battery-state-card.js
     type: module     
-  - url: /local/button-card.js
+  - url: /local/community/button-card/button-card.js
     type: module     
-  - url: /local/swipe-navigation.js
+  - url: /local/community/hass-swipe-navigation/swipe-navigation.js
     type: module     
-  - url: /local/mushroom.js
+  - url: /local/community/lovelace-mushroom/mushroom.js
     type: module     
-  - url: /local/mini-graph-card-bundle.js
+  - url: /local/community/mini-graph-card/mini-graph-card-bundle.js
     type: module     
-  - url: /local/simple-thermostat.js
+  - url: /local/community/simple-thermostat/simple-thermostat.js
     type: module     
-  - url: /local/stack-in-card.js
+  - url: /local/community/stack-in-card/stack-in-card.js
     type: module     
-  - url: /local/tabbed-card.js
+  - url: /local/community/tabbed-card/tabbed-card.js
     type: module     
-  - url: /local/weather-radar-card.js
+  - url: /local/community/weather-radar-card/weather-radar-card.js
     type: module     
   dashboards:
     preview-dashboard:
@@ -51,7 +51,7 @@ lovelace:
     vacuums-dashboard:
       mode: yaml
       title: Neato
-      icon: mdi:<icon>
+      icon: mdi:robot-vacuum-variant
       show_in_sidebar: true
       filename: './dashboards/vacuums.yaml'
     streaming-dashboard:
@@ -63,7 +63,7 @@ lovelace:
     status-dashboard:
       mode: yaml
       title: Status
-      icon: mdi:<icon>
+      icon: mdi:floor-lamp
       show_in_sidebar: true
       filename: './dashboards/status.yaml'
     monitoring-dashboard:
