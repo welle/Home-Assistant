@@ -1,0 +1,19 @@
+title: Streaming
+views:
+  - title: Home
+    cards:
+      - type: grid
+        square: false
+        columns: 1
+        cards:
+          - type: media-control
+            entity: media_player.plex_plex_for_windows_chaytan_2
+          - type: media-control
+            entity: media_player.plex_plex_for_windows_chaytan
+          - type: media-control
+            entity: media_player.plex_plex_for_samsung_tv_2018_2
+          - type: media-control
+            entity: media_player.plex_plex_for_samsung_tv_2018
+      - type: entities
+        entities:
+          - sensor.tautulli_en_train_de_regarder

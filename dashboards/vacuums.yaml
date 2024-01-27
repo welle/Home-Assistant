@@ -1,0 +1,14 @@
+title: Neato
+views:
+  - title: Home
+    type: custom:horizontal-layout
+    badges: []
+    cards:
+      - type: custom:xiaomi-vacuum-map-card
+        entity: vacuum.minus
+        vacuum_platform: Neato
+        map_source:
+          camera: camera.minus_plan_de_nettoyage
+        map_locked: false
+        title: Minus
+        two_finger_pan: false

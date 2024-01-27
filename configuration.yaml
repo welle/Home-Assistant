@@ -8,6 +8,70 @@ frontend:
   extra_module_url:
     - /local/card-mod.js
 
+lovelace:
+  mode: yaml
+  resources: 
+  - url: /local/xiaomi-vacuum-map-card.js
+    type: module
+  - url: /local/card-mod.js
+    type: module  
+  - url: /local/lovelace-horizon-card.js
+    type: module  
+  - url: /local/layout-card.js
+    type: module  
+  - url: /local/honeycomb-menu.js
+    type: module  
+  - url: /local/floorplan.js
+    type: module     
+  - url: /local/battery-state-card.js
+    type: module     
+  - url: /local/button-card.js
+    type: module     
+  - url: /local/swipe-navigation.js
+    type: module     
+  - url: /local/mushroom.js
+    type: module     
+  - url: /local/mini-graph-card-bundle.js
+    type: module     
+  - url: /local/simple-thermostat.js
+    type: module     
+  - url: /local/stack-in-card.js
+    type: module     
+  - url: /local/tabbed-card.js
+    type: module     
+  - url: /local/weather-radar-card.js
+    type: module     
+  dashboards:
+    preview-dashboard:
+      mode: yaml
+      title: Aperçu
+      icon: mdi:<icon>
+      show_in_sidebar: true
+      filename: './dashboards/preview.yaml'
+    vacuums-dashboard:
+      mode: yaml
+      title: Neato
+      icon: mdi:<icon>
+      show_in_sidebar: true
+      filename: './dashboards/vacuums.yaml'
+    streaming-dashboard:
+      mode: yaml
+      title: Streaming
+      icon: mdi:<icon>
+      show_in_sidebar: true
+      filename: './dashboards/streaming.yaml'
+    status-dashboard:
+      mode: yaml
+      title: Status
+      icon: mdi:<icon>
+      show_in_sidebar: true
+      filename: './dashboards/status.yaml'
+    monitoring-dashboard:
+      mode: yaml
+      title: Monitoring
+      icon: mdi:<icon>
+      show_in_sidebar: true
+      filename: './dashboards/monitoring.yaml'
 
 # Waste collection schedule
 # sensor are in sensors.yaml

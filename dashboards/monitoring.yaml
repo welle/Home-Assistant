@@ -1,0 +1,163 @@
+title: Monitoring
+views:
+  - path: default_view
+    title: Caméras
+    badges:
+      - entity: person.cha
+      - entity: person.kaeko
+    cards:
+      - square: false
+        type: grid
+        columns: 1
+        cards:
+          - show_state: true
+            show_name: true
+            camera_view: live
+            type: picture-entity
+            entity: camera.cam_hall_high
+            camera_image: camera.cam_hall_high
+            tap_action:
+              action: none
+          - type: entities
+            entities:
+              - entity: switch.cam_hall_privacy_mode
+              - entity: select.cam_hall_recording_mode
+              - entity: binary_sensor.cam_hall_is_dark
+      - square: false
+        type: grid
+        columns: 1
+        cards:
+          - show_state: true
+            show_name: true
+            camera_view: live
+            type: picture-entity
+            entity: camera.cam_stairs_high
+            camera_image: camera.cam_stairs_high
+            tap_action:
+              action: none
+          - type: entities
+            entities:
+              - entity: switch.cam_stairs_privacy_mode
+              - entity: select.cam_stairs_recording_mode
+              - entity: binary_sensor.cam_stairs_is_dark
+      - square: false
+        type: grid
+        columns: 1
+        cards:
+          - show_state: true
+            show_name: true
+            camera_view: live
+            type: picture-entity
+            entity: camera.cam_living_high
+            camera_image: camera.cam_living_high
+            tap_action:
+              action: none
+          - type: entities
+            entities:
+              - entity: switch.cam_living_privacy_mode
+              - entity: select.cam_living_recording_mode
+              - entity: binary_sensor.cam_living_is_dark
+  - title: Températures
+    path: armoire
+    type: custom:horizontal-layout
+    badges:
+      - entity: person.cha
+      - entity: person.kaeko
+    cards:
+      - type: gauge
+        entity: sensor.armoire_hwg_ste_temperature
+        needle: true
+        severity:
+          green: 0
+          yellow: 29
+          red: 31
+      - type: gauge
+        entity: sensor.us_24_250w_temperature
+        needle: true
+        severity:
+          green: 0
+          yellow: 70
+          red: 80
+      - type: gauge
+        entity: sensor.us_48_500w_temperature
+        needle: true
+        severity:
+          green: 0
+          yellow: 70
+          red: 80
+      - type: history-graph
+        entities:
+          - entity: sensor.armoire_hwg_ste_temperature
+        logarithmic_scale: false
+        hours_to_show: 12
+      - type: history-graph
+        entities:
+          - entity: sensor.us_24_250w_temperature
+        logarithmic_scale: false
+        hours_to_show: 12
+      - type: history-graph
+        entities:
+          - entity: sensor.us_48_500w_temperature
+        logarithmic_scale: false
+        hours_to_show: 12
+  - title: Batteries
+    path: batteries
+    type: custom:horizontal-layout
+    badges: []
+    cards:
+      - type: custom:battery-state-card
+        title: GSM
+        entities:
+          - entity: sensor.sm_g986b_battery_level
+        colors:
+          steps:
+            - '#ff0000'
+            - '#ffff00'
+            - '#00ff00'
+          gradient: true
+      - type: custom:battery-state-card
+        title: Chambre à coucher
+        entities:
+          - entity: sensor.sonoff_a48007e0ab_battery
+          - entity: sensor.minus_batterie
+        colors:
+          steps:
+            - '#ff0000'
+            - '#ffff00'
+            - '#00ff00'
+          gradient: true
+  - title: Mise à jour ?
+    path: mise-a-jour
+    type: custom:horizontal-layout
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: update.home_assistant_core_update
+          - entity: update.home_assistant_supervisor_update
+          - entity: update.home_assistant_operating_system_update
+          - entity: update.hacs_update
+      - type: entities
+        entities:
+          - update.pi_hole_core_update_available
+          - update.pi_hole_ftl_update_available
+          - update.pi_hole_web_update_available
+      - type: entities
+        entities:
+          - update.plex_media_server_hephaistos
+          - update.plex_media_server_moloch
+      - type: entities
+        entities:
+          - entity: update.usg_pro_4
+          - entity: update.us_24_250w
+          - entity: update.us_48_500w
+          - entity: update.borne_wifi_etage
+          - entity: update.borne_wifi_rdc
+  - title: Status portes
+    path: status-portes
+    icon: ''
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - binary_sensor.sonoff_a48007e0ab
