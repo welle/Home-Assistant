@@ -40,12 +40,14 @@ lovelace:
   - url: /local/community/tabbed-card/tabbed-card.js
     type: module     
   - url: /local/community/weather-radar-card/weather-radar-card.js
-    type: module     
+    type: module  
+  - url: /local/floorplan.yaml
+    type: css         
   dashboards:
     preview-dashboard:
       mode: yaml
       title: Aperçu
-      icon: mdi:<icon>
+      icon: mdi:eye-outline
       show_in_sidebar: true
       filename: './dashboards/preview.yaml'
     vacuums-dashboard:
@@ -57,7 +59,7 @@ lovelace:
     streaming-dashboard:
       mode: yaml
       title: Streaming
-      icon: mdi:<icon>
+      icon: mdi:video-check-outline
       show_in_sidebar: true
       filename: './dashboards/streaming.yaml'
     status-dashboard:
@@ -69,9 +71,15 @@ lovelace:
     monitoring-dashboard:
       mode: yaml
       title: Monitoring
-      icon: mdi:<icon>
+      icon: mdi:radar
       show_in_sidebar: true
       filename: './dashboards/monitoring.yaml'
+    floorplan-dashboard:
+      mode: yaml
+      title: Floorplan
+      icon: mdi:floor-plan
+      show_in_sidebar: true
+      filename: './dashboards/monitoring.yaml'      
 
 # Waste collection schedule
 # sensor are in sensors.yaml
