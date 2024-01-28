@@ -1,4 +1,4 @@
-'1706108955914':
+wake_up_pc_cha:
   alias: wake up PC
   sequence:
   - service: wake_on_lan.send_magic_packet
@@ -14,4 +14,52 @@ shutdown_pc_cha:
     data:
       addon: core_rpc_shutdown
       input: PC-Cha
+  mode: single
+plex_refresh_movies:
+  alias: Refresh Plex - Hephaistos - Films H
+  sequence:
+  - service: plex.refresh_library
+    data:
+      server_name: Hephaistos
+      library_name: Films H
+  mode: single
+plex_hephaistos_refresh_tv_shows:
+  alias: Refresh Plex - Hephaistos - TV Shows
+  sequence:
+  - service: plex.refresh_library
+    data:
+      server_name: Hephaistos
+      library_name: Series TV H
+  mode: single
+plex_moloch_refresh_tv_shows:
+  alias: Refresh Plex - Moloch - TV Shows
+  sequence:
+  - service: plex.refresh_library
+    data:
+      server_name: Moloch
+      library_name: Séries TV
+  mode: single
+plex_moloch_refresh_movies:
+  alias: Refresh Plex - Moloch - Films
+  sequence:
+  - service: plex.refresh_library
+    data:
+      server_name: Moloch
+      library_name: Films
+  mode: single
+plex_moloch_refresh_animation:
+  alias: Refresh Plex - Moloch - Animation
+  sequence:
+  - service: plex.refresh_library
+    data:
+      server_name: Moloch
+      library_name: Animation
+  mode: single
+plex_moloch_refresh_anime_tv_shows:
+  alias: Refresh Plex - Moloch - Anime TV Shows
+  sequence:
+  - service: plex.refresh_library
+    data:
+      server_name: Moloch
+      library_name: Séries TV animées
   mode: single

@@ -17,3 +17,21 @@ views:
       - type: entities
         entities:
           - sensor.tautulli_en_train_de_regarder
+      - type: button
+        entity: binary_sensor.tv_antre_cha
+        tap_action:
+          action: call-service
+          service: honeycomb
+          service_data:
+            buttons:
+              - icon: "mdi:information-variant"
+                tap_action:
+                action: more-info
+              - icon: "mdi:television"
+                active: true
+                tap_action:
+                  action: toggle
+              - icon: "mdi:netflix"
+                active: true
+                tap_action:
+                  action: toggle
