@@ -240,7 +240,6 @@ views:
                     position: unset !important;
                 }
                 :host .temp {
-                    --primary-text-color: #606060; 
                     font-size: 1.5em !important;
                     margin-left: -1em;
                 }
