@@ -1,3 +1,4 @@
+decluttering_templates: !include "../decluttering_templates.yaml"
 title: Monitoring
 views:
   - path: default_view
@@ -111,9 +112,9 @@ views:
           - entity: sensor.sm_g986b_battery_level
         colors:
           steps:
-            - '#ff0000'
-            - '#ffff00'
-            - '#00ff00'
+            - "#ff0000"
+            - "#ffff00"
+            - "#00ff00"
           gradient: true
       - type: custom:battery-state-card
         title: Chambre à coucher
@@ -122,10 +123,12 @@ views:
           - entity: sensor.minus_batterie
         colors:
           steps:
-            - '#ff0000'
-            - '#ffff00'
-            - '#00ff00'
+            - "#ff0000"
+            - "#ffff00"
+            - "#00ff00"
           gradient: true
+      - type: custom:decluttering-card
+        template: battery_states
   - title: Mise à jour ?
     path: mise-a-jour
     type: custom:horizontal-layout
@@ -155,7 +158,7 @@ views:
           - entity: update.borne_wifi_rdc
   - title: Status portes
     path: status-portes
-    icon: ''
+    icon: ""
     badges: []
     cards:
       - type: entities
