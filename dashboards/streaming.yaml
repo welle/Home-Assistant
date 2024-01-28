@@ -17,21 +17,77 @@ views:
       - type: entities
         entities:
           - sensor.tautulli_en_train_de_regarder
-      - type: button
-        entity: binary_sensor.tv_antre_cha
-        tap_action:
-          action: call-service
-          service: honeycomb
-          service_data:
-            buttons:
-              - icon: "mdi:information-variant"
-                tap_action:
-                action: more-info
-              - icon: "mdi:television"
-                active: true
-                tap_action:
-                  action: toggle
-              - icon: "mdi:netflix"
-                active: true
-                tap_action:
-                  action: toggle
+      - type: horizontal-stack
+        cards:
+          - type: button
+            entity: sensor.moloch
+            icon: mdi:plex
+            name: Moloch
+            tap_action:
+              action: call-service
+              service: honeycomb
+              service_data:
+                buttons:
+                  - name: TV
+                    show_name: true
+                    active: true
+                    tap_action:
+                      action: call-service
+                      service: plex.refresh_library
+                      service_data:
+                        server_name: Moloch
+                        library_name: Séries TV
+                  - name: Films
+                    show_name: true
+                    active: true
+                    tap_action:
+                      action: call-service
+                      service: plex.refresh_library
+                      service_data:
+                        server_name: Moloch
+                        library_name: Films
+                  - name: Anim.
+                    show_name: true
+                    active: true
+                    tap_action:
+                      action: call-service
+                      service: plex.refresh_library
+                      service_data:
+                        server_name: Moloch
+                        library_name: Animation
+                  - name: TV An.
+                    show_name: true
+                    active: true
+                    tap_action:
+                      action: call-service
+                      service: plex.refresh_library
+                      service_data:
+                        server_name: Moloch
+                        library_name: Séries TV animées
+          - type: button
+            entity: sensor.hephaistos
+            icon: mdi:plex
+            name: Hephaistos
+            tap_action:
+              action: call-service
+              service: honeycomb
+              service_data:
+                buttons:
+                  - name: TV
+                    show_name: true
+                    active: true
+                    tap_action:
+                      action: call-service
+                      service: plex.refresh_library
+                      service_data:
+                        server_name: Hephaistos
+                        library_name: Series TV H
+                  - name: Films
+                    show_name: true
+                    active: true
+                    tap_action:
+                      action: call-service
+                      service: plex.refresh_library
+                      service_data:
+                        server_name: MoloHephaistosch
+                        library_name: Films H
