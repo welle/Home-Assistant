@@ -1,4 +1,6 @@
+#################################################
 # Battery states
+#################################################
 battery_states:
   card:
     type: "custom:mod-card"
@@ -16,7 +18,7 @@ battery_states:
       filter:
         include:
           - entity_id: '/sensor\..*battery/'
-
+            state: "< 85"
         exclude:
           - entity_id: '/sensor\..*phone/'
           - entity_id: '/sensor\.quest_2*/'

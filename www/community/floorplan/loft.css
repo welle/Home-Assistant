@@ -1,18 +1,19 @@
 @keyframes fade-in {
-	from {
-		opacity: 0;
-	}
-	to: {
-		opacity: 1;
-	}
+  from {
+    opacity: 0;
+  }
+
+  to: {
+    opacity: 1;
+  }
 }
 
 
-svg, svg * {
+svg,
+svg * {
   pointer-events: all !important;
   cursor: auto !important;
   max-width: 70% !important;
-  background:  right no-repeat url(/local/community/floorplan/background.jpg) fixed !important;
 }
 
 svg path {
@@ -26,7 +27,7 @@ svg path {
   fill: none;
 }
 
-#floorplan  {
+#floorplan {
   padding: 10px;
 }
 
@@ -53,6 +54,7 @@ svg tspan {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -60,7 +62,8 @@ svg tspan {
 
 /* SVG shapes */
 
-svg, svg * {
+svg,
+svg * {
   vector-effect: non-scaling-stroke !important;
   pointer-events: all !important;
 }
@@ -99,22 +102,22 @@ svg, svg * {
 
 /* Light Control */
 
-path[id*="area."].light-on{
+path[id*="area."].light-on {
   opacity: 0 !important;
 }
 
-path[id*="area."]{
+path[id*="area."] {
   opacity: 0.5 !important;
   transition: opacity .25s;
   -moz-transition: opacity .25s;
   -webkit-transition: opacity .25s;
 }
 
-path[id="light.bureau"].light-on{
+path[id="light.bureau"].light-on {
   fill: #FFFFFF !important;
 }
 
-path[id*="area.antre_cha"].light-on{
+path[id*="area.antre_cha"].light-on {
   opacity: 0 !important;
   transition: opacity .25s;
   -moz-transition: opacity .25s;
@@ -123,13 +126,13 @@ path[id*="area.antre_cha"].light-on{
 
 /* Things Control */
 
-[id*="thing."].thing-on{
+[id*="thing."].thing-on {
   opacity: 1 !important;
   filter: drop-shadow(0px -5px 3px #ffedde);
   fill: #fffae54f !important;
 }
 
-[id*="thing."]{
+[id*="thing."] {
   opacity: 0 !important;
   transition: opacity .25s;
   -moz-transition: opacity .25s;
@@ -138,7 +141,8 @@ path[id*="area.antre_cha"].light-on{
 
 /* Temperature text */
 
-.static-temp, .static-temp tspan {
+.static-temp,
+.static-temp tspan {
   fill: #ffffff;
 }
 
@@ -157,6 +161,7 @@ path[id*="area.antre_cha"].light-on{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
