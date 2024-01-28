@@ -11,6 +11,8 @@
 svg, svg * {
   pointer-events: all !important;
   cursor: auto !important;
+  max-width: 70% !important;
+  background:  right no-repeat url(/local/community/floorplan/background.jpg) fixed !important;
 }
 
 svg path {

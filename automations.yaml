@@ -308,9 +308,6 @@
       state: 'on'
     - condition: sun
       after: sunset
-    - condition: numeric_state
-      entity_id: var.light_above_couch
-      below: 1
   action:
   - service: scene.turn_on
     metadata: {}

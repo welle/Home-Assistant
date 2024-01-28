@@ -72,8 +72,8 @@ views:
               box-shadow: none;
           }
         config:
-          image: '/local/floorplan_tutorial/floorplan_optimised.svg'
-          stylesheet: '/local/floorplan_tutorial/floorplan.css'
+          image: '/local/community/floorplan/loft.svg'
+          stylesheet: '/local/community/floorplan/loft.css'
           rules:
             - entity: media_player.living_room_tv_android
               tap_action: more-info

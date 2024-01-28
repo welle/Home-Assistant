@@ -1,6 +1,6 @@
 floorplan:
 
-  lovelace-background: top right no-repeat url(/local/images/day.jpg) fixed
+  lovelace-background: top right no-repeat url(/local/community/floorplan/background.jpg) fixed
   
   ha-card-background: '#71837ca3'
   
