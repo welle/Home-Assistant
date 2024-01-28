@@ -1,0 +1,36 @@
+decluttering_templates: !include "../decluttering_templates.yaml"
+title: Aperçu
+views:
+  - title: Home
+    badges:
+      - entity: person.cha
+      - entity: person.kaeko
+    cards:
+      - type: custom:horizon-card
+        moon: true
+        refresh_period: 60
+        fields:
+          sunrise: true
+          sunset: true
+          dawn: true
+          noon: true
+          dusk: true
+          azimuth: true
+          sun_azimuth: true
+          moon_azimuth: true
+          elevation: true
+          sun_elevation: true
+          moon_elevation: true
+          moonrise: true
+          moonset: true
+          moon_phase: true
+        southern_flip: false
+        moon_phase_rotation: -10
+        time_format: language
+        number_format: language
+        time_zone: Europe/Brussels
+        debug_level: 0
+      - type: custom:hourly-weather
+        entity: weather.forecast_maison
+        num_segments: 18 # optional, defaults to 12
+        name: Prochaines 18h # optional, defaults to "Hourly Weather"

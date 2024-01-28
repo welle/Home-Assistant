@@ -47,6 +47,8 @@ lovelace:
       type: module
     - url: /local/community/decluttering-card/decluttering-card.js
       type: module
+    - url: /local/community/lovelace-hourly-weather/hourly-weather.js
+      type: module
   dashboards:
     preview-dashboard:
       mode: yaml

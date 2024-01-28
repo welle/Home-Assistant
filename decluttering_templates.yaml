@@ -8,8 +8,8 @@ battery_states:
       style: |
         :host {
           position: absolute;
-          bottom: 6px;
-          right: 6px;
+          bottom: 40px;
+          right: 70px;
           width: 265px;
         }
     card:
