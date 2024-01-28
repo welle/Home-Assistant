@@ -129,77 +129,6 @@ views:
                           active: true
                           tap_action:
                             action: toggle
-
-          #################################################
-          # Right Speakers
-          #################################################
-          - type: custom:mod-card
-            card_mod:
-              style: |
-                :host {
-                  --vertical-stack-card-margin: 5px;
-                  transform: translate( 0, 0 );
-                  top: calc( var(--header-height) + 5px );
-                  right: 6px;
-                  position: absolute;
-                  width: 265px;
-                  height: auto !important;
-                }
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:auto-entities
-                  card:
-                    type: entities
-
-                  filter:
-                    include:
-                      - entity_id: '/media_player\..*_speaker_group/'
-                  sort:
-                    method: entity_id
-                    ignore_case: true
-
-                - type: custom:auto-entities
-                  show_empty: false
-                  card:
-                    type: entities
-                  filter:
-                    include:
-                      - domain: media_player
-                        state: playing
-                        entity_id: '/^media_player\..*_(speaker|hub|speakers)$/'
-
-                - type: grid
-                  square: false
-                  columns: 2
-                  cards:
-                    - type: custom:button-card
-                      show_label: false
-                      show_icon: false
-                      entity: input_select.led_fx_scene
-                      color: "#ffffff45"
-                      styles:
-                        card:
-                          - height: "100%"
-                        name:
-                          - color: "#ffffff45"
-                          - font-size: 1.5em
-                          - font-style: italic
-                      state:
-                        - operator: "!="
-                          value: "Off"
-                          styles:
-                            card:
-                              - box-shadow: "0px 0px 5px #0072ffd9"
-                      tap_action:
-                        action: more-info
-
-                    - type: custom:button-card
-                      icon: mdi:video
-                      label: All Cameras
-                      show_label: false
-                      color: "#ffffff45"
-
           #################################################
           # Weather
           #################################################
@@ -216,7 +145,7 @@ views:
                   width: 240px;
                   left: 6px;
                   top: 22px;
-                  opacity: 0.7;
+                  opacity: 1;
                   mix-blend-mode: luminosity;
                 }
                 @media only screen and (max-width: 1280px)
@@ -240,13 +169,12 @@ views:
                     position: unset !important;
                 }
                 :host .temp {
+                    color: #FFFFFF;
                     font-size: 1.5em !important;
                     margin-left: -1em;
                 }
-                :host .current {
-                  --primary-text-color: #606060; 
-                }
                 .tempc {
+                    color: #FFFFFF;
                     font-size: .9em !important;
                     vertical-align: super;
                 }
