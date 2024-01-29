@@ -1,131 +1,205 @@
 wake_up_pc_cha:
-  alias: Wake up PC
+  alias: 'Antre Cha: Wake up PC-Cha'
   sequence:
-    - service: wake_on_lan.send_magic_packet
-      data:
-        broadcast_port: 9
-        broadcast_address: 255.255.255.255
-        mac: 18:C0:4D:88:BA:04
+  - service: wake_on_lan.send_magic_packet
+    data:
+      broadcast_port: 9
+      broadcast_address: 255.255.255.255
+      mac: 18:C0:4D:88:BA:04
   mode: single
 shutdown_pc_cha:
-  alias: Shutdown PC-Cha
+  alias: 'Antre Cha: Shutdown PC-Cha'
   sequence:
-    - service: hassio.addon_stdin
-      data:
-        addon: core_rpc_shutdown
-        input: PC-Cha
+  - service: hassio.addon_stdin
+    data:
+      addon: core_rpc_shutdown
+      input: PC-Cha
   mode: single
 plex_refresh_movies:
   alias: Refresh Plex - Hephaistos - Films H
   sequence:
-    - service: plex.refresh_library
-      data:
-        server_name: Hephaistos
-        library_name: Films H
+  - service: plex.refresh_library
+    data:
+      server_name: Hephaistos
+      library_name: Films H
   mode: single
 plex_hephaistos_refresh_tv_shows:
   alias: Refresh Plex - Hephaistos - TV Shows
   sequence:
-    - service: plex.refresh_library
-      data:
-        server_name: Hephaistos
-        library_name: Series TV H
+  - service: plex.refresh_library
+    data:
+      server_name: Hephaistos
+      library_name: Series TV H
   mode: single
 plex_moloch_refresh_tv_shows:
   alias: Refresh Plex - Moloch - TV Shows
   sequence:
-    - service: plex.refresh_library
-      data:
-        server_name: Moloch
-        library_name: Séries TV
+  - service: plex.refresh_library
+    data:
+      server_name: Moloch
+      library_name: Séries TV
   mode: single
 plex_moloch_refresh_movies:
   alias: Refresh Plex - Moloch - Films
   sequence:
-    - service: plex.refresh_library
-      data:
-        server_name: Moloch
-        library_name: Films
+  - service: plex.refresh_library
+    data:
+      server_name: Moloch
+      library_name: Films
   mode: single
 plex_moloch_refresh_animation:
   alias: Refresh Plex - Moloch - Animation
   sequence:
-    - service: plex.refresh_library
-      data:
-        server_name: Moloch
-        library_name: Animation
+  - service: plex.refresh_library
+    data:
+      server_name: Moloch
+      library_name: Animation
   mode: single
 plex_moloch_refresh_anime_tv_shows:
   alias: Refresh Plex - Moloch - Anime TV Shows
   sequence:
-    - service: plex.refresh_library
-      data:
-        server_name: Moloch
-        library_name: Séries TV animées
+  - service: plex.refresh_library
+    data:
+      server_name: Moloch
+      library_name: Séries TV animées
   mode: single
 tv_antre_cha_netflix:
-  alias: TV Antre Cha Netflix
+  alias: 'Antre Cha: TV Antre Cha Netflix'
   sequence:
-    - service: media_player.play_media
-      data:
-        media_content_id: "3201907018807"
-        media_content_type: app
-      target:
-        entity_id: media_player.tv_antre_cha
-  mode: queued
-  max: 10
+  - service: media_player.play_media
+    data:
+      media_content_id: '3201907018807'
+      media_content_type: app
+    target:
+      entity_id: media_player.tv_antre_cha
+  mode: single
 tv_antre_cha_plex:
-  alias: TV Antre Cha Plex
+  alias: 'Antre Cha: TV Antre Cha Plex'
   sequence:
-    - service: media_player.play_media
-      data:
-        media_content_id: "3201512006963"
-        media_content_type: app
-      target:
-        entity_id: media_player.tv_antre_cha
+  - service: media_player.play_media
+    data:
+      media_content_id: '3201512006963'
+      media_content_type: app
+    target:
+      entity_id: media_player.tv_antre_cha
   mode: queued
   max: 10
 tv_antre_cha_prime_video:
-  alias: TV Antre Cha Prime Video
+  alias: 'Antre Cha: TV Antre Cha Prime Video'
   sequence:
-    - service: media_player.play_media
-      data:
-        media_content_id: "3201910019365"
-        media_content_type: app
-      target:
-        entity_id: media_player.tv_antre_cha
+  - service: media_player.play_media
+    data:
+      media_content_id: '3201910019365'
+      media_content_type: app
+    target:
+      entity_id: media_player.tv_antre_cha
   mode: queued
   max: 10
 tv_chambre_a_coucher_netflix:
-  alias: TV Chambre à Coucher Netflix
+  alias: 'Chambre à Coucher: TV Chambre à Coucher Netflix'
   sequence:
-    - service: media_player.play_media
-      data:
-        media_content_id: "11101200001"
-        media_content_type: app
-      target:
-        entity_id: media_player.tv_chambre_a_coucher
+  - service: media_player.play_media
+    data:
+      media_content_id: '11101200001'
+      media_content_type: app
+    target:
+      entity_id: media_player.tv_chambre_a_coucher
   mode: queued
   max: 10
 tv_chambre_a_coucher_plex:
-  alias: TV Chambre à Coucher Plex
+  alias: 'Chambre à Coucher: TV Chambre à Coucher Plex'
   sequence:
-    - service: media_player.play_media
-      data:
-        media_content_id: "3201512006963"
-        media_content_type: app
-      target:
-        entity_id: media_player.tv_chambre_a_coucher
+  - service: media_player.play_media
+    data:
+      media_content_id: '3201512006963'
+      media_content_type: app
+    target:
+      entity_id: media_player.tv_chambre_a_coucher
   mode: queued
   max: 10
 tv_chambre_a_coucher_prime_video:
-  alias: TV Chambre à Coucher Prime Video
+  alias: 'Chambre à Coucher: TV Chambre à Coucher Prime Video'
   sequence:
-    - service: media_player.play_media
-      data:
-        media_content_id: "3201512006785"
-        media_content_type: app
-      target:
-        entity_id: media_player.tv_chambre_a_coucher
+  - service: media_player.play_media
+    data:
+      media_content_id: '3201512006785'
+      media_content_type: app
+    target:
+      entity_id: media_player.tv_chambre_a_coucher
   mode: queued
   max: 10
+antre_cha_allumer_tv:
+  alias: 'Antre Cha: Allumer TV.'
+  sequence:
+  - type: turn_on
+    device_id: ab7746b82658639f1f011bf5c5beee01
+    entity_id: 2ed472cff77773e127889a225b75e7bf
+    domain: remote
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  mode: single
+chambre_a_coucher_allumer_tv_chambre_a_coucher:
+  alias: 'Chambre à Coucher: Allumer TV Chambre à Coucher'
+  sequence:
+  - type: turn_on
+    device_id: c17adeea96b8fead0f95efb4b7f670fd
+    entity_id: 42d02d1541a3da3685665a4870c11641
+    domain: remote
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  mode: queued
+  max: 10
+antre_cha_eteindre_tv:
+  alias: 'Antre Cha: Eteindre TV.'
+  sequence:
+  - type: turn_off
+    device_id: ab7746b82658639f1f011bf5c5beee01
+    entity_id: 2ed472cff77773e127889a225b75e7bf
+    domain: remote
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  mode: queued
+  max: 10
+chambre_a_coucher_eteindre_tv_chambre_a_coucher:
+  alias: 'Chambre à Coucher: Eteindre TV Chambre à Coucher'
+  sequence:
+  - type: turn_off
+    device_id: c17adeea96b8fead0f95efb4b7f670fd
+    entity_id: 42d02d1541a3da3685665a4870c11641
+    domain: remote
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  mode: queued
+  max: 10
+test:
+  alias: test
+  sequence:
+  - service: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - script.antre_cha_allumer_tv
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.tv_antre_cha_netflix
+  mode: single
