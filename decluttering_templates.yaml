@@ -21,10 +21,8 @@ battery_states:
             state: "< 85"
         exclude:
           - entity_id: '/sensor\..*phone/'
-          - entity_id: '/sensor\.quest_2*/'
           - entity_id: '/sensor\.panel_*/'
           - entity_id: '/sensor\..*_temperature/'
-          - entity_id: "sensor.ve_battery_level"
           - attributes:
               show_battery_alert: false
       card:
@@ -48,5 +46,5 @@ battery_states:
               transform: translate( 0, 0 );
               
               box-shadow: 0px 0px 0px 1px #f970709e;
-              background: #ff000033;
+              background: #ff000066;
             }

@@ -1,65 +1,131 @@
 wake_up_pc_cha:
-  alias: wake up PC
+  alias: Wake up PC
   sequence:
-  - service: wake_on_lan.send_magic_packet
-    data:
-      broadcast_port: 9
-      broadcast_address: 255.255.255.255
-      mac: 18:C0:4D:88:BA:04
+    - service: wake_on_lan.send_magic_packet
+      data:
+        broadcast_port: 9
+        broadcast_address: 255.255.255.255
+        mac: 18:C0:4D:88:BA:04
   mode: single
 shutdown_pc_cha:
   alias: Shutdown PC-Cha
   sequence:
-  - service: hassio.addon_stdin
-    data:
-      addon: core_rpc_shutdown
-      input: PC-Cha
+    - service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: PC-Cha
   mode: single
 plex_refresh_movies:
   alias: Refresh Plex - Hephaistos - Films H
   sequence:
-  - service: plex.refresh_library
-    data:
-      server_name: Hephaistos
-      library_name: Films H
+    - service: plex.refresh_library
+      data:
+        server_name: Hephaistos
+        library_name: Films H
   mode: single
 plex_hephaistos_refresh_tv_shows:
   alias: Refresh Plex - Hephaistos - TV Shows
   sequence:
-  - service: plex.refresh_library
-    data:
-      server_name: Hephaistos
-      library_name: Series TV H
+    - service: plex.refresh_library
+      data:
+        server_name: Hephaistos
+        library_name: Series TV H
   mode: single
 plex_moloch_refresh_tv_shows:
   alias: Refresh Plex - Moloch - TV Shows
   sequence:
-  - service: plex.refresh_library
-    data:
-      server_name: Moloch
-      library_name: Séries TV
+    - service: plex.refresh_library
+      data:
+        server_name: Moloch
+        library_name: Séries TV
   mode: single
 plex_moloch_refresh_movies:
   alias: Refresh Plex - Moloch - Films
   sequence:
-  - service: plex.refresh_library
-    data:
-      server_name: Moloch
-      library_name: Films
+    - service: plex.refresh_library
+      data:
+        server_name: Moloch
+        library_name: Films
   mode: single
 plex_moloch_refresh_animation:
   alias: Refresh Plex - Moloch - Animation
   sequence:
-  - service: plex.refresh_library
-    data:
-      server_name: Moloch
-      library_name: Animation
+    - service: plex.refresh_library
+      data:
+        server_name: Moloch
+        library_name: Animation
   mode: single
 plex_moloch_refresh_anime_tv_shows:
   alias: Refresh Plex - Moloch - Anime TV Shows
   sequence:
-  - service: plex.refresh_library
-    data:
-      server_name: Moloch
-      library_name: Séries TV animées
+    - service: plex.refresh_library
+      data:
+        server_name: Moloch
+        library_name: Séries TV animées
   mode: single
+tv_antre_cha_netflix:
+  alias: TV Antre Cha Netflix
+  sequence:
+    - service: media_player.play_media
+      data:
+        media_content_id: "3201907018807"
+        media_content_type: app
+      target:
+        entity_id: media_player.tv_antre_cha
+  mode: queued
+  max: 10
+tv_antre_cha_plex:
+  alias: TV Antre Cha Plex
+  sequence:
+    - service: media_player.play_media
+      data:
+        media_content_id: "3201512006963"
+        media_content_type: app
+      target:
+        entity_id: media_player.tv_antre_cha
+  mode: queued
+  max: 10
+tv_antre_cha_prime_video:
+  alias: TV Antre Cha Prime Video
+  sequence:
+    - service: media_player.play_media
+      data:
+        media_content_id: "3201910019365"
+        media_content_type: app
+      target:
+        entity_id: media_player.tv_antre_cha
+  mode: queued
+  max: 10
+tv_chambre_a_coucher_netflix:
+  alias: TV Chambre à Coucher Netflix
+  sequence:
+    - service: media_player.play_media
+      data:
+        media_content_id: "11101200001"
+        media_content_type: app
+      target:
+        entity_id: media_player.tv_chambre_a_coucher
+  mode: queued
+  max: 10
+tv_chambre_a_coucher_plex:
+  alias: TV Chambre à Coucher Plex
+  sequence:
+    - service: media_player.play_media
+      data:
+        media_content_id: "3201512006963"
+        media_content_type: app
+      target:
+        entity_id: media_player.tv_chambre_a_coucher
+  mode: queued
+  max: 10
+tv_chambre_a_coucher_prime_video:
+  alias: TV Chambre à Coucher Prime Video
+  sequence:
+    - service: media_player.play_media
+      data:
+        media_content_id: "3201512006785"
+        media_content_type: app
+      target:
+        entity_id: media_player.tv_chambre_a_coucher
+  mode: queued
+  max: 10
