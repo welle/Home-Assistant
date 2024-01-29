@@ -47,7 +47,16 @@ views:
           type: horizontal-stack
           cards:
             - type: custom:button-card
-              entity_picture: /local/community/floorplan/test.png
+              entity: media_player.tv_antre_cha
+              state:
+                - value: "on"
+                  entity_picture: /local/community/floorplan/test.png
+                  styles:
+                    card:
+                      - animation: blink 2s ease infinite
+                - value: "off"
+                  entity_picture: /local/community/floorplan/test2.png
+                  icon: mdi:shield-check
               layout: vertical
               show_entity_picture: true
               show_icon: false
@@ -69,6 +78,22 @@ views:
                 service: honeycomb
                 service_data:
                   buttons:
+                    - name: Allumer
+                      icon: mdi:television
+                      show: '[[[ return entity.state == "off" ]]]'
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.tv_antre_cha_plex
+                    - name: Eteindre
+                      icon: mdi:television-off
+                      show: '[[[ return entity.state == "on" ]]]'
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.tv_antre_cha_plex
                     - name: Plex
                       icon: mdi:plex
                       active: true
