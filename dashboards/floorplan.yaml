@@ -133,6 +133,8 @@ views:
                               entity_id: script.tv_antre_cha_prime_video
                 - entities:
                     - binary_sensor.10_191_107_165
+                    - binary_sensor.10_191_107_159
+                    - binary_sensor.sonoff_a48007e0ab
                   state_action:
                     action: call-service
                     service: floorplan.class_set
@@ -167,6 +169,7 @@ views:
                           return "display: block;"
                 - entities:
                     - binary_sensor.10_191_107_165
+                    - binary_sensor.10_191_107_159
                   hold_action:
                   action: call-service
                   service: honeycomb
