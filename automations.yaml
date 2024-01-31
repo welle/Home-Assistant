@@ -300,14 +300,23 @@
     entity_id:
     - binary_sensor.10_191_107_165
     to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.10_191_107_159
+    to: 'on'
   condition:
   - condition: and
     conditions:
-    - condition: state
-      entity_id: binary_sensor.10_191_107_165
-      state: 'on'
     - condition: sun
       after: sunset
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.10_191_107_159
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.10_191_107_165
+        state: 'on'
   action:
   - service: scene.turn_on
     metadata: {}
@@ -329,6 +338,10 @@
   - platform: sun
     event: sunrise
     offset: 0
+  - platform: state
+    entity_id:
+    - binary_sensor.10_191_107_159
+    to: 'off'
   condition: []
   action:
   - service: scene.turn_on

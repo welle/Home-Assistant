@@ -105,3 +105,9 @@ g#entites .media-player-tv.media-player-paused {
   stroke: var(--paper-item-icon-active-color);
   stroke-width: 2px;
 }
+
+
+.static-temp,
+.static-temp tspan {
+  fill: #ffffff;
+}

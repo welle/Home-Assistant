@@ -215,6 +215,15 @@ views:
                           service: script.turn_on
                           service_data:
                             entity_id: script.tv_antre_cha_prime_video
+                - name: Temperature
+                  entities:
+                    - sensor.armoire_hwg_ste_temperature
+                  state_action:
+                    - service: floorplan.text_set
+                      service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
+                    - service: floorplan.class_set
+                      service_data:
+                        class: "static-temp"
           #################################################
           # Weather
           #################################################
