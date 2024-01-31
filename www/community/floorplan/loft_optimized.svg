@@ -98,5 +98,12 @@ z"
       stroke="#00adff"
      id="entities" />
          <path id="media_player.tv_chambre_a_coucher" d="m 1051.0844,855.10202 1.0315,-80.45592 -196.49813,-123.26259 -2.06297,69.62531
-z" fill="none" stroke-width="2px" stroke="#0052ff" stroke-linecap="butt" stroke-linejoin="bevel" stroke-opacity="1"/>
+z"  style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+        <path id="media_player.tv_antre_cha" d="m 2364.811,1064.2359
+v -80.97171
+l 8.3808,-7.60721 186.8279,126.09922 0.3868,80.4559 -9.0255,7.7361 -37.7781,-25.9161 -56.216,-25.5292 -38.165,-37.9072
+z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<path id="binary_sensor.10_191_107_165" d="m 2309.4975,1783.1817 -52.6058,-33.7812 -1.0315,-52.6058 86.387,-80.4559 50.5428,35.3284 0.5158,50.285
+z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+
      </svg>

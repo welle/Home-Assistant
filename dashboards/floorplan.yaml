@@ -27,15 +27,112 @@ views:
               image: "/local/community/floorplan/loft_optimized.svg"
               stylesheet: "/local/community/floorplan/loft.css"
               rules:
-                - entity: media_player.tv_chambre_a_coucher
+                - entities:
+                    - media_player.tv_chambre_a_coucher
                   tap_action: more-info
                   state_action:
                     action: call-service
                     service: floorplan.class_set
                     service_data: "media-player-tv media-player-${entity.state}"
-
+                  hold_action:
+                    action: call-service
+                    service: honeycomb
+                    service_data:
+                      buttons:
+                        - name: Allumer
+                          icon: mdi:television
+                          show: '[[[ return entity.state == "off" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.chambre_a_coucher_allumer_tv_chambre_a_coucher
+                        - name: Eteindre
+                          icon: mdi:television-off
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.chambre_a_coucher_eteindre_tv_chambre_a_coucher
+                        - name: Plex
+                          icon: mdi:plex
+                          active: true
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_chambre_a_coucher_plex
+                        - name: Netflix
+                          icon: mdi:netflix
+                          active: true
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_chambre_a_coucher_netflix
+                        - name: Prime Video
+                          icon: mdi:video
+                          active: true
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_chambre_a_coucher_prime_video
                 - entities:
-                    - binary_sensor.kitchen_motion
+                    - media_player.tv_antre_cha
+                  tap_action: more-info
+                  state_action:
+                    action: call-service
+                    service: floorplan.class_set
+                    service_data: "media-player-tv media-player-${entity.state}"
+                  hold_action:
+                    action: call-service
+                    service: honeycomb
+                    service_data:
+                      buttons:
+                        - name: Allumer
+                          icon: mdi:television
+                          show: '[[[ return entity.state == "off" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.antre_cha_allumer_tv
+                        - name: Eteindre
+                          icon: mdi:television-off
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.antre_cha_eteindre_tv
+                        - name: Plex
+                          icon: mdi:plex
+                          active: true
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_antre_cha_plex
+                        - name: Netflix
+                          icon: mdi:netflix
+                          active: true
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_antre_cha_netflix
+                        - name: Prime Video
+                          icon: mdi:video
+                          active: true
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_antre_cha_prime_video
+                - entities:
+                    - binary_sensor.10_191_107_165
                   state_action:
                     action: call-service
                     service: floorplan.class_set
@@ -57,20 +154,6 @@ views:
                     action: "toggle"
                   double_tap_action:
                     action: more-info
-
-                  # hold_action:
-                  #   action: call-service
-                  #   service: honeycomb
-                  #   service_data:
-                  #     buttons:
-                  #       - icon: 'mdi:information-variant'
-                  #         tap_action:
-                  #           action: more-info
-                  #       - icon: 'mdi:lightbulb'
-                  #         active: true
-                  #         tap_action:
-                  #           action: toggle
-
                   state_action:
                     action: call-service
                     service: floorplan.style_set
@@ -83,20 +166,52 @@ views:
                         else 
                           return "display: block;"
                 - entities:
-                    - light.kitchen_main
+                    - binary_sensor.10_191_107_165
                   hold_action:
-                    action: call-service
-                    service: honeycomb
-                    service_data:
-                      entity: light.kitchen_main
-                      buttons:
-                        - icon: "mdi:information-variant"
-                          tap_action:
-                            action: more-info
-                        - icon: "mdi:lightbulb"
-                          active: true
-                          tap_action:
-                            action: toggle
+                  action: call-service
+                  service: honeycomb
+                  service_data:
+                    buttons:
+                      - name: Allumer
+                        icon: mdi:television
+                        show: '[[[ return entity.state == "off" ]]]'
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.tv_antre_cha_plex
+                      - name: Eteindre
+                        icon: mdi:television-off
+                        show: '[[[ return entity.state == "on" ]]]'
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.tv_antre_cha_plex
+                      - name: Plex
+                        icon: mdi:plex
+                        active: true
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.tv_antre_cha_plex
+                      - name: Netflix
+                        icon: mdi:netflix
+                        active: true
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.tv_antre_cha_netflix
+                      - name: Prime Video
+                        icon: mdi:video
+                        active: true
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.tv_antre_cha_prime_video
           #################################################
           # Weather
           #################################################
