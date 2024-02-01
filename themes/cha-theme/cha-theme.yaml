@@ -112,3 +112,4 @@ cha-theme:
   paper-tab-ink: "hsl(var(--huesat) 70%)"
   paper-input-container-color: "hsl(var(--huesat) 60%)"
   label-badge-border-color: "var(--label-badge-red)"
+  state-media_player-active-color: "#FFFFFF"
