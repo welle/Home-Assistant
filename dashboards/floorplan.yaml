@@ -6,7 +6,7 @@ views:
     theme: floorplan
     panel: true
     cards:
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
           #- type: custom:decluttering-card
           #  template: battery_states
@@ -22,9 +22,9 @@ views:
                   box-shadow: none;
               }
             config:
-              log_level: debug
-              console_log_level: debug
-              image: "/local/community/floorplan/loft_optimized.svg"
+              #log_level: debug
+              #console_log_level: debug
+              image: "/local/community/floorplan/loft_etage.svg"
               stylesheet: "/local/community/floorplan/loft.css"
               rules:
                 - entities:
@@ -198,13 +198,25 @@ views:
                               entity_id: script.shutdown_pc_cha
                 - name: Temperature
                   entities:
-                    - sensor.armoire_hwg_ste_temperature
+                    - sensor.sonoff_a4800849a0_temperature
+                    - sensor.sonoff_a4800849a3_temperature
                   state_action:
                     - service: floorplan.text_set
                       service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
                     - service: floorplan.class_set
                       service_data:
                         class: "static-temp"
+                - name: Humidity
+                  entities:
+                    - sensor.sonoff_a4800849a0_humidity
+                    - sensor.sonoff_a4800849a3_humidity
+                  state_action:
+                    - service: floorplan.text_set
+                      service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "%" : "unknown"}'
+                    - service: floorplan.class_set
+                      service_data:
+                        class: "static-temp"
+
           #################################################
           # Weather
           #################################################
