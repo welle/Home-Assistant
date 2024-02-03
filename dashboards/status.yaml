@@ -9,7 +9,7 @@ views:
         title: Ambiance console
       - type: entities
         entities:
-          - light.hue_lightstrip_plus_1
+          - light.hue_lightstrip_plus_3
           - light.hue_color_light_1
         title: Ambiance PC Cha
       - type: entities

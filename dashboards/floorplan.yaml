@@ -138,7 +138,7 @@ views:
                             service_data:
                               entity_id: script.tv_antre_cha_prime_video
                 - entities:
-                    - light.hue_color_light_1
+                    - light.hue_lightstrip_plus_3
                     - light.ecran_pc_cha_haut_droite
                   tap_action: false
                   state_action:
@@ -147,7 +147,7 @@ views:
                     service_data: "light-${entity.state}"
 
                 - entities:
-                    - light.hue_color_light_1
+                    - light.hue_lightstrip_plus_3
                     - light.ecran_pc_cha_haut_droite
                   tap_action:
                     action: "toggle"
