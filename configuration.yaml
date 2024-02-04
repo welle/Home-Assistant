@@ -108,9 +108,9 @@ waste_collection_schedule:
         - type: Paper-cardboard
           alias: Papiers-Cartons
 
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
+automation: !include "./customs/automations.yaml"
+script: !include "./customs/scripts.yaml"
+scene: !include "./customs/scenes.yaml"
 sensor: !include "./customs/sensors.yaml"
 switch: !include "./customs/switchs.yaml"
 template: !include "./customs/templates.yaml"
