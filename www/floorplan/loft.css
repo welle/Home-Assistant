@@ -107,7 +107,17 @@ g#entites .media-player-tv.media-player-paused {
 }
 
 
-.static-temp,
-.static-temp tspan {
-  fill: #ffffff;
+.static-green,
+.static-green tspan {
+  fill: #1a9250;
+}
+
+.static-orange,
+.static-orange tspan {
+  fill: #fc8600;
+}
+
+.static-red,
+.static-red tspan {
+  fill: #ff0000;
 }

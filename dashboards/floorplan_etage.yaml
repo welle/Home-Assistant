@@ -205,7 +205,14 @@ views:
                       service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
                     - service: floorplan.class_set
                       service_data:
-                        class: "static-temp"
+                        class: |
+                              >
+                              if( entity.state < 25 )
+                                  return "static-green";
+                              else if( entity.state < 35 )
+                                  return "static-orange";
+                              else 
+                                return "static-red"                  
                 - name: Humidity
                   entities:
                     - sensor.sonoff_a4800849a0_humidity
@@ -215,7 +222,12 @@ views:
                       service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "%" : "unknown"}'
                     - service: floorplan.class_set
                       service_data:
-                        class: "static-temp"
+                        class: |
+                              >
+                              if( entity.state > 39 && entity.state < 81 )
+                                  return "static-green";
+                              else 
+                                return "static-red"  
 
           #################################################
           # Weather
