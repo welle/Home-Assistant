@@ -29,7 +29,7 @@ views:
               rules:
                 - entities:
                     - media_player.tv_chambre_a_coucher
-                  hole_action: more-info
+                  hold_action: more-info
                   state_action:
                     action: call-service
                     service: floorplan.class_set

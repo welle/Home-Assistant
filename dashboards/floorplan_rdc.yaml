@@ -28,8 +28,8 @@ views:
               stylesheet: "/local/floorplan/loft.css"
               rules:
                 - entities:
-                    - media_player.tv_chambre_a_coucher
-                  hole_action: more-info
+                    - climate.kachafresh
+                  hold_action: more-info
                   state_action:
                     action: call-service
                     service: floorplan.class_set
