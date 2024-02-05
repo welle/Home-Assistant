@@ -80,12 +80,18 @@ lovelace:
       icon: mdi:radar
       show_in_sidebar: true
       filename: "./dashboards/monitoring.yaml"
-    floorplan-dashboard:
+    floorplan-rdc-dashboard:
       mode: yaml
-      title: Floorplan
+      title: Floorplan RDC
       icon: mdi:floor-plan
       show_in_sidebar: true
-      filename: "./dashboards/floorplan.yaml"
+      filename: "./dashboards/floorplan_rdc.yaml"        
+    floorplan-etage-dashboard:
+      mode: yaml
+      title: Floorplan Etage
+      icon: mdi:floor-plan
+      show_in_sidebar: true
+      filename: "./dashboards/floorplan_etage.yaml"
 
 # Waste collection schedule
 # sensor are in sensors.yaml

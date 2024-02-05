@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="3276"
+   height="2457"
+   version="1.1"
+   viewBox="0 0 3276 2457"
+   xml:space="preserve"
+   id="svg4"
+   sodipodi:docname="loft_etage.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <g
+     id="background"><image
+       id="main-background"
+       xlink:href="/local/floorplan/loft_etage000png"
+       href="/local/floorplan/loft_etage000.png"
+       preserveAspectRatio="none"
+       style="display:block" /><g
+       id="light-overlays"><image
+         id="light_overlay.hue_color_light_1"
+         xlink:href="/local/floorplan/loft_etage001.png"
+         href="/local/floorplan/loft_etage001.png"
+         preserveAspectRatio="none" /><image
+         id="light_overlay.ecran_pc_cha_haut_droite"
+         xlink:href="/local/floorplan/loft_etage002.png"
+         href="/local/floorplan/loft_etage002.png"
+         preserveAspectRatio="none" /><image
+         id="image1"
+         xlink:href="/local/floorplan/loft_etage003.png"
+         href="/local/floorplan/loft_etage003.png"
+         preserveAspectRatio="none" /><image
+         id="image2"
+         xlink:href="/local/floorplan/loft_etage004.png"
+         href="/local/floorplan/loft_etage004.png"
+         preserveAspectRatio="none" /><image
+         id="image3"
+         xlink:href="/local/floorplan/loft_etage005.png"
+         href="/local/floorplan/loft_etage005.png"
+         preserveAspectRatio="none" /><image
+         id="image4"
+         xlink:href="/local/floorplan/loft_etage006.png"
+         href="/local/floorplan/loft_etage006.png"
+         preserveAspectRatio="none" /><image
+         id="image5"
+         xlink:href="/local/floorplan/loft_etage007.png"
+         href="/local/floorplan/loft_etage007.png"
+         preserveAspectRatio="none" /><image
+         id="image6"
+         xlink:href="/local/floorplan/loft_etage008.png"
+         href="/local/floorplan/loft_etage008.png"
+         preserveAspectRatio="none" /><image
+         id="image7"
+         xlink:href="/local/floorplan/loft_etage009.png"
+         href="/local/floorplan/loft_etage009.png"
+         preserveAspectRatio="none" /></g></g><g
+     id="areas"
+     style="display:block"><g
+       id="area.hue_color_light_1"><path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 3130.5605,1565.2802 -11.3464,-7.2204 -0.5157,-46.4168 -0.5157,-227.4427 -367.7249,-246.5252 -650.352,650.352 487.3772,333.6858 -0.5157,70.6568
+z"
+         id="path7" /><use
+         id="light.hue_color_light_1"
+         xlink:href="#path7" /></g>
+         <g
+       id="area.ecran_pc_cha_haut_droite"><path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 2750.5868,1037.2883 -376.12,-251.93823 -420.5741,405.24283
+v 149.0497
+l 298.7441,195.7245
+z"
+         id="path8" /><use
+         id="light.ecran_pc_cha_haut_droite"
+         xlink:href="#path8" /></g></g><g
+      stroke="#00adff"
+     id="entities" />
+         <path id="media_player.tv_chambre_a_coucher" d="m 1051.0844,855.10202 1.0315,-80.45592 -196.49813,-123.26259 -2.06297,69.62531
+z"  style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+        <path id="media_player.tv_antre_cha" d="m 2364.811,1064.2359
+v -80.97171
+l 8.3808,-7.60721 186.8279,126.09922 0.3868,80.4559 -9.0255,7.7361 -37.7781,-25.9161 -56.216,-25.5292 -38.165,-37.9072
+z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<path id="binary_sensor.10_191_107_165" d="m 2309.4975,1783.1817 -52.6058,-33.7812 -1.0315,-52.6058 86.387,-80.4559 50.5428,35.3284 0.5158,50.285
+z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<path id="binary_sensor.10_191_107_159" d="m 2309.4975,1783.1817 -52.6058,-33.7812 -1.0315,-52.6058 86.387,-80.4559 50.5428,35.3284 0.5158,50.285
+z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<path id="binary_sensor.sonoff_a48007e0ab" d="m 649.83629,407.69491 -0.25788,-9.79912 11.60422,-11.60422 0.51575,11.34635
+z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
+x="2540" y="1890" id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="2540" y="1890" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
+x="2540" y="1925" id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="2540" y="1925" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
+x="550" y="800" id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="550" y="800" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
+x="550" y="830" id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="550" y="830" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+</svg>

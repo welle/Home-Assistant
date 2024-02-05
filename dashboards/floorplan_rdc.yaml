@@ -1,0 +1,268 @@
+decluttering_templates: !include "../decluttering_templates.yaml"
+views:
+  - title: Floorplan
+    path: floorplan
+    icon: "mdi:floor-plan"
+    theme: floorplan
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards:
+          #- type: custom:decluttering-card
+          #  template: battery_states
+          #################################################
+          # Floorplan
+          #################################################
+          - type: "custom:floorplan-card"
+            style: >
+              ha-card {
+                  max-width: 100%;
+                  margin: 0 auto;
+                  background: none;
+                  box-shadow: none;
+              }
+            config:
+              log_level: debug
+              console_log_level: debug
+              image: "/local/floorplan/loft_rdc.svg"
+              stylesheet: "/local/floorplan/loft.css"
+              rules:
+                - entities:
+                    - media_player.tv_chambre_a_coucher
+                  hole_action: more-info
+                  state_action:
+                    action: call-service
+                    service: floorplan.class_set
+                    service_data: "media-player-tv media-player-${entity.state}"
+                  tap_action:
+                    action: call-service
+                    service: honeycomb
+                    service_data:
+                      buttons:
+                        - name: Allumer
+                          icon: mdi:television
+                          show: '[[[ return entity.state == "off" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.chambre_a_coucher_allumer_tv_chambre_a_coucher
+                        - name: Eteindre
+                          icon: mdi:television-off
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.chambre_a_coucher_eteindre_tv_chambre_a_coucher
+                        - name: Plex
+                          icon: mdi:plex
+                          active: true
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_chambre_a_coucher_plex
+                        - name: Netflix
+                          icon: mdi:netflix
+                          active: true
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_chambre_a_coucher_netflix
+                        - name: Prime Video
+                          icon: mdi:video
+                          active: true
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_chambre_a_coucher_prime_video
+                - entities:
+                    - media_player.tv_antre_cha
+                  hold_action: more-info
+                  state_action:
+                    action: call-service
+                    service: floorplan.class_set
+                    service_data: "media-player-tv media-player-${entity.state}"
+                  tap_action:
+                    action: call-service
+                    service: honeycomb
+                    service_data:
+                      buttons:
+                        - name: Allumer
+                          icon: mdi:television
+                          show: '[[[ return entity.state == "off" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.antre_cha_allumer_tv
+                        - name: Eteindre
+                          icon: mdi:television-off
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.antre_cha_eteindre_tv
+                        - name: Plex
+                          icon: mdi:plex
+                          active: true
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_antre_cha_plex
+                        - name: Netflix
+                          icon: mdi:netflix
+                          active: true
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_antre_cha_netflix
+                        - name: Prime Video
+                          icon: mdi:video
+                          active: true
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.tv_antre_cha_prime_video
+                - entities:
+                    - light.hue_color_light_1
+                    - light.ecran_pc_cha_haut_droite
+                  tap_action: false
+                  state_action:
+                    action: call-service
+                    service: floorplan.class_set
+                    service_data: "light-${entity.state}"
+
+                - entities:
+                    - light.hue_color_light_1
+                    - light.ecran_pc_cha_haut_droite
+                  tap_action:
+                    action: "toggle"
+                  double_tap_action:
+                    action: more-info
+                  state_action:
+                    action: call-service
+                    service: floorplan.style_set
+                    service_data:
+                      element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+                      style: |
+                        >
+                        if( entity.state !== "on" )
+                            return "display: none;";
+                        else 
+                          return "display: block;"
+                - entities:
+                    - binary_sensor.10_191_107_165
+                    - binary_sensor.10_191_107_159
+                    - binary_sensor.sonoff_a48007e0ab
+                  state_action:
+                    action: call-service
+                    service: floorplan.class_set
+                    service_data: "motion motion-${entity.state}"
+                - entities:
+                    - binary_sensor.10_191_107_165
+                    - binary_sensor.10_191_107_159
+                  tap_action:
+                    action: call-service
+                    service: honeycomb
+                    service_data:
+                      buttons:
+                        - name: Allumer
+                          icon: mdi:television
+                          show: '[[[ return entity.state == "off" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.wake_up_pc_cha
+                        - name: Eteindre
+                          icon: mdi:television-off
+                          show: '[[[ return entity.state == "on" ]]]'
+                          tap_action:
+                            action: call-service
+                            service: script.turn_on
+                            service_data:
+                              entity_id: script.shutdown_pc_cha
+                - name: Temperature
+                  entities:
+                    - sensor.sonoff_a4800849a0_temperature
+                    - sensor.sonoff_a4800849a3_temperature
+                  state_action:
+                    - service: floorplan.text_set
+                      service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
+                    - service: floorplan.class_set
+                      service_data:
+                        class: "static-temp"
+                - name: Humidity
+                  entities:
+                    - sensor.sonoff_a4800849a0_humidity
+                    - sensor.sonoff_a4800849a3_humidity
+                  state_action:
+                    - service: floorplan.text_set
+                      service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "%" : "unknown"}'
+                    - service: floorplan.class_set
+                      service_data:
+                        class: "static-temp"
+
+          #################################################
+          # Weather
+          #################################################
+          - type: custom:weather-card
+            entity: weather.maison
+            current: true
+            details: false
+            forecast: false
+            card_mod:
+              style: |
+                :host {
+                  transform: translate( 0, 0 );
+                  position: absolute;
+                  width: 240px;
+                  left: 6px;
+                  top: 22px;
+                  opacity: 1;
+                  mix-blend-mode: luminosity;
+                }
+                @media only screen and (max-width: 1280px)
+                {
+                    :host {
+                        left: -22px;
+                        top: 12px;
+                    }
+                }
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                }
+                :host .icon.bigger {
+                  position: unset;
+                  width: 8em;
+                  height: 8em;
+                  margin-top: -1em;
+                }
+                .temp, .tempc, .icon {
+                    position: unset !important;
+                }
+                :host .temp {
+                    color: #FFFFFF;
+                    font-size: 1.5em !important;
+                    margin-left: -1em;
+                }
+                .tempc {
+                    color: #FFFFFF;
+                    font-size: .9em !important;
+                    vertical-align: super;
+                }
