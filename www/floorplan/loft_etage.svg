@@ -108,12 +108,13 @@ z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stro
 z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
 <path id="binary_sensor.sonoff_a48007e0ab" d="m 649.83629,407.69491 -0.25788,-9.79912 11.60422,-11.60422 0.51575,11.34635
 z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
-<text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
-x="2540" y="1890" id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="2540" y="1890" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
-<text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
-x="2540" y="1925" id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="2540" y="1925" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
-<text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
-x="550" y="800" id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="550" y="800" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
-<text xml:space="preserve" style="font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
-x="550" y="830" id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="550" y="830" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
+id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
+id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="275" y="3210" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
+id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="950" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
+id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="980" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+
 </svg>

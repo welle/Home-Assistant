@@ -266,3 +266,41 @@ views:
                     font-size: .9em !important;
                     vertical-align: super;
                 }
+
+          - type: "custom:mod-card"
+            card_mod:
+                style: |
+                  :host {
+                    position: relative;
+                    top: 400px;
+                    left: 700px;
+                    width: 265px;
+                  }
+            card:
+              type: custom:button-card
+              entity: light.ecran_pc_cha_haut_droite
+              show_entity_picture: true
+              show_icon: false
+              entity_picture: /local/floorplan/icon.png
+              theme: floorplan
+              card_mod:
+                style: |
+                  @keyframes alert {
+                    from {
+                      background: #ff000000 !important;
+                      box-shadow: 0px 0px 0px 1px #f970709e;
+                    }
+                    to {
+                      background: #ff000000;
+                      box-shadow: 0px 0px 0px 1px #f9707055;
+                    }
+                  }
+                  ha-card {
+                    height: auto !important;
+                    transform: translate( 0, 0 );
+                    background: #ff000000;
+                  }
+                  img {
+                    position: relative;
+                    opacity: 30%;
+                  }
