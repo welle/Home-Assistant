@@ -62,7 +62,7 @@
      id="areas"
      style="display:block"><g
        id="area.hue_color_light_1"><path
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:none;"
          d="m 3130.5605,1565.2802 -11.3464,-7.2204 -0.5157,-46.4168 -0.5157,-227.4427 -367.7249,-246.5252 -650.352,650.352 487.3772,333.6858 -0.5157,70.6568
 z"
          id="path7" /><use
@@ -70,14 +70,30 @@ z"
          xlink:href="#path7" /></g>
          <g
        id="area.ecran_pc_cha_haut_droite"><path
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:none;"
          d="m 2750.5868,1037.2883 -376.12,-251.93823 -420.5741,405.24283
 v 149.0497
 l 298.7441,195.7245
 z"
          id="path8" /><use
          id="light.ecran_pc_cha_haut_droite"
-         xlink:href="#path8" /></g></g><g
+         xlink:href="#path8" /></g><
+          
+               
+          <g
+       id="area.ecran_pc_cha_haut_droite"><path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 756.93795,1649.3812 46.382,1169.4985 44.322418,955.30193 167.89737,831.72698
+l 6.17874,2.05959 374.84401,-362.48652
+v -16.47666
+l 16.47666,-16.47665 18.53624,32.95331 -2.05958,188.70925 81.61095,55.60872 0.25746,-46.08315 46.08315,-45.05337 368.4078,250.49672 -0.5148,47.88529 6.1787,3.86172 0.5148,77.49187 15.9619,11.3276 1.2871,-95.25567 2.3171,-4.89151 155.4985,44.02358 -106.5834,102.4642 -2.3171,194.888 5.149,3.3469
+z"
+         id="path9" /><use
+         id="light.ecran_pc_cha_haut_droite"
+         xlink:href="#path9" /></g>
+
+
+          /g><g
       stroke="#00adff"
      id="entities" />
          <path id="media_player.tv_chambre_a_coucher" d="m 1051.0844,855.10202 1.0315,-80.45592 -196.49813,-123.26259 -2.06297,69.62531

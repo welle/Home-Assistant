@@ -65,7 +65,10 @@ l 298.7441,195.7245
 z"
          id="path8" /><use
          id="light.ecran_pc_cha_haut_droite"
-         xlink:href="#path8" /></g></g><g
+         xlink:href="#path8" /></g>
+    
+         
+         </g><g
       stroke="#00adff"
      id="entities" />
      <path id="climate.kachafresh" d="m 1686.6499,1603.2242 306.4987,-344.5844 411.6877,165.0378 -313.7532,359.0932
