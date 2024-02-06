@@ -166,5 +166,27 @@ v -40.806
 h -14.0554
 l 0.4534,40.806
 z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<!-- 
+  Température Cellier (entrée). 
+-->  
+<text xml:space="preserve" style="transform: rotate(20deg);" 
+id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="2960" y="210" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<!-- 
+  Humidité Cellier (entrée). 
+-->  
+<text xml:space="preserve" style="transform: rotate(20deg);" 
+id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="2950" y="250" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<!-- 
+  Température Salon/Salle à Manger. 
+-->  
+<text xml:space="preserve" style="transform: rotate(20deg);" 
+id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="1400" y="720" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<!-- 
+  Humidité Salon/Salle à Manger. 
+-->  
+<text xml:space="preserve" style="transform: rotate(20deg);" 
+id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="1400" y="760" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+
+      
       </g>
 </svg>

@@ -158,22 +158,22 @@ z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stro
 <!-- 
   Température Antre Cha. 
 -->  
-<text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
-id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="transform: rotate(312deg);" 
+id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
 <!-- 
   Humidité Antre Cha. 
 -->  
-<text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
-id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="275" y="3210" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="transform: rotate(312deg);" 
+id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="275" y="3220" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
 <!-- 
   Température Antre Van. 
 -->  
-<text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
-id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="950" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="transform: rotate(312deg);" 
+id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="950" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
 <!-- 
   Humidité Antre Van. 
 -->  
-<text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
-id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="980" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<text xml:space="preserve" style="transform: rotate(312deg);" 
+id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
 
 </svg>
