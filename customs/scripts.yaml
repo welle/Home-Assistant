@@ -14,6 +14,10 @@ shutdown_pc_cha:
     data:
       addon: core_rpc_shutdown
       input: PC-Cha
+  - service: hassio.addon_stdin
+    data:
+      addon: core_rpc_shutdown
+      input: PC-Cha2    
   mode: single
 plex_refresh_movies:
   alias: Refresh Plex - Hephaistos - Films H

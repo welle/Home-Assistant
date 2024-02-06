@@ -16,47 +16,79 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
    <g
-     id="background"><image
+     id="background">
+     <!-- 
+        Floorplan éteint. 
+      -->
+     <image
        id="main-background"
        xlink:href="/local/floorplan/loft_etage000png"
        href="/local/floorplan/loft_etage000.png"
        preserveAspectRatio="none"
        style="display:block" /><g
-       id="light-overlays"><image
+       id="light-overlays">
+       <!-- 
+          Lampe sous bureau Antre Cha. 
+        -->    
+       <image
          id="light_overlay.hue_color_light_1"
          xlink:href="/local/floorplan/loft_etage001.png"
          href="/local/floorplan/loft_etage001.png"
-         preserveAspectRatio="none" /><image
+         preserveAspectRatio="none" />
+        <!-- 
+          Lampe au dessus canapé Antre Cha. 
+        -->    
+       <image
          id="light_overlay.ecran_pc_cha_haut_droite"
          xlink:href="/local/floorplan/loft_etage002.png"
          href="/local/floorplan/loft_etage002.png"
-         preserveAspectRatio="none" /><image
-         id="image1"
-         xlink:href="/local/floorplan/loft_etage003.png"
-         href="/local/floorplan/loft_etage003.png"
-         preserveAspectRatio="none" /><image
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Dressing. 
+        -->    
+        <image
          id="image2"
-         xlink:href="/local/floorplan/loft_etage004.png"
+         xlink:href="/local/floorplan/loft_etage003.png"
          href="/local/floorplan/loft_etage004.png"
-         preserveAspectRatio="none" /><image
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Chambre à coucher. 
+        -->          
+        <image
          id="image3"
-         xlink:href="/local/floorplan/loft_etage005.png"
+         xlink:href="/local/floorplan/loft_etage004.png"
          href="/local/floorplan/loft_etage005.png"
-         preserveAspectRatio="none" /><image
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Escalier. 
+        -->          
+        <image
          id="image4"
-         xlink:href="/local/floorplan/loft_etage006.png"
+         xlink:href="/local/floorplan/loft_etage005.png"
          href="/local/floorplan/loft_etage006.png"
-         preserveAspectRatio="none" /><image
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Salle de bain. 
+        -->          
+        <image
          id="image5"
-         xlink:href="/local/floorplan/loft_etage007.png"
+         xlink:href="/local/floorplan/loft_etage006.png"
          href="/local/floorplan/loft_etage007.png"
-         preserveAspectRatio="none" /><image
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Hall de nuit. 
+        -->  
+        <image
          id="image6"
-         xlink:href="/local/floorplan/loft_etage008.png"
+         xlink:href="/local/floorplan/loft_etage007.png"
          href="/local/floorplan/loft_etage008.png"
-         preserveAspectRatio="none" /><image
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Antre Vanessa. 
+        -->
+        <image
          id="image7"
-         xlink:href="/local/floorplan/loft_etage009.png"
+         xlink:href="/local/floorplan/loft_etage008.png"
          href="/local/floorplan/loft_etage009.png"
          preserveAspectRatio="none" /></g></g><g
      id="areas"
@@ -96,24 +128,51 @@ z"
           /g><g
       stroke="#00adff"
      id="entities" />
+        <!-- 
+          TV Chambre à coucher. 
+          -->
          <path id="media_player.tv_chambre_a_coucher" d="m 1051.0844,855.10202 1.0315,-80.45592 -196.49813,-123.26259 -2.06297,69.62531
 z"  style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+        <!-- 
+          TV Antre Cha. 
+          -->
         <path id="media_player.tv_antre_cha" d="m 2364.811,1064.2359
 v -80.97171
 l 8.3808,-7.60721 186.8279,126.09922 0.3868,80.4559 -9.0255,7.7361 -37.7781,-25.9161 -56.216,-25.5292 -38.165,-37.9072
 z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<!-- 
+  PC Cha. 
+-->  
 <path id="binary_sensor.10_191_107_165" d="m 2309.4975,1783.1817 -52.6058,-33.7812 -1.0315,-52.6058 86.387,-80.4559 50.5428,35.3284 0.5158,50.285
 z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<!-- 
+  PC Cha (other IP). 
+-->  
 <path id="binary_sensor.10_191_107_159" d="m 2309.4975,1783.1817 -52.6058,-33.7812 -1.0315,-52.6058 86.387,-80.4559 50.5428,35.3284 0.5158,50.285
 z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<!-- 
+  Température Porte Terasse. 
+-->  
 <path id="binary_sensor.sonoff_a48007e0ab" d="m 649.83629,407.69491 -0.25788,-9.79912 11.60422,-11.60422 0.51575,11.34635
 z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+<!-- 
+  Température Antre Cha. 
+-->  
 <text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
 id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<!-- 
+  Humidité Antre Cha. 
+-->  
 <text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
 id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="275" y="3210" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<!-- 
+  Température Antre Van. 
+-->  
 <text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
 id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="950" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+<!-- 
+  Humidité Antre Van. 
+-->  
 <text xml:space="preserve" style="transform: rotate(312deg);font-style:normal;font-weight:bold;font-size:36px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" 
 id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="980" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
 
