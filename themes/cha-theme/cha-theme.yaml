@@ -1,7 +1,7 @@
 ---
 cha-theme:
   # Global
-  background-image: "center / cover no-repeat fixed url('/local/community/floorplan/background.jpg')"
+  background-image: "center / cover no-repeat fixed url('/local/floorplan/background.jpg')"
   lovelace-background: var(--background-image)
   primary-color: "#ff9f09" # from Apple systemOrange dark mode
   light-primary-color: "#B6B6C1" # (icons on left menu) (light: systemGray5 from iOS dark mode, dark: XXX)

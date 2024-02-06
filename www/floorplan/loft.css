@@ -32,8 +32,30 @@ svg path {
   animation: 0.75s fade-in linear forwards;
 }
 
-#light-overlays image.light-on {
+image.fan-on {
+  
+  
   display: block;
+  transform-origin: center;
+  -webkit-animation: clockwise 10s infinite linear;
+  -moz-animation: clockwise 10s infinite linear;
+  animation: clockwise 10s infinite linear;
+}
+@-moz-keyframes clockwise {
+  0% {
+      -moz-transform: rotate(90deg);
+  }
+  100% {
+      -moz-transform: rotate(360deg);
+  }
+}
+@keyframes clockwise {
+  0% {
+      transform: rotate(90deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
 }
 
 #areas .motion-on {

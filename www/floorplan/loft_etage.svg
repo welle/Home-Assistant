@@ -49,7 +49,7 @@
         <image
          id="image2"
          xlink:href="/local/floorplan/loft_etage003.png"
-         href="/local/floorplan/loft_etage004.png"
+         href="/local/floorplan/loft_etage003.png"
          preserveAspectRatio="none" />
         <!-- 
           TODO: Chambre à coucher. 
@@ -57,7 +57,7 @@
         <image
          id="image3"
          xlink:href="/local/floorplan/loft_etage004.png"
-         href="/local/floorplan/loft_etage005.png"
+         href="/local/floorplan/loft_etage004.png"
          preserveAspectRatio="none" />
         <!-- 
           TODO: Escalier. 
@@ -65,7 +65,7 @@
         <image
          id="image4"
          xlink:href="/local/floorplan/loft_etage005.png"
-         href="/local/floorplan/loft_etage006.png"
+         href="/local/floorplan/loft_etage005.png"
          preserveAspectRatio="none" />
         <!-- 
           TODO: Salle de bain. 
@@ -73,7 +73,7 @@
         <image
          id="image5"
          xlink:href="/local/floorplan/loft_etage006.png"
-         href="/local/floorplan/loft_etage007.png"
+         href="/local/floorplan/loft_etage006.png"
          preserveAspectRatio="none" />
         <!-- 
           TODO: Hall de nuit. 
@@ -81,7 +81,7 @@
         <image
          id="image6"
          xlink:href="/local/floorplan/loft_etage007.png"
-         href="/local/floorplan/loft_etage008.png"
+         href="/local/floorplan/loft_etage007.png"
          preserveAspectRatio="none" />
         <!-- 
           TODO: Antre Vanessa. 
@@ -89,7 +89,7 @@
         <image
          id="image7"
          xlink:href="/local/floorplan/loft_etage008.png"
-         href="/local/floorplan/loft_etage009.png"
+         href="/local/floorplan/loft_etage008.png"
          preserveAspectRatio="none" /></g></g><g
      id="areas"
      style="display:block">
@@ -206,7 +206,7 @@ z"
 
           /g><g
       stroke="#00adff"
-     id="entities" />
+     id="entities" >
         <!-- 
           TV Chambre à coucher. 
           -->
@@ -238,22 +238,23 @@ z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stro
   Température Antre Cha. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Humidité Antre Cha. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="275" y="3220" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="275" y="3220" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Température Antre Van. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="950" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="950" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Humidité Antre Van. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+</g>
 <image
        width="286.66666"
        height="274.66666"
@@ -261,7 +262,10 @@ id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" 
        style="opacity:40%;display:block;image-rendering:optimizeQuality"
        xlink:href="/local/floorplan/icon.png"
        href="/local/floorplan/icon.png"
-       id="image1-8"
+       id="pathtest"
        x="1000"
        y="910.02179"/>
+  <use
+         id="light.ecran_pc_cha_haut_droite"
+         xlink:href="#pathtest" />     
 </svg>
