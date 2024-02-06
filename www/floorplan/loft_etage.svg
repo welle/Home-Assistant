@@ -175,5 +175,14 @@ id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="95
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
 id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Gang C</tspan></text>
-
+<image
+       width="286.66666"
+       height="274.66666"
+       preserveAspectRatio="none"
+       style="opacity:40%;display:block;image-rendering:optimizeQuality"
+       xlink:href="/local/floorplan/icon.png"
+       href="/local/floorplan/icon.png"
+       id="image1-8"
+       x="1000"
+       y="910.02179"/>
 </svg>
