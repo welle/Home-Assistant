@@ -2,10 +2,10 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="3600"
-   height="2600"
+   width="3276"
+   height="2457"
    version="1.1"
-   viewBox="0 0 3600 2600"
+   viewBox="200 0 3276 2457"
    xml:space="preserve"
    id="svg4"
    sodipodi:docname="loft_rdc.svg"
@@ -16,62 +16,155 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
    <g
-     id="background"><image
+     id="background">
+     <!-- 
+        Floorplan éteint. 
+      -->
+     <image
        id="main-background"
        xlink:href="/local/floorplan/loft_rdc000.png"
        href="/local/floorplan/loft_rdc000.png"
        preserveAspectRatio="none"
        style="display:block" /><g
-       id="light-overlays"><image
-         id="light_overlay.hue_color_light_1"
+       id="light-overlays">
+       <!-- 
+          TODO: Salon. 
+        -->    
+       <image
+         id="image1"
          xlink:href="/local/floorplan/loft_rdc001.png"
          href="/local/floorplan/loft_rdc001.png"
-         preserveAspectRatio="none" /><image
-         id="light_overlay.ecran_pc_cha_haut_droite"
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Salle à manger. 
+        -->    
+       <image
+         id="image2"
          xlink:href="/local/floorplan/loft_rdc002.png"
          href="/local/floorplan/loft_rdc002.png"
-         preserveAspectRatio="none" /><image
-         id="image1"
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Arrière cuisine. 
+        -->    
+        <image
+         id="image3"
          xlink:href="/local/floorplan/loft_rdc003.png"
          href="/local/floorplan/loft_rdc003.png"
-         preserveAspectRatio="none" /><image
-         id="image2"
-         xlink:href="/local/floorplan/lof_etaget004.png"
-         href="/local/floorplan/lof_etaget004.png"
-         preserveAspectRatio="none" /><image
-         id="image3"
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Entrée. 
+        -->          
+        <image
+         id="image4"
+         xlink:href="/local/floorplan/loft_rdc004.png"
+         href="/local/floorplan/loft_rdc004.png"
+         preserveAspectRatio="none" />
+        <!-- 
+          TODO: Couloir. 
+        -->          
+        <image
+         id="image5"
          xlink:href="/local/floorplan/loft_rdc005.png"
          href="/local/floorplan/loft_rdc005.png"
-         preserveAspectRatio="none" /><image
-         id="image4"
+         preserveAspectRatio="none" />
+         <!-- 
+          TODO: Escalier. 
+        -->          
+        <image
+         id="image6"
          xlink:href="/local/floorplan/loft_rdc006.png"
          href="/local/floorplan/loft_rdc006.png"
-         preserveAspectRatio="none" /></g></g><g
+         preserveAspectRatio="none" />
+      </g></g><g
      id="areas"
-     style="display:block"><g
+     style="display:block">
+     <!-- 
+        TODO: Salon. 
+      -->   
+     <g
        id="area.hue_color_light_1"><path
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 3130.5605,1565.2802 -11.3464,-7.2204 -0.5157,-46.4168 -0.5157,-227.4427 -367.7249,-246.5252 -650.352,650.352 487.3772,333.6858 -0.5157,70.6568
+         style="fill:none;"
+         d="M 1471.738,1203.3249 1807.7078,829.72292 1807.2544,301.51134 1106.7201,32.060257 759.89924,418.03526
+l 1.81361,528.66499 110.62972,33.55164
+v -64.38287
+l 44.09988,-49.11997 538.45205,205.50625 0.5211,125.6288
 z"
-         id="path7" /><use
+         id="path1" /><use
          id="light.hue_color_light_1"
-         xlink:href="#path7" /></g>
+         xlink:href="#path1" /></g>
+     <!-- 
+        TODO: Salle à manger. 
+      -->      
          <g
        id="area.ecran_pc_cha_haut_droite"><path
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 2750.5868,1037.2883 -376.12,-251.93823 -420.5741,405.24283
-v 149.0497
-l 298.7441,195.7245
+         style="fill:none;"
+         d="m 1455.4156,1197.6574 -0.4534,-124.9118 -538.86648,-205.84384 -43.29975,48.74056 -0.4534,64.60957 -111.30982,-33.77834 -2.04031,-527.30478 -502.36775,553.60201 0.6801,441.15872 773.75311,298.0882
 z"
-         id="path8" /><use
+         id="path2" /><use
          id="light.ecran_pc_cha_haut_droite"
-         xlink:href="#path8" /></g>
-    
-         
-         </g><g
+         xlink:href="#path2" /></g>
+      <!-- 
+        TODO: Arrière cuisine (armoire réseau, chaudière). 
+      -->        
+          <g
+       id="area.ecran_pc_cha_haut_droite"><path
+         style="fill:none;"
+         d="m 1659.4458,1634.0554 330.0756,-377.2292 415.3149,161.4106 -336.9497,377.7788
+z"
+         id="path3" /><use
+         id="light.ecran_pc_cha_haut_droite"
+         xlink:href="#path3" /></g>
+     <!-- 
+        TODO: Entrée. 
+      -->        
+          <g
+       id="area.ecran_pc_cha_haut_droite"><path
+         style="fill:none;"
+         d="m 3203.4609,1596.6008 -442.4316,-169.2782 183.3847,-194.9263 5.1297,-493.72798 473.2094,180.17865 1.603,447.56123
+z"
+         id="path4" /><use
+         id="light.ecran_pc_cha_haut_droite"
+         xlink:href="#path4" /></g>   
+      <!-- 
+        TODO: Couloir. 
+      -->        
+          <g
+       id="area.ecran_pc_cha_haut_droite"><path
+         style="fill:none;"
+         d="m 2026.2082,2089.0464 -611.7097,-232.1163 147.4772,-175.6902 465.515,176.9726
+z"
+         id="path5" /><use
+         id="light.ecran_pc_cha_haut_droite"
+         xlink:href="#path5" /></g>  
+       <!-- 
+        TODO: Escalier. 
+      -->        
+          <g
+       id="area.ecran_pc_cha_haut_droite"><path
+         style="fill:none;"
+         d="m 2699.4736,2160.8613 -482.1862,1.2824 -191.0792,-71.8149
+v -237.2459
+l 537.33,-601.4505 47.4491,15.389 6.4121,325.7322 126.9586,-79.5095 403.9592,150.042
+z"
+         id="path6" /><use
+         id="light.ecran_pc_cha_haut_droite"
+         xlink:href="#path6" /></g>          
+          <g
       stroke="#00adff"
      id="entities" />
-     <path id="climate.kachafresh" d="m 1686.6499,1603.2242 306.4987,-344.5844 411.6877,165.0378 -313.7532,359.0932
+<!-- 
+  TV Salon. 
+-->          
+         <path id="media_player.tv_chambre_a_coucher" d="m 1635.3937,657.23527 4.4885,-4.48843 -0.3207,-141.70634 -293.3513,-112.5315 -3.9675,3.2461
+v 143.45901
 z"  style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
-       
+<!-- 
+  Ouverture Porte Maison. 
+-->  
+<path id="binary_sensor.sonoff_a48007e0ab" d="m 3269.471,1348.8665 11.7884,0.9068
+v -40.806
+h -14.0554
+l 0.4534,40.806
+z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+      </g>
 </svg>
