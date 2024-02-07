@@ -14,13 +14,17 @@ views:
           # Floorplan
           #################################################
           - type: "custom:floorplan-card"
-            style: >
-              ha-card {
-                  max-width: 100%;
-                  margin: 0 auto;
-                  background: none;
-                  box-shadow: none;
-              }
+            card_mod:
+              style: >
+                ha-card {
+                    background: none !important;
+                    max-width: 100%;
+                    margin: 0 auto;
+                    box-shadow: none;
+                }
+                :host {
+                    background: none !important;
+                }
             config:
               log_level: debug
               console_log_level: debug
