@@ -212,7 +212,23 @@ views:
                               else if( entity.state < 35 )
                                   return "static-orange";
                               else 
-                                return "static-red"                  
+                                return "static-red"     
+                - name: Temperature armoire
+                  entities:
+                    - sensor.armoire_hwg_ste_temperature
+                  state_action:
+                    - service: floorplan.text_set
+                      service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
+                    - service: floorplan.class_set
+                      service_data:
+                        class: |
+                              >
+                              if( entity.state < 30 )
+                                  return "static-green";
+                              else if( entity.state < 40 )
+                                  return "static-orange";
+                              else 
+                                return "static-red"                                               
                 - name: Humidity
                   entities:
                     - sensor.sonoff_a4800849a0_humidity

@@ -204,7 +204,7 @@ z"
          id="light.ID_LIGHT8"
          xlink:href="#path8" /></g>                             
 
-          /g><g
+          </g><g
       stroke="#00adff"
      id="entities" >
         <!-- 
@@ -238,7 +238,7 @@ z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stro
   Température Antre Cha. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Humidité Antre Cha. 
 -->  
@@ -255,17 +255,19 @@ id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="95
 <text xml:space="preserve" style="transform: rotate(312deg);" 
 id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
 </g>
-<image
+  <g id="cameras" >
+  <image
        width="286.66666"
        height="274.66666"
        preserveAspectRatio="none"
-       style="opacity:40%;display:block;image-rendering:optimizeQuality"
-       xlink:href="/local/floorplan/icon.png"
-       href="/local/floorplan/icon.png"
-       id="pathtest"
-       x="1000"
+       style="display:block;"
+       xlink:href="/local/floorplan/security-camera.png"
+       href="/local/floorplan/security-camera.png"
+       id="path_camera_1"
+       x="500"
        y="910.02179"/>
   <use
-         id="light.ecran_pc_cha_haut_droite"
-         xlink:href="#pathtest" />     
+         id="camera.cam_hall_high"
+         xlink:href="#path_camera_1" />     
+         </g>
 </svg>

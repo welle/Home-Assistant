@@ -131,9 +131,10 @@ views:
     badges: []
     cards:
       - type: custom:battery-state-card
-        title: GSM
+        title: Devices
         entities:
           - entity: sensor.sm_g986b_battery_level
+          - entity: sensor.sm_t800_battery_level
         colors:
           steps:
             - "#ff0000"
