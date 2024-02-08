@@ -191,7 +191,7 @@ id="sensor.armoire_hwg_ste_temperature" ><tspan id="tspan148-9" x="2500" y="650"
        height="274.66666"
        preserveAspectRatio="none"
        style="display:block;transform: rotate(-45deg);"
-       id="binary_sensor.sonoff_a48007e0ab"
+       id="binary_sensor.sonoff_a480085c50"
        x="200"
        y="1000"/>
 

@@ -150,7 +150,7 @@ views:
                     service: floorplan.class_set
                     service_data: "light-${entity.state}"
                 - entities:
-                    - binary_sensor.sonoff_a48007e0ab
+                    - binary_sensor.sonoff_a480085c50
                   state_action:
                     action: call-service
                     service: floorplan.image_set
