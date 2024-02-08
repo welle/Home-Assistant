@@ -159,14 +159,6 @@ z"
 v 143.45901
 z"  style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
 <!-- 
-  Ouverture Porte Maison. 
--->  
-<path id="binary_sensor.sonoff_a48007e0ab" d="m 3269.471,1348.8665 11.7884,0.9068
-v -40.806
-h -14.0554
-l 0.4534,40.806
-z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
-<!-- 
   Température Cellier (entrée). 
 -->  
 <text xml:space="preserve" style="transform: rotate(20deg);" 
@@ -191,12 +183,22 @@ id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="1400" y="760" 
 -->  
 <text xml:space="preserve" style="transform: rotate(20deg);" 
 id="sensor.armoire_hwg_ste_temperature" ><tspan id="tspan148-9" x="2500" y="650" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
-
+<!-- 
+  Status porte entrée. 
+--> 
+<image
+       width="286.66666"
+       height="274.66666"
+       preserveAspectRatio="none"
+       style="display:block;transform: rotate(-45deg);"
+       id="binary_sensor.sonoff_a48007e0ab"
+       x="200"
+       y="1000"/>
 
 </g>
 
 
-  <g id="cameras" >
+  <!--g id="camera" >
   <image
        width="286.66666"
        height="274.66666"
@@ -206,11 +208,14 @@ id="sensor.armoire_hwg_ste_temperature" ><tspan id="tspan148-9" x="2500" y="650"
        href="/local/floorplan/security-camera.png"
        id="path_camera_1"
        x="500"
-       y="910.02179"/>
+       y="910.02179"
+       />
   <use
          id="camera.cam_hall_high"
          xlink:href="#path_camera_1" />     
+  </g--> 
 
-  </g>    
+
+          
       
 </svg>

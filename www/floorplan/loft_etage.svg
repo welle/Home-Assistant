@@ -254,6 +254,27 @@ id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="95
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
 id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+<!-- 
+  Température Salle de bain. 
+-->  
+<text xml:space="preserve" style="transform: rotate(312deg);" 
+id="sensor.sonoff_a480085bef_temperature" ><tspan id="tspan148-9" x="-610" y="2300" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+<!-- 
+  Humidité Salle de bain. 
+-->  
+<text xml:space="preserve" style="transform: rotate(312deg);" 
+id="sensor.sonoff_a480085bef_humidity" ><tspan id="tspan148-9" x="-610" y="2340" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+<!-- 
+  Température Chambre à coucher. 
+-->  
+<text xml:space="preserve" style="transform: rotate(312deg);" 
+id="sensor.sonoff_a480085bf0_temperature" ><tspan id="tspan148-9" x="420" y="1000" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+<!-- 
+  Humidité Chambre à coucher. 
+-->  
+<text xml:space="preserve" style="transform: rotate(312deg);" 
+id="sensor.sonoff_a480085bf0_humidity" ><tspan id="tspan148-9" x="420" y="1040" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+
 </g>
   <g id="cameras" >
   <image
@@ -261,13 +282,13 @@ id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" 
        height="274.66666"
        preserveAspectRatio="none"
        style="display:block;"
-       xlink:href="/local/floorplan/security-camera.png"
-       href="/local/floorplan/security-camera.png"
+       xlink:href="/local/floorplan/cadenas-off.png"
+       href="/local/floorplan/cadenas-off.png"
        id="path_camera_1"
        x="500"
        y="910.02179"/>
   <use
          id="camera.cam_hall_high"
-         xlink:href="#path_camera_1" />     
+         xlink:href="#path_camera_1" style="background: linear-gradient(to bottom right, transparent, pink);"/>     
          </g>
 </svg>

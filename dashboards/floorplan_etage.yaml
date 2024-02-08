@@ -204,6 +204,8 @@ views:
                   entities:
                     - sensor.sonoff_a4800849a0_temperature
                     - sensor.sonoff_a4800849a3_temperature
+                    - sensor.sonoff_a480085bef_temperature
+                    - sensor.sonoff_a480085bf0_temperature
                   state_action:
                     - service: floorplan.text_set
                       service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
@@ -221,6 +223,8 @@ views:
                   entities:
                     - sensor.sonoff_a4800849a0_humidity
                     - sensor.sonoff_a4800849a3_humidity
+                    - sensor.sonoff_a480085bef_humidity
+                    - sensor.sonoff_a480085bf0_humidity
                   state_action:
                     - service: floorplan.text_set
                       service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "%" : "unknown"}'
@@ -232,7 +236,7 @@ views:
                                   return "static-green";
                               else 
                                 return "static-red"  
-                - name: Humidity
+                - name: Caméras
                   entities:
                     - camera.cam_hall_high
                   tap_action: more-info

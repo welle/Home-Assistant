@@ -149,7 +149,13 @@ views:
                     action: call-service
                     service: floorplan.class_set
                     service_data: "light-${entity.state}"
-
+                - entities:
+                    - binary_sensor.sonoff_a48007e0ab
+                  state_action:
+                    action: call-service
+                    service: floorplan.image_set
+                    service_data: 
+                      image: /local/floorplan/cadenas-${entity.state}.png
                 - entities:
                     - light.hue_color_light_1
                     - light.ecran_pc_cha_haut_droite
@@ -171,7 +177,6 @@ views:
                 - entities:
                     - binary_sensor.10_191_107_165
                     - binary_sensor.10_191_107_159
-                    - binary_sensor.sonoff_a48007e0ab
                   state_action:
                     action: call-service
                     service: floorplan.class_set
