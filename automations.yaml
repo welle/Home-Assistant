@@ -177,13 +177,9 @@
     to: 'on'
   - platform: numeric_state
     entity_id:
-    - weather.maison
+    - sensor.openweathermap_temperature
     attribute: temperature
     below: '10'
-  - platform: state
-    entity_id:
-    - weather.maison
-    to: hail
   condition:
   - condition: and
     conditions:
@@ -195,7 +191,7 @@
         minutes: 0
         seconds: 0
     - condition: numeric_state
-      entity_id: sensor.maison_temperature
+      entity_id: sensor.openweathermap_temperature
       below: 10
   action:
   - service: notify.pushover
@@ -230,12 +226,12 @@
   trigger:
   - platform: state
     entity_id:
-    - binary_sensor.is_it_raining_soon
-    to: 'on'
-  - platform: state
-    entity_id:
     - binary_sensor.sonoff_a48007e0ab
     to: 'on'
+  - platform: numeric_state
+    entity_id:
+    - sensor.ws2900_v2_02_01_hourly_rain_rate
+    above: 1
   condition:
   - condition: and
     conditions:
@@ -258,12 +254,17 @@
   - platform: time
     at: '22:00:00'
   condition:
-  - condition: numeric_state
-    entity_id: sensor.maison_temperature
-    above: 18
   - condition: state
     entity_id: binary_sensor.is_it_raining_the_next_12_hours
     state: 'on'
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.season
+      state: spring
+    - condition: state
+      entity_id: sensor.season
+      state: summer
   action:
   - service: notify.pushover
     metadata: {}
@@ -277,12 +278,17 @@
   - platform: time
     at: '22:00:00'
   condition:
-  - condition: numeric_state
-    entity_id: sensor.maison_temperature
-    above: 18
   - condition: state
     entity_id: binary_sensor.is_it_raining_the_next_12_hours
     state: 'off'
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.season
+      state: spring
+    - condition: state
+      entity_id: sensor.season
+      state: summer
   action:
   - service: notify.pushover
     metadata: {}

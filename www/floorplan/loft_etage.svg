@@ -276,7 +276,7 @@ id="sensor.sonoff_a480085bf0_temperature" ><tspan id="tspan148-9" x="420" y="100
 id="sensor.sonoff_a480085bf0_humidity" ><tspan id="tspan148-9" x="420" y="1040" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
 
 </g>
-  <g id="cameras" >
+  <!--g id="cameras" >
   <image
        width="286.66666"
        height="274.66666"
@@ -290,5 +290,5 @@ id="sensor.sonoff_a480085bf0_humidity" ><tspan id="tspan148-9" x="420" y="1040" 
   <use
          id="camera.cam_hall_high"
          xlink:href="#path_camera_1" style="background: linear-gradient(to bottom right, transparent, pink);"/>     
-         </g>
+         </g-->
 </svg>

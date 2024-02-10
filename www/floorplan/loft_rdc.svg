@@ -31,7 +31,7 @@
           TODO: Salon. 
         -->    
        <image
-         id="image1"
+         id="light_overlay.hue_color_light_1"
          xlink:href="/local/floorplan/loft_rdc001.png"
          href="/local/floorplan/loft_rdc001.png"
          preserveAspectRatio="none" />
@@ -186,14 +186,14 @@ id="sensor.armoire_hwg_ste_temperature" ><tspan id="tspan148-9" x="2500" y="650"
 <!-- 
   Status porte entrée. 
 --> 
-<image
+<!--image
        width="286.66666"
        height="274.66666"
        preserveAspectRatio="none"
        style="display:block;transform: rotate(-45deg);"
        id="binary_sensor.sonoff_a480085c50"
        x="200"
-       y="1000"/>
+       y="1000"/-->
 
 </g>
 
