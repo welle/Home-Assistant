@@ -17,6 +17,7 @@ views:
       - type: entities
         entities:
           - sensor.tautulli_en_train_de_regarder
+          - media_player.spotify_akazukin_chacha
       - type: "custom:mod-card"
         card_mod:
           style: |

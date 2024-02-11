@@ -207,8 +207,8 @@ views:
                               entity_id: script.shutdown_pc_cha
                 - name: Temperature
                   entities:
-                    - sensor.sonoff_a4800849a0_temperature
-                    - sensor.sonoff_a4800849a3_temperature
+                    - sensor.sonoff_a4800866c4_temperature
+                    - sensor.sonoff_a4800866c9_temperature
                   state_action:
                     - service: floorplan.text_set
                       service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
@@ -240,8 +240,8 @@ views:
                                 return "static-red"                                               
                 - name: Humidity
                   entities:
-                    - sensor.sonoff_a4800849a0_humidity
-                    - sensor.sonoff_a4800849a3_humidity
+                    - sensor.sonoff_a4800866c4_humidity
+                    - sensor.sonoff_a4800866c9_humidity
                   state_action:
                     - service: floorplan.text_set
                       service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "%" : "unknown"}'
@@ -258,7 +258,7 @@ views:
           # Weather
           #################################################
           - type: custom:weather-card
-            entity: weather.maison
+            entity: weather.openweathermap
             current: true
             details: false
             forecast: false

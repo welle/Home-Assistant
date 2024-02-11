@@ -245,7 +245,7 @@ views:
           # Weather
           #################################################
           - type: custom:weather-card
-            entity: weather.maison
+            entity: weather.openweathermap
             current: true
             details: false
             forecast: false

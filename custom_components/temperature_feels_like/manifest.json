@@ -1,0 +1,22 @@
+{
+    "domain": "temperature_feels_like",
+    "name": "Temperature Feels Like",
+    "after_dependencies": [
+        "history",
+        "recorder",
+        "weather"
+    ],
+    "codeowners": [
+        "@Limych"
+    ],
+    "config_flow": false,
+    "dependencies": [],
+    "documentation": "https://github.com/Limych/ha-temperature-feeling",
+    "iot_class": "calculated",
+    "issue_tracker": "https://github.com/Limych/ha-temperature-feeling/issues",
+    "requirements": [
+        "colorlog==6.7.0",
+        "ruff==0.1.1"
+    ],
+    "version": "0.3.8"
+}

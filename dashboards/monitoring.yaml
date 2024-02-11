@@ -78,7 +78,7 @@ views:
         hours_to_show: 168
         points_per_hour: 0.10
         show:
-          points: false
+          points: true
           average: true
           extrema: true
       - type: custom:mini-graph-card
@@ -88,7 +88,7 @@ views:
         hours_to_show: 168
         points_per_hour: 0.10
         show:
-          points: false
+          points: true
           average: true
           extrema: true
       - type: custom:mini-graph-card
@@ -98,49 +98,75 @@ views:
         hours_to_show: 168
         points_per_hour: 0.10
         show:
-          points: false
+          points: true
           average: true
           extrema: true
       - type: custom:mini-graph-card
         name: Antre Cha
         entities:
           - sensor.sonoff_a4800849a0_temperature
+          - sensor.temperature_ressentie_antre_cha
         hours_to_show: 168
         points_per_hour: 0.10
         show:
-          points: false
+          points: true
           average: true
           extrema: true
       - type: custom:mini-graph-card
         name: Antre Vanessa
         entities:
           - sensor.sonoff_a4800849a3_temperature
+          - sensor.temperature_ressentie_antre_van
         hours_to_show: 168
         points_per_hour: 0.10
         show:
-          points: false
+          points: true
           average: true
           extrema: true
       - type: custom:mini-graph-card
         name: Salle de bain
         entities:
           - sensor.sonoff_a480085bef_temperature
+          - sensor.temperature_ressentie_salle_de_bain
         hours_to_show: 168
         points_per_hour: 0.10
         show:
-          points: false
+          points: true
           average: true
           extrema: true
       - type: custom:mini-graph-card
         name: Chambre à coucher
         entities:
           - sensor.sonoff_a480085bf0_temperature
+          - sensor.temperature_ressentie_chambre
         hours_to_show: 168
         points_per_hour: 0.10
         show:
-          points: false
+          points: true
           average: true
-          extrema: true          
+          extrema: true    
+      - type: custom:mini-graph-card
+        name: Salon
+        entities:
+          - sensor.sonoff_a4800866c9_temperature
+          - sensor.temperature_ressentie_salon
+        hours_to_show: 168
+        points_per_hour: 0.10
+        show:
+          points: true
+          average: true
+          extrema: true 
+      - type: custom:mini-graph-card
+        name: Cellier
+        entities:
+          - sensor.sonoff_a4800866c4_temperature
+          - sensor.temperature_ressentie_cellier
+        hours_to_show: 168
+        points_per_hour: 0.10
+        show:
+          points: true
+          average: true
+          extrema: true                           
                     
   #################################################
   # Batteries states
@@ -203,6 +229,27 @@ views:
             - "#ffff00"
             - "#00ff00"
           gradient: true
+      - type: custom:battery-state-card
+        title: Cellier
+        entities:
+          - entity: sensor.sonoff_a4800866c4_battery
+        colors:
+          steps:
+            - "#ff0000"
+            - "#ffff00"
+            - "#00ff00"
+          gradient: true
+      - type: custom:battery-state-card
+        title: Salon
+        entities:
+          - entity: sensor.sonoff_a4800866c1_battery
+          - entity: sensor.sonoff_a4800866c9_battery
+        colors:
+          steps:
+            - "#ff0000"
+            - "#ffff00"
+            - "#00ff00"
+          gradient: true                    
       - type: custom:decluttering-card
         template: battery_states
   #################################################
@@ -247,4 +294,4 @@ views:
         entities:
           - binary_sensor.sonoff_a48007e0ab
           - binary_sensor.sonoff_a480085c50
-
+          - binary_sensor.sonoff_a4800866c1

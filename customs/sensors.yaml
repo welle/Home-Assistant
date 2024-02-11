@@ -1,3 +1,35 @@
+# Feels like temperature sensors
+- platform: temperature_feels_like
+  name: 'Temperature ressentie Antre Cha'
+  source:
+    - sensor.sonoff_a4800849a0_temperature
+    - sensor.sonoff_a4800849a0_humidity
+- platform: temperature_feels_like
+  name: 'Temperature ressentie Antre Van'
+  source:
+    - sensor.sonoff_a4800849a3_temperature
+    - sensor.sonoff_a4800849a3_humidity
+- platform: temperature_feels_like
+  name: 'Temperature ressentie Chambre'
+  source:
+    - sensor.sonoff_a480085bf0_temperature
+    - sensor.sonoff_a480085bf0_humidity
+- platform: temperature_feels_like
+  name: 'Temperature ressentie Salle de bain'
+  source:
+    - sensor.sonoff_a480085bef_temperature
+    - sensor.sonoff_a480085bef_humidity
+- platform: temperature_feels_like
+  name: 'Temperature ressentie Salon'
+  source:
+    - sensor.sonoff_a4800866c9_temperature
+    - sensor.sonoff_a4800866c9_humidity
+- platform: temperature_feels_like
+  name: 'Temperature ressentie Cellier'
+  source:
+    - sensor.sonoff_a4800866c4_temperature
+    - sensor.sonoff_a4800866c4_humidity                
+
 # Configuration HWG-STE Ethernet Thermometer yaml entry
 - platform: snmp
   name: "Armoire HWG-STE Temperature"

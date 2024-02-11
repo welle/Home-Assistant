@@ -6,7 +6,22 @@ views:
       - entity: person.cha
       - entity: person.kaeko
     cards:
+      - type: custom:ha-card-weather-conditions
+        name: "Météo"
+        weather:
+          icons_model: climacell
+          current:
+            sun: sun.sun
+            current_conditions: sensor.openweathermap_condition
+            temperature: sensor.ws2900_v2_02_01_outdoor_temperature
+            feels_like: sensor.ws2900_v2_02_01_feels_like_temperature
+            humidity: sensor.ws2900_v2_02_01_humidity
+            pressure: sensor.ws2900_v2_02_01_relative_pressure
+            wind_bearing: sensor.ws2900_v2_02_01_wind_direction
+            wind_speed: sensor.ws2900_v2_02_01_wind_speed
+            precipitation: sensor.ws2900_v2_02_01_rain_rate
       - type: custom:horizon-card
+        title: Phases du soleil et de la lune
         moon: true
         refresh_period: 60
         fields:
@@ -34,134 +49,4 @@ views:
         entity: weather.forecast_maison
         num_segments: 18 # optional, defaults to 12
         name: Prochaines 18h # optional, defaults to "Hourly Weather"
-      - type: "custom:mod-card"
-        card_mod:
-          style: |
-            :host {
-              position: absolute;
-              bottom: 6px;
-              right: 6px;
-              width: 265px;
-            }
-        card:
-          type: horizontal-stack
-          cards:
-            - type: custom:button-card
-              entity: media_player.tv_antre_cha
-              state:
-                - value: "on"
-                  entity_picture: /local/community/floorplan/test.png
-                  styles:
-                    card:
-                      - animation: blink 2s ease infinite
-                - value: "off"
-                  entity_picture: /local/community/floorplan/test2.png
-                  icon: mdi:shield-check
-              layout: vertical
-              show_entity_picture: true
-              show_icon: false
-              show_label: false
-              show_name: false
-              show_state: false
-              styles:
-                card:
-                  - box-shadow: none
-                  - padding: 6px 6px
-                  - margin: 0px 0px
-                  - "--ha-card-background": rgba(0, 0, 0, 0)
-                entity_picture:
-                  - width: 100px
-                  - height: 100px
-                  - object-fit: contain
-              tap_action:
-                action: call-service
-                service: honeycomb
-                service_data:
-                  buttons:
-                    - name: Allumer
-                      icon: mdi:television
-                      show: '[[[ return entity.state == "off" ]]]'
-                      tap_action:
-                        action: call-service
-                        service: script.turn_on
-                        service_data:
-                          entity_id: script.tv_antre_cha_plex
-                    - name: Eteindre
-                      icon: mdi:television-off
-                      show: '[[[ return entity.state == "on" ]]]'
-                      tap_action:
-                        action: call-service
-                        service: script.turn_on
-                        service_data:
-                          entity_id: script.tv_antre_cha_plex
-                    - name: Plex
-                      icon: mdi:plex
-                      active: true
-                      tap_action:
-                        action: call-service
-                        service: script.turn_on
-                        service_data:
-                          entity_id: script.tv_antre_cha_plex
-                    - name: Netflix
-                      icon: mdi:netflix
-                      active: true
-                      tap_action:
-                        action: call-service
-                        service: script.turn_on
-                        service_data:
-                          entity_id: script.tv_antre_cha_netflix
-                    - name: Prime Video
-                      icon: mdi:video
-                      active: true
-                      tap_action:
-                        action: call-service
-                        service: script.turn_on
-                        service_data:
-                          entity_id: script.tv_antre_cha_prime_video
-            - type: custom:button-card
-              entity_picture: /local/community/floorplan/test.png
-              layout: vertical
-              show_entity_picture: true
-              show_icon: false
-              show_label: false
-              show_name: false
-              show_state: false
-              styles:
-                card:
-                  - box-shadow: none
-                  - padding: 6px 6px
-                  - margin: 0px 0px
-                  - "--ha-card-background": rgba(0, 0, 0, 0)
-                entity_picture:
-                  - width: 100px
-                  - height: 100px
-                  - object-fit: contain
-              tap_action:
-                action: call-service
-                service: honeycomb
-                service_data:
-                  buttons:
-                    - name: Plex
-                      icon: mdi:plex
-                      active: true
-                      tap_action:
-                        action: call-service
-                        service: script.turn_on
-                        service_data:
-                          entity_id: script.tv_chambre_a_coucher_plex
-                    - name: Netflix
-                      icon: mdi:netflix
-                      active: true
-                      tap_action:
-                        action: call-service
-                        service: script.turn_on
-                        service_data:
-                          entity_id: script.tv_chambre_a_coucher_netflix
-                    - name: Prime Video
-                      icon: mdi:video
-                      active: true
-                      tap_action:
-                        action: call-service
-                        service: script.turn_on
-                        service_data:
-                          entity_id: script.tv_chambre_a_coucher_prime_video
+      

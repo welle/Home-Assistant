@@ -56,7 +56,9 @@ lovelace:
     - url: /local/community/apexcharts-card/apexcharts-card.js
       type: module
     - url: /local/community/weather-chart-card/weather-chart-card.js
-      type: module                  
+      type: module  
+    - url: /local/community/ha-card-weather-conditions/ha-card-weather-conditions.js
+      type: module                       
   dashboards:
     preview-dashboard:
       mode: yaml
@@ -106,6 +108,16 @@ lovelace:
       icon: mdi:weather-partly-snowy-rainy
       show_in_sidebar: true
       filename: "./dashboards/meteo.yaml"      
+
+# Spotcast
+spotcast:
+  sp_dc: !secret primary_sp_dc
+  sp_key: !secret primary_sp_key
+  country: BE #optional, added in 3.6.24
+  #accounts:
+  #  niklas:
+  #    sp_dc: !secret niklas_sp_dc
+  #    sp_key: !secret niklas_sp_key
 
 # Waste collection schedule
 # sensor are in sensors.yaml
