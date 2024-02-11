@@ -33,59 +33,14 @@ views:
               rules:
                 - entities:
                     - climate.kachafresh
-                  hold_action: more-info
+                  tap_action: more-info
                   state_action:
                     action: call-service
                     service: floorplan.class_set
                     service_data: "media-player-tv media-player-${entity.state}"
-                  tap_action:
-                    action: call-service
-                    service: honeycomb
-                    service_data:
-                      buttons:
-                        - name: Allumer
-                          icon: mdi:television
-                          show: '[[[ return entity.state == "off" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.chambre_a_coucher_allumer_tv_chambre_a_coucher
-                        - name: Eteindre
-                          icon: mdi:television-off
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.chambre_a_coucher_eteindre_tv_chambre_a_coucher
-                        - name: Plex
-                          icon: mdi:plex
-                          active: true
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.tv_chambre_a_coucher_plex
-                        - name: Netflix
-                          icon: mdi:netflix
-                          active: true
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.tv_chambre_a_coucher_netflix
-                        - name: Prime Video
-                          icon: mdi:video
-                          active: true
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.tv_chambre_a_coucher_prime_video
+                #################################################
+                # TV Salon honeycomb menu.
+                #################################################                              
                 - entities:
                     - media_player.tv_antre_cha
                   hold_action: more-info
@@ -141,6 +96,9 @@ views:
                             service: script.turn_on
                             service_data:
                               entity_id: script.tv_antre_cha_prime_video
+                #################################################
+                # SVG modification
+                #################################################                                  
                 - entities:
                     - light.hue_color_light_1
                     - light.ecran_pc_cha_haut_droite
@@ -149,13 +107,6 @@ views:
                     action: call-service
                     service: floorplan.class_set
                     service_data: "light-${entity.state}"
-                - entities:
-                    - binary_sensor.sonoff_a480085c50
-                  state_action:
-                    action: call-service
-                    service: floorplan.image_set
-                    service_data: 
-                      image: /local/floorplan/cadenas-${entity.state}.png
                 - entities:
                     - light.hue_color_light_1
                     - light.ecran_pc_cha_haut_droite
@@ -173,38 +124,18 @@ views:
                         if( entity.state !== "on" )
                             return "display: none;";
                         else 
-                          return "display: block;"
+                          return "display: block;"                    
                 - entities:
-                    - binary_sensor.10_191_107_165
-                    - binary_sensor.10_191_107_159
+                    - binary_sensor.sonoff_a480085c50
                   state_action:
                     action: call-service
-                    service: floorplan.class_set
-                    service_data: "motion motion-${entity.state}"
-                - entities:
-                    - binary_sensor.10_191_107_165
-                    - binary_sensor.10_191_107_159
-                  tap_action:
-                    action: call-service
-                    service: honeycomb
-                    service_data:
-                      buttons:
-                        - name: Allumer
-                          icon: mdi:television
-                          show: '[[[ return entity.state == "off" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.wake_up_pc_cha
-                        - name: Eteindre
-                          icon: mdi:television-off
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.shutdown_pc_cha
+                    service: floorplan.image_set
+                    service_data: 
+                      image: /local/floorplan/cadenas-${entity.state}.png
+
+                #################################################
+                #  SVG Modification: change text. 
+                #################################################                     
                 - name: Temperature
                   entities:
                     - sensor.sonoff_a4800866c4_temperature
@@ -221,7 +152,7 @@ views:
                               else if( entity.state < 35 )
                                   return "static-orange";
                               else 
-                                return "static-red"     
+                                return "static-red"                                     
                 - name: Temperature armoire
                   entities:
                     - sensor.armoire_hwg_ste_temperature

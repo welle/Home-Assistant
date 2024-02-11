@@ -31,6 +31,9 @@ views:
               image: "/local/floorplan/loft_etage.svg"
               stylesheet: "/local/floorplan/loft.css"
               rules:
+                #################################################
+                # TV Chambre à coucher honeycomb menu.
+                #################################################
                 - entities:
                     - media_player.tv_chambre_a_coucher
                   hold_action: more-info
@@ -86,6 +89,9 @@ views:
                             service: script.turn_on
                             service_data:
                               entity_id: script.tv_chambre_a_coucher_prime_video
+                #################################################
+                # TV Antre Cha honeycomb menu.
+                #################################################                              
                 - entities:
                     - media_player.tv_antre_cha
                   hold_action: more-info
@@ -141,41 +147,9 @@ views:
                             service: script.turn_on
                             service_data:
                               entity_id: script.tv_antre_cha_prime_video
-                - entities:
-                    - light.hue_color_light_1
-                    - light.ecran_pc_cha_haut_droite
-                  tap_action: false
-                  state_action:
-                    action: call-service
-                    service: floorplan.class_set
-                    service_data: "light-${entity.state}"
-
-                - entities:
-                    - light.hue_color_light_1
-                    - light.ecran_pc_cha_haut_droite
-                  tap_action:
-                    action: "toggle"
-                  double_tap_action:
-                    action: more-info
-                  state_action:
-                    action: call-service
-                    service: floorplan.style_set
-                    service_data:
-                      element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
-                      style: |
-                        >
-                        if( entity.state !== "on" )
-                            return "display: none;";
-                        else 
-                          return "display: block;"
-                - entities:
-                    - binary_sensor.10_191_107_165
-                    - binary_sensor.10_191_107_159
-                    - binary_sensor.sonoff_a48007e0ab
-                  state_action:
-                    action: call-service
-                    service: floorplan.class_set
-                    service_data: "motion motion-${entity.state}"
+                #################################################
+                # PC Cha honeycomb menu.
+                #################################################                                 
                 - entities:
                     - binary_sensor.10_191_107_165
                     - binary_sensor.10_191_107_159
@@ -200,6 +174,53 @@ views:
                             service: script.turn_on
                             service_data:
                               entity_id: script.shutdown_pc_cha
+                #################################################
+                #  Caméras 
+                #################################################                                 
+                - name: Caméras
+                  entities:
+                    - camera.cam_hall_high
+                  tap_action: more-info
+                #################################################
+                #  SVG Modification 
+                #################################################
+                - entities:
+                    - light.hue_color_light_1
+                    - light.ecran_pc_cha_haut_droite
+                  tap_action: false
+                  state_action:
+                    action: call-service
+                    service: floorplan.class_set
+                    service_data: "light-${entity.state}"  
+                - entities:
+                    - binary_sensor.10_191_107_165
+                    - binary_sensor.10_191_107_159
+                    - binary_sensor.sonoff_a48007e0ab
+                  state_action:
+                    action: call-service
+                    service: floorplan.class_set
+                    service_data: "motion motion-${entity.state}"  
+                - entities:
+                    - light.hue_color_light_1
+                    - light.ecran_pc_cha_haut_droite
+                  tap_action:
+                    action: "toggle"
+                  double_tap_action:
+                    action: more-info
+                  state_action:
+                    action: call-service
+                    service: floorplan.style_set
+                    service_data:
+                      element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+                      style: |
+                        >
+                        if( entity.state !== "on" )
+                            return "display: none;";
+                        else 
+                          return "display: block;"                                      
+                #################################################
+                #  SVG Modification: change text. 
+                ################################################# 
                 - name: Temperature
                   entities:
                     - sensor.sonoff_a4800849a0_temperature
@@ -235,12 +256,7 @@ views:
                               if( entity.state > 39 && entity.state < 81 )
                                   return "static-green";
                               else 
-                                return "static-red"  
-                - name: Caméras
-                  entities:
-                    - camera.cam_hall_high
-                  tap_action: more-info
-                    
+                                return "static-red"                     
           #################################################
           # Weather
           #################################################
