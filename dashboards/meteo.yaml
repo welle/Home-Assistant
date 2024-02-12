@@ -1,620 +1,152 @@
+apexcharts_card_templates:
+  meteo:
+    apex_config:
+      legend:
+        show: false
+      grid:
+        show: false
+      xaxis:
+        axisBorder:
+          show: false
+    all_series_config:
+      stroke_width: 1
+
 title: Meteo
 views:
-  - title: Station météo
-    cards:
-      - type: custom:apexcharts-card
-        graph_span: 6h
-        apex_config:
-          legend:
-            show: false
-        yaxis:
-          - id: first
-            min: 0
-            max: 50
-            show: true
-            opposite: true
-          - id: second
-            min: 0
-          - id: third
-            min: 0
-            max: 100
-            show: false
-        all_series_config:
-          type: line
-          stroke_width: 1
-        header:
-          show: true
-          title: Solar Generation
-          colorize_states: true
-          show_states: true
-        series:
-          - entity: sensor.maison_cloud_coverage
-            yaxis_id: third
-            type: area
-            name: Cloud Coverage
-            fill_raw: last
-            color: '#B6B8BA'
-            opacity: 0.1
-      - type: custom:windrose-card
-        hours_to_show: 4
-        max_width: 400
-        refresh_interval: 300
-        windspeed_bar_location: right
-        windspeed_bar_full: false
-        wind_direction_entity: 
-          entity: sensor.ws2900_v2_02_01_wind_direction
-        windspeed_entities:
-          - entity: sensor.ws2900_v2_02_01_wind_speed
-            name: Vent (km/h)
-          - entity: sensor.ws2900_v2_02_01_wind_gust
-            name: Rafales (km/h)
-          - entity: sensor.ws2900_v2_02_01_max_daily_gust
-            name: Rafales maximales (km/h)        
-        wind_direction_unit: degrees
-        input_speed_unit: kph
-        output_speed_unit: kph 
-        direction_compensation: 0
-        windrose_draw_north_offset: 0
-        cardinal_direction_letters: NESO
-        matching_strategy: direction-first
-        direction_speed_time_diff: 1
-        speed_ranges:
-          - from_value: 0
-            color: rgba(61, 130, 255, .6)
-          - from_value: 2
-            color: rgba(143, 59, 184, .6)
-          - from_value: 4
-            color: rgba(204, 50, 255, .6)
-          - from_value: 6
-            color: rgba(255, 104, 83, .6)
-          - from_value: 8
-            color: rgba(255, 50, 156, .6)
-      - type: custom:compass-card
-        header:
-          icon: 
-            value: mdi:weather-windy
-            show: true
-          title: 
-            value: Vitesse et direction du vent
-        indicator_sensors:
-          - sensor: sensor.ws2900_v2_02_01_wind_direction
-            color: '#20BD8C'
-            indicator:
-              type: arrow-inward
-        value_sensors:
-          - sensor: sensor.ws2900_v2_02_01_wind_speed
-          - sensor: sensor.ws2900_v2_02_01_wind_gust
-        compass:
-          circle:
-            color: '#3D82FF'
-          north:
-            show: true
-          east:
-            show: true
-          south:
-            show: true
-          west:
-            show: true  
+  #################################################
+  # Prévisions
+  #################################################              
   - title: Prévisions
-    cards:
-      - type: custom:weather-chart-card
-        title: Prévisions sur 5 jours
-        entity: weather.forecast_maison
-        show_main: false
-        show_current_condition: false
-        show_attributes: false
-        animated_icons: true
-        units:
-          speed: km/h    
-      - type: custom:compass-card
-        header:
-          icon: 
-            value: mdi:weather-windy
-            show: true
-          title: 
-            value: Prévisions du vent d'ici 1h
-        indicator_sensors:
-          - sensor: sensor.openweathermap_forecast_wind_bearing
-            color: '#20BD8C'
-            indicator:
-              type: arrow-inward
-        value_sensors:
-          - sensor: sensor.openweathermap_forecast_wind_speed
-        compass:
-          circle:
-            color: '#3D82FF'
-          north:
-            show: true
-          east:
-            show: true
-          south:
-            show: true
-          west:
-            show: true  
-      - type: custom:weather-radar-card
-        show_playback: false
-        map_style: Dark
-        zoom_level: 9
-        extra_labels: true
-        show_range: true
-        show_scale: true
-        show_marker: true
-        static_map: false
-        square_map: false
-        show_recenter: true    
-      - type: custom:weather-radar-card
-        show_playback: false
-        map_style: Dark
-        zoom_level: 9
-        extra_labels: true
-        show_range: true
-        show_scale: true
-        show_marker: true
-        static_map: false
-        square_map: false
-        show_recenter: true     
-  - title: Statistiques journalières
-    cards:
-          - type: custom:apexcharts-card
-            graph_span: 24h
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Vent
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_wind_speed
-                name: Vitesse
-                show:
-                  legend_value: false
-                type: area
-                color: '#3D82FF'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_wind_gust
-                name: Rafales
-                show:
-                  legend_value: false
-                type: area
-                color: '#FF0000'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 0
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_wind_direction
-                name: Direction
-                show:
-                  legend_value: false
-                type: line
-                color: '#B6B8BA'
-                group_by:
-                  duration: 120m
-                  func: avg
-                stroke_width: 2
-                opacity: 1
-                yaxis_id: second       
-          - type: custom:apexcharts-card
-            graph_span: 24h
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Soleil
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_solar_lux
-                name: Lux
-                show:
-                  legend_value: false
-                type: area
-                color: '#FFFF00'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_solar_radiation
-                name: Luminosité
-                show:
-                  legend_value: false
-                type: area
-                color: '#FFFF00'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 0
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_uv_index
-                name: UV
-                show:
-                  legend_value: false
-                type: line
-                color: '#FFFF00'
-                group_by:
-                  duration: 120m
-                  func: avg
-                stroke_width: 2
-                opacity: 1
-                yaxis_id: second    
-          - type: custom:apexcharts-card
-            graph_span: 24h
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Précipitations
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_daily_rain_rate
-                name: Pluie
-                show:
-                  legend_value: false
-                type: area
-                color: '#0000FF'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first
-  - title: Statistiques mensuelles
-    cards:
-          - type: custom:apexcharts-card
-            graph_span: 1m
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Vent
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_wind_speed
-                name: Vitesse
-                show:
-                  legend_value: false
-                type: area
-                color: '#3D82FF'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_wind_gust
-                name: Rafales
-                show:
-                  legend_value: false
-                type: area
-                color: '#FF0000'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 0
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_wind_direction
-                name: Direction
-                show:
-                  legend_value: false
-                type: line
-                color: '#B6B8BA'
-                group_by:
-                  duration: 120m
-                  func: avg
-                stroke_width: 2
-                opacity: 1
-                yaxis_id: second    
-          - type: custom:apexcharts-card
-            graph_span: 1m
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Soleil
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_solar_lux
-                name: Lux
-                show:
-                  legend_value: false
-                type: area
-                color: '#FFFF00'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_solar_radiation
-                name: Luminosité
-                show:
-                  legend_value: false
-                type: area
-                color: '#FFFF00'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 0
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_uv_index
-                name: UV
-                show:
-                  legend_value: false
-                type: line
-                color: '#FFFF00'
-                group_by:
-                  duration: 120m
-                  func: avg
-                stroke_width: 2
-                opacity: 1
-                yaxis_id: second     
-          - type: custom:apexcharts-card
-            graph_span: 1m
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Précipitations
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_daily_rain_rate
-                name: Pluie
-                show:
-                  legend_value: false
-                type: area
-                color: '#0000FF'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first                                
-  - title: Statistiques annuelles
-    cards:
-          - type: custom:apexcharts-card
-            graph_span: 1y
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Vent
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_wind_speed
-                name: Vitesse
-                show:
-                  legend_value: false
-                type: area
-                color: '#3D82FF'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_wind_gust
-                name: Rafales
-                show:
-                  legend_value: false
-                type: area
-                color: '#FF0000'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 0
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_wind_direction
-                name: Direction
-                show:
-                  legend_value: false
-                type: line
-                color: '#B6B8BA'
-                group_by:
-                  duration: 120m
-                  func: avg
-                stroke_width: 2
-                opacity: 1
-                yaxis_id: second    
-          - type: custom:apexcharts-card
-            graph_span: 1y
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Soleil
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_solar_lux
-                name: Lux
-                show:
-                  legend_value: false
-                type: area
-                color: '#FFFF00'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_solar_radiation
-                name: Luminosité
-                show:
-                  legend_value: false
-                type: area
-                color: '#FFFF00'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 0
-                opacity: 0.2
-                yaxis_id: first
-              - entity: sensor.ws2900_v2_02_01_uv_index
-                name: UV
-                show:
-                  legend_value: false
-                type: line
-                color: '#FFFF00'
-                group_by:
-                  duration: 120m
-                  func: avg
-                stroke_width: 2
-                opacity: 1
-                yaxis_id: second   
-          - type: custom:apexcharts-card
-            graph_span: 1y
-            apex_config:
-              legend:
-                show: false
-            header:
-              show: true
-              show_states: false
-              title: Précipitations
-            yaxis:
-              - id: first
-              - id: second
-                min: 0
-                max: 360
-                decimals: 0
-                apex_config:
-                  labels:
-                    formatter: |
-                      EVAL:function (value) {
-                        return value + "°"; 
-                      }
-                opposite: true
-            series:
-              - entity: sensor.ws2900_v2_02_01_daily_rain_rate
-                name: Pluie
-                show:
-                  legend_value: false
-                type: area
-                color: '#0000FF'
-                group_by:
-                  duration: 15m
-                  func: avg
-                stroke_width: 2
-                opacity: 0.2
-                yaxis_id: first                                  
+    layout:
+      grid-template-columns: repeat(4, 1fr)
+      grid-template-areas: |-
+        "a b b b"
+        "c b b b"
+        "d e f g"
+      place-content: stretch
+      mediaquery:
+        '(max-width: 1300px)':
+          grid-template-columns: 1fr
+          grid-template-areas: |-
+            "a"
+            "b"
+            "c"
+    type: custom:grid-layout
+    cards: 
+    - type: custom:weather-chart-card
+      title: Prévisions sur 5 jours
+      entity: weather.forecast_maison
+      show_main: false
+      show_current_condition: false
+      show_attributes: false
+      animated_icons: true
+      units:
+        speed: km/h    
+    - type: iframe
+      aspect_ratio: 50%
+      url: "https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=7&overlay=wind&product=ecmwf&level=surface&lat=50.17&lon=4.329&pressure=true&message=true"              
+      view_layout:
+        place-self: center stretch
+        grid-area: b
+    - type: custom:apexcharts-card
+      config_templates:
+        - meteo
+      header:
+        show: true
+        title: Temps
+        show_states: true
+        colorize_states: true
+      graph_span: 36h
+      all_series_config:
+        stroke_width: 1
+      series:
+        - entity: sensor.ws2900_v2_02_01_outdoor_temperature
+          name: Temperature
+          show:
+            extremas: true
+        - entity: sensor.ws2900_v2_02_01_feels_like_temperature
+          name: Ressentie
+        - entity: sensor.ws2900_v2_02_01_windchill
+          name: Refroidissement Eolien
+        - entity: sensor.ws2900_v2_02_01_dewpoint
+          name: Rosée
+      view_layout:
+        grid-area: c
+    - type: custom:apexcharts-card
+      config_templates:
+        - meteo
+      header:
+        show: true
+        title: Vent
+        show_states: true
+        colorize_states: true
+      graph_span: 36h
+      all_series_config:
+        stroke_width: 1
+        show:
+          extremas: max
+      series:
+        - entity: sensor.ws2900_v2_02_01_wind_speed
+          name: Vitesse
+        - entity: sensor.ws2900_v2_02_01_wind_gust
+          name: Rafale
+          opacity: 0.2
+          type: area
+    - type: custom:apexcharts-card
+      config_templates:
+        - meteo
+      header:
+        show: true
+        title: Pression
+        show_states: true
+        colorize_states: true
+      graph_span: 2d
+      all_series_config:
+        stroke_width: 1
+        show:
+          extremas: true
+      series:
+        - entity: sensor.ws2900_v2_02_01_relative_pressure
+          name: Pression
+    - type: custom:apexcharts-card
+      config_templates:
+        - meteo
+      header:
+        show: true
+        title: Humidité
+        show_states: true
+        colorize_states: true
+      graph_span: 1d
+      all_series_config:
+        stroke_width: 1
+        show:
+          extremas: true
+      series:
+        - entity: sensor.ws2900_v2_02_01_humidity
+          name: Humidité
+    - type: custom:apexcharts-card
+      config_templates:
+        - meteo
+      header:
+        show: true
+        title: Pluie
+        show_states: true
+        colorize_states: true
+      graph_span: 1d
+      all_series_config:
+        stroke_width: 1
+        show:
+          extremas: max
+      yaxis:
+        - id: rate
+        - id: total
+          opposite: true
+      series:
+        - entity: sensor.ws2900_v2_02_01_rain_rate
+          name: Pluviométrie
+          type: column
+          stroke_width: 2
+          yaxis_id: rate
+          color: rebeccapurple
+        - entity: sensor.ws2900_v2_02_01_total_rain
+          yaxis_id: total

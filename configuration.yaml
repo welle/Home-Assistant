@@ -58,7 +58,9 @@ lovelace:
     - url: /local/community/weather-chart-card/weather-chart-card.js
       type: module  
     - url: /local/community/ha-card-weather-conditions/ha-card-weather-conditions.js
-      type: module                       
+      type: module    
+    - url: /local/community/ha-sankey-chart/ha-sankey-chart.js
+      type: module                            
   dashboards:
     preview-dashboard:
       mode: yaml

@@ -26,8 +26,7 @@ views:
                     background: none !important;
                 }
             config:
-              log_level: debug
-              console_log_level: debug
+
               image: "/local/floorplan/loft_etage.svg"
               stylesheet: "/local/floorplan/loft.css"
               rules:
@@ -227,6 +226,7 @@ views:
                     - sensor.sonoff_a4800849a3_temperature
                     - sensor.sonoff_a480085bef_temperature
                     - sensor.sonoff_a480085bf0_temperature
+                  hover_action: sensor.feels_like_temperature_antre_cha
                   state_action:
                     - service: floorplan.text_set
                       service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
@@ -256,7 +256,71 @@ views:
                               if( entity.state > 39 && entity.state < 81 )
                                   return "static-green";
                               else 
-                                return "static-red"                     
+                                return "static-red" 
+          #################################################
+          # Feels like temperature
+          #################################################                                       
+          - type: custom:stack-in-card
+            mode: vertical
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: entities
+                    entities:
+                      - entity: sensor.temperature_ressentie_antre_cha
+                        name: Antre Cha
+                      - entity: sensor.temperature_ressentie_antre_van
+                        name: Antre Van
+                  - type: entities
+                    entities:
+                      - entity: sensor.temperature_ressentie_chambre
+                        name: Chambre à coucher
+                      - entity: sensor.temperature_ressentie_salle_de_bain  
+                        name: Salle de bain                  
+            card_mod:
+              style: |
+                :host {
+                  transform: translate( 0, 0 );
+                  position: absolute;
+                  right: 20px;
+                  top: 32px;
+                  opacity: 1;
+                  mix-blend-mode: luminosity;
+                }
+                @media only screen and (max-width: 1280px)
+                {
+                    :host {
+                        left: -22px;
+                        bottom: 12px;
+                    }
+                }
+                .card-header {
+                  line-height: 20px;
+                  max-height: 20px !important;
+                  height: 20px !important;
+                }
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                }
+                :host .icon.bigger {
+                  position: unset;
+                  margin-top: -1em;
+                }
+                .temp, .tempc, .icon {
+                    position: unset !important;
+                }     
+                div#wrapper { 
+                  min-height:  10px; 
+                  height:  25px; 
+                }
+                hui-generic-entity-row {
+                  height: 25px;
+                }        
+                :host .entities-row .entity {
+                  height: 20px;
+                }  
+                                            
           #################################################
           # Weather
           #################################################

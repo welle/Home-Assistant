@@ -238,42 +238,42 @@ z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stro
   Température Antre Cha. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a0_temperature" ><tspan id="tspan148-9" x="275" y="3180" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Humidité Antre Cha. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="275" y="3220" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a0_humidity" ><tspan id="tspan148-9" x="275" y="3210" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Température Antre Van. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="950" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a3_temperature" ><tspan id="tspan148-9" x="-290" y="950" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Humidité Antre Van. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="990" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a4800849a3_humidity" ><tspan id="tspan148-9" x="-290" y="980" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Température Salle de bain. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a480085bef_temperature" ><tspan id="tspan148-9" x="-610" y="2300" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a480085bef_temperature" ><tspan id="tspan148-9" x="-610" y="2300" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Humidité Salle de bain. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a480085bef_humidity" ><tspan id="tspan148-9" x="-610" y="2340" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a480085bef_humidity" ><tspan id="tspan148-9" x="-610" y="2330" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Température Chambre à coucher. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a480085bf0_temperature" ><tspan id="tspan148-9" x="420" y="1000" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a480085bf0_temperature" ><tspan id="tspan148-9" x="420" y="1000" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;">Gang C</tspan></text>
 <!-- 
   Humidité Chambre à coucher. 
 -->  
 <text xml:space="preserve" style="transform: rotate(312deg);" 
-id="sensor.sonoff_a480085bf0_humidity" ><tspan id="tspan148-9" x="420" y="1040" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Arial;">Gang C</tspan></text>
+id="sensor.sonoff_a480085bf0_humidity" ><tspan id="tspan148-9" x="420" y="1030" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:Arial;">Gang C</tspan></text>
 
 </g>
   <!--g id="cameras" >

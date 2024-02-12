@@ -30,6 +30,8 @@
     - sensor.sonoff_a4800866c4_temperature
     - sensor.sonoff_a4800866c4_humidity                
 
+
+
 # Configuration HWG-STE Ethernet Thermometer yaml entry
 - platform: snmp
   name: "Armoire HWG-STE Temperature"
