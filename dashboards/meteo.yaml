@@ -20,6 +20,7 @@ views:
     layout:
       grid-template-columns: repeat(4, 1fr)
       grid-template-areas: |-
+        "z z z z"
         "a b b b"
         "c b b b"
         "d e f g"
@@ -28,13 +29,20 @@ views:
         '(max-width: 1300px)':
           grid-template-columns: 1fr
           grid-template-areas: |-
+            "z"
             "a"
             "b"
             "c"
     type: custom:grid-layout
     cards: 
+    - type: custom:hourly-weather
+      entity: weather.forecast_maison
+      num_segments: 24 # optional, defaults to 12
+      name: Prochaines 24h # optional, defaults to "Hourly Weather"
+      view_layout:
+        place-self: center stretch
+        grid-area: z
     - type: custom:weather-chart-card
-      title: Prévisions sur 5 jours
       entity: weather.forecast_maison
       show_main: false
       show_current_condition: false
@@ -48,12 +56,17 @@ views:
       view_layout:
         place-self: center stretch
         grid-area: b
+      card_mod:
+        style: |
+          ha-card {
+            height: 100% !important;
+          }
+           
     - type: custom:apexcharts-card
       config_templates:
         - meteo
       header:
         show: true
-        title: Temps
         show_states: true
         colorize_states: true
       graph_span: 36h

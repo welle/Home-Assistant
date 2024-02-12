@@ -184,7 +184,61 @@ views:
                                   return "static-green";
                               else 
                                 return "static-red"  
-
+          #################################################
+          # Feels like temperature
+          #################################################                                       
+          - type: custom:stack-in-card
+            mode: vertical
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: entities
+                    entities:
+                      - entity: sensor.temperature_ressentie_salon
+                        name: Salon      
+                  - type: entities
+                    entities:
+                      - entity: sensor.temperature_ressentie_cellier
+                        name: Cellier                               
+            card_mod:
+              style: |
+                :host {
+                  transform: translate( 0, 0 );
+                  position: absolute;
+                  right: 20px;
+                  top: 32px;
+                  opacity: 1;
+                  width: 400px;
+                  mix-blend-mode: luminosity;
+                }
+                @media only screen and (max-width: 1280px)
+                {
+                    :host {
+                        left: -22px;
+                        bottom: 12px;
+                    }
+                }
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                }
+                :host .icon.bigger {
+                  position: unset;
+                  margin-top: -1em;
+                }
+                .temp, .tempc, .icon {
+                    position: unset !important;
+                }     
+                div#wrapper { 
+                  min-height:  10px; 
+                  height:  25px; 
+                }
+                hui-generic-entity-row {
+                  height: 25px;
+                }        
+                :host .entities-row .entity {
+                  height: 20px;
+                }  
           #################################################
           # Weather
           #################################################

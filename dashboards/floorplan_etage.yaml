@@ -294,11 +294,6 @@ views:
                         bottom: 12px;
                     }
                 }
-                .card-header {
-                  line-height: 20px;
-                  max-height: 20px !important;
-                  height: 20px !important;
-                }
                 ha-card {
                   background: none;
                   box-shadow: none;
@@ -370,5 +365,4 @@ views:
                     font-size: .9em !important;
                     vertical-align: super;
                 }
-
        
