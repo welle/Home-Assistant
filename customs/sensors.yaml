@@ -1,3 +1,13 @@
+# Plex
+- platform: plex_recently_added
+  token: kXSsXdoY4A1MxVqDaDZG
+  host: 10.191.107.50
+  port: 32400
+- platform: plex_recently_added
+  token: kXSsXdoY4A1MxVqDaDZG
+  host: nl6236.dediseedbox.com
+  port: 36293
+
 # Feels like temperature sensors
 - platform: temperature_feels_like
   name: 'Temperature ressentie Antre Cha'

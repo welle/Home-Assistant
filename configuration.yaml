@@ -60,7 +60,16 @@ lovelace:
     - url: /local/community/ha-card-weather-conditions/ha-card-weather-conditions.js
       type: module    
     - url: /local/community/ha-sankey-chart/ha-sankey-chart.js
-      type: module                            
+      type: module           
+    - url: /local/community/ha-sankey-chart/ha-sankey-chart.js
+      type: module           
+    - url: /local/community/PlexMeetsHomeAssistant/plex-meets-homeassistant.js
+      type: module           
+    - url: /local/community/upcoming-media-card/upcoming-media-card.js
+      type: module           
+    - url: /local/community/PlexMeetsHomeAssistant/upcoming-media-card.js
+      type: module           
+
   dashboards:
     preview-dashboard:
       mode: yaml
@@ -76,10 +85,10 @@ lovelace:
       filename: "./dashboards/vacuums.yaml"
     streaming-dashboard:
       mode: yaml
-      title: Streaming
-      icon: mdi:video-check-outline
+      title: Media
+      icon: mdi:multimedia
       show_in_sidebar: true
-      filename: "./dashboards/streaming.yaml"
+      filename: "./dashboards/media.yaml"
     status-dashboard:
       mode: yaml
       title: Status
