@@ -55,13 +55,7 @@ views:
       url: "https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=7&overlay=wind&product=ecmwf&level=surface&lat=50.17&lon=4.329&pressure=true&message=true"              
       view_layout:
         place-self: center stretch
-        grid-area: b
-      card_mod:
-        style: |
-          ha-card {
-            height: 100% !important;
-          }
-           
+        grid-area: b  
     - type: custom:apexcharts-card
       config_templates:
         - meteo
