@@ -2,6 +2,66 @@ title: Media
 views:
   - title: Home
     cards:
+      - type: custom:upcoming-media-card
+        entity: sensor.sonarr_upcoming_media
+        date: ddmm
+        clock: 24
+      - type: custom:upcoming-media-card
+        entity: sensor.radarr_upcoming_media
+        date: ddmm
+        clock: 24        
+      - type: 'custom:plex-meets-homeassistant'
+        token: kXSsXdoY4A1MxVqDaDZG
+        ip: 10.191.107.50
+        port: 32400
+        maxRows: 3
+        libraryName: Films
+        sort: addedAt:desc
+        runBefore: 
+        entity:
+          plexPlayer:
+            - TV 2020
+            - TV 2018
+            - TV 2021
+      - type: custom:upcoming-media-card
+        entity: sensor.plex_recently_added_movies_hephaistos
+        title: Recently Downloaded            
+      - type: 'custom:plex-meets-homeassistant'
+        token: kXSsXdoY4A1MxVqDaDZG
+        ip: nl6236.dediseedbox.com
+        port: 36293
+        maxRows: 3
+        libraryName: Films H
+        sort: addedAt:desc
+        entity:
+          plexPlayer:
+            - TV 2020
+            - TV 2018
+            - TV 2021
+      - type: 'custom:plex-meets-homeassistant'
+        token: kXSsXdoY4A1MxVqDaDZG
+        ip: 10.191.107.50
+        port: 32400
+        maxRows: 3
+        libraryName: Séries TV
+        sort: episode.addedAt:desc
+        entity:
+          plexPlayer:
+            - TV 2020
+            - TV 2018
+            - TV 2021
+      - type: 'custom:plex-meets-homeassistant'
+        token: kXSsXdoY4A1MxVqDaDZG
+        ip: nl6236.dediseedbox.com
+        port: 36293
+        maxRows: 3
+        libraryName: Series TV H
+        sort: addedAt:desc
+        entity:
+          plexPlayer:
+            - TV 2020
+            - TV 2018  
+            - TV 2021                                  
       - type: grid
         square: false
         columns: 1
