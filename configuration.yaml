@@ -66,11 +66,9 @@ lovelace:
     - url: /local/community/PlexMeetsHomeAssistant/plex-meets-homeassistant.js
       type: module           
     - url: /local/community/upcoming-media-card/upcoming-media-card.js
-      type: module           
-    - url: /local/community/PlexMeetsHomeAssistant/upcoming-media-card.js
-      type: module   
-    - url: /local/community/upcoming-media-card/upcoming-media-card.js?v=0.1.2
-      type: js              
+      type: module                    
+    - url: /local/community/mini-media-player/mini-media-player-bundle.js
+      type: module 
 
   dashboards:
     preview-dashboard:
@@ -158,7 +156,8 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 sensor: !include "./customs/sensors.yaml"
 switch: !include "./customs/switchs.yaml"
-template: !include "./customs/templates.yaml"
+template: !include "./customs/templates.yaml" 
+
 
 # Define variables
 var:

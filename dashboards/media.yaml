@@ -1,6 +1,31 @@
-title: Media
+title: Media 
 views:
-  - title: Home
+  - title: Musique
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-media-player
+            entity: media_player.ampli_music_assistant
+            icon: mdi:music
+            artwork: cover
+            hide:
+              volume: true
+              source: true
+              power_state: false
+          - type: button
+            entity: binary_sensor.10_191_107_159
+            name: PC Cha
+            icon: mdi:desktop-classic
+            tap_action: 
+                action: call-service
+                service: |
+                  [[[
+                    if states['binary_sensor.10_191_107_159'] == 'on'
+                      return 'script.shutdown_pc_cha';
+                    else
+                      return 'script.wake_up_pc_cha';
+                  ]]]
+  - title: Vidéos
     cards:
       - type: custom:upcoming-media-card
         entity: sensor.sonarr_upcoming_media

@@ -1,4 +1,4 @@
-# My Weather Entities Hourly
+# My Weather Entities Hourly 
 - trigger:
     - platform: time_pattern
       hours: "/1"
