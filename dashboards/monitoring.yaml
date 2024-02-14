@@ -249,7 +249,11 @@ views:
             - "#ff0000"
             - "#ffff00"
             - "#00ff00"
-          gradient: true                    
+          gradient: true 
+      - type: entities
+        title: Autres
+        entities:
+          - entity: sensor.ws2900_v2_02_01_wh65_battery                            
       - type: custom:decluttering-card
         template: battery_states
   #################################################
