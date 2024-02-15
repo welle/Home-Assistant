@@ -328,10 +328,6 @@
     metadata: {}
     target:
       entity_id: scene.antre_cha_pc_allume
-  - service: var.set
-    data:
-      entity_id: var.light_above_couch
-      value: 1
   mode: single
 - id: '1704910315679'
   alias: 'Antre Cha : Eteindre  Zone PC'

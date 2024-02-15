@@ -6,8 +6,6 @@ frontend:
   themes: !include_dir_merge_named themes
   extra_module_url:
     - /local/community/lovelace-card-mod/card-mod.js
-    - /local/community/decluttering-card/decluttering-card.js
-
 lovelace:
   mode: yaml
   resources:
@@ -69,7 +67,10 @@ lovelace:
       type: module                    
     - url: /local/community/mini-media-player/mini-media-player-bundle.js
       type: module 
-
+    - url: /local/community/text-divider-row/text-divider-row.js
+      type: module 
+    - url: /local/community/decluttering-card/decluttering-card.js  
+      type: module
   dashboards:
     preview-dashboard:
       mode: yaml
@@ -157,15 +158,3 @@ scene: !include scenes.yaml
 sensor: !include "./customs/sensors.yaml"
 switch: !include "./customs/switchs.yaml"
 template: !include "./customs/templates.yaml" 
-
-
-# Define variables
-var:
-  light_above_couch:
-    friendly_name: "Lumière au dessus du canapé"
-    initial_value: 0
-    icon: mdi:bug
-  y:
-    friendly_name: "Y"
-    initial_value: "Sleeping"
-    entity_picture: "/local/sleep.png"

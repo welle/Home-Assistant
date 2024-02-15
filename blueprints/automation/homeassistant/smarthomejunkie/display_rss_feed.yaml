@@ -1,0 +1,81 @@
+##########
+# This Blueprint is created by Smart Home Junkie
+# (c) copyright 2023 by Smart Home Junkie. You may not copy, reproduce, distribute, transmit, modify, create derivative works,
+# or in any other way exploit any part of copyrighted material without the prior written permission from Smart Home Junkie
+##########
+
+blueprint:
+  name: Display RSS Feed
+  description: Get the latest news item from an RSS feed. Make sure you've created text helpers to store the Title, Description and Link of the News Item. And make sure you've created a datetime helper to store the date and time of the news item.
+  domain: automation
+  author: Smart Home Junkie
+  input:
+    rss_feed_url:
+      name: RSS Feed URL
+      description: Enter your RSS feed URL.
+      selector:
+        text:
+      default: ""
+    newsitem_title_helper:
+      name: News Item Title Helper
+      description: Select the Text Helper that will contain the title of the news item.
+      selector:
+        entity:
+          domain: input_text
+    newsitem_description_helper:
+      name: News Item Description Helper
+      description: Select the Text Helper that will contain the description of the news item.
+      selector:
+        entity:
+          domain: input_text
+    newsitem_link_helper:
+      name: News Item Link Helper
+      description: Select the Text Helper that will contain the link of the news item.
+      selector:
+        entity:
+          domain: input_text
+    newsitem_date_helper:
+      name: News Item Date Helper
+      description: Select the DateTime Helper that will contain the date and time of the news item.
+      selector:
+        entity:
+          domain: input_datetime
+
+mode: queued
+
+trigger_variables:
+  feed_url: !input rss_feed_url
+
+trigger:
+  - platform: event
+    event_type: feedreader
+    event_data:
+      feed_url: "{{ feed_url }}"
+
+variables:
+  my_title_helper: !input newsitem_title_helper
+  my_description_helper: !input newsitem_description_helper
+  my_link_helper: !input newsitem_link_helper
+  my_date_helper: !input newsitem_date_helper
+
+action:
+  - service: input_text.set_value
+    data:
+      value: "{{ trigger.event.data.title | truncate(255, true, '...') }}"
+    target:
+      entity_id: "{{ my_title_helper }}"
+  - service: input_text.set_value
+    data:
+      value: "{{ iif(trigger.event.data.description | trim != '',trigger.event.data.description | truncate(255, true, '...'),'No description available') }}"
+    target:
+      entity_id: "{{ my_description_helper }}"
+  - service: input_text.set_value
+    data:
+      value: "{{ trigger.event.data.link }}"
+    target:
+      entity_id: "{{ my_link_helper }}"
+  - service: input_datetime.set_datetime
+    data:
+      datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+    target:
+      entity_id: "{{ my_date_helper }}"

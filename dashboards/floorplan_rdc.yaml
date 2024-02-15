@@ -1,187 +1,186 @@
-decluttering_templates: !include "../decluttering_templates.yaml"
 views:
-  - title: Floorplan
-    path: floorplan
-    icon: "mdi:floor-plan"
-    theme: floorplan
-    panel: true
-    cards:
-      - type: vertical-stack
-        cards:
-          #- type: custom:decluttering-card
-          #  template: battery_states
-          #################################################
-          # Floorplan
-          #################################################
-          - type: "custom:floorplan-card"
-            card_mod:
-              style: >
-                ha-card {
-                    background: none !important;
-                    max-width: 100%;
-                    margin: 0 auto;
-                    box-shadow: none;
-                }
-                :host {
-                    background: none !important;
-                }
-            config:
-              log_level: debug
-              console_log_level: debug
-              image: "/local/floorplan/loft_rdc.svg"
-              stylesheet: "/local/floorplan/loft.css"
-              rules:
-                - entities:
-                    - climate.kachafresh
-                  tap_action: more-info
-                  state_action:
-                    action: call-service
-                    service: floorplan.class_set
-                    service_data: "media-player-tv media-player-${entity.state}"
-                #################################################
-                # TV Salon honeycomb menu.
-                #################################################                              
-                - entities:
-                    - media_player.tv_antre_cha
-                  hold_action: more-info
-                  state_action:
-                    action: call-service
-                    service: floorplan.class_set
-                    service_data: "media-player-tv media-player-${entity.state}"
-                  tap_action:
-                    action: call-service
-                    service: honeycomb
-                    service_data:
-                      buttons:
-                        - name: Allumer
-                          icon: mdi:television
-                          show: '[[[ return entity.state == "off" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.antre_cha_allumer_tv
-                        - name: Eteindre
-                          icon: mdi:television-off
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.antre_cha_eteindre_tv
-                        - name: Plex
-                          icon: mdi:plex
-                          active: true
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.tv_antre_cha_plex
-                        - name: Netflix
-                          icon: mdi:netflix
-                          active: true
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.tv_antre_cha_netflix
-                        - name: Prime Video
-                          icon: mdi:video
-                          active: true
-                          show: '[[[ return entity.state == "on" ]]]'
-                          tap_action:
-                            action: call-service
-                            service: script.turn_on
-                            service_data:
-                              entity_id: script.tv_antre_cha_prime_video
-                #################################################
-                # SVG modification
-                #################################################                                  
-                - entities:
-                    - light.hue_color_light_1
-                    - light.ecran_pc_cha_haut_droite
-                  tap_action: false
-                  state_action:
-                    action: call-service
-                    service: floorplan.class_set
-                    service_data: "light-${entity.state}"
-                - entities:
-                    - light.hue_color_light_1
-                    - light.ecran_pc_cha_haut_droite
-                  tap_action:
-                    action: "toggle"
-                  double_tap_action:
-                    action: more-info
-                  state_action:
-                    action: call-service
-                    service: floorplan.style_set
-                    service_data:
-                      element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
-                      style: |
-                        >
-                        if( entity.state !== "on" )
-                            return "display: none;";
-                        else 
-                          return "display: block;"                    
-                - entities:
-                    - binary_sensor.sonoff_a480085c50
-                  state_action:
-                    action: call-service
-                    service: floorplan.image_set
-                    service_data: 
-                      image: /local/floorplan/cadenas-${entity.state}.png
+- title: Rez-de-chaussée
+  path: floorplan
+  icon: "mdi:floor-plan"
+  theme: floorplan
+  panel: true
+  cards:
+    - type: vertical-stack
+      cards:
+        #- type: custom:decluttering-card
+        #  template: battery_states
+        #################################################
+        # Floorplan
+        #################################################
+        - type: "custom:floorplan-card"
+          card_mod:
+            style: >
+              ha-card {
+                  background: none !important;
+                  max-width: 100%;
+                  margin: 0 auto;
+                  box-shadow: none;
+              }
+              :host {
+                  background: none !important;
+              }
+          config:
+            log_level: debug
+            console_log_level: debug
+            image: "/local/floorplan/loft_rdc.svg"
+            stylesheet: "/local/floorplan/loft.css"
+            rules:
+              - entities:
+                  - climate.kachafresh
+                tap_action: more-info
+                state_action:
+                  action: call-service
+                  service: floorplan.class_set
+                  service_data: "media-player-tv media-player-${entity.state}"
+              #################################################
+              # TV Salon honeycomb menu.
+              #################################################                              
+              - entities:
+                  - media_player.tv_antre_cha
+                hold_action: more-info
+                state_action:
+                  action: call-service
+                  service: floorplan.class_set
+                  service_data: "media-player-tv media-player-${entity.state}"
+                tap_action:
+                  action: call-service
+                  service: honeycomb
+                  service_data:
+                    buttons:
+                      - name: Allumer
+                        icon: mdi:television
+                        show: '[[[ return entity.state == "off" ]]]'
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.antre_cha_allumer_tv
+                      - name: Eteindre
+                        icon: mdi:television-off
+                        show: '[[[ return entity.state == "on" ]]]'
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.antre_cha_eteindre_tv
+                      - name: Plex
+                        icon: mdi:plex
+                        active: true
+                        show: '[[[ return entity.state == "on" ]]]'
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.tv_antre_cha_plex
+                      - name: Netflix
+                        icon: mdi:netflix
+                        active: true
+                        show: '[[[ return entity.state == "on" ]]]'
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.tv_antre_cha_netflix
+                      - name: Prime Video
+                        icon: mdi:video
+                        active: true
+                        show: '[[[ return entity.state == "on" ]]]'
+                        tap_action:
+                          action: call-service
+                          service: script.turn_on
+                          service_data:
+                            entity_id: script.tv_antre_cha_prime_video
+              #################################################
+              # SVG modification
+              #################################################                                  
+              - entities:
+                  - light.hue_color_light_1
+                  - light.ecran_pc_cha_haut_droite
+                tap_action: false
+                state_action:
+                  action: call-service
+                  service: floorplan.class_set
+                  service_data: "light-${entity.state}"
+              - entities:
+                  - light.hue_color_light_1
+                  - light.ecran_pc_cha_haut_droite
+                tap_action:
+                  action: "toggle"
+                double_tap_action:
+                  action: more-info
+                state_action:
+                  action: call-service
+                  service: floorplan.style_set
+                  service_data:
+                    element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+                    style: |
+                      >
+                      if( entity.state !== "on" )
+                          return "display: none;";
+                      else 
+                        return "display: block;"                    
+              - entities:
+                  - binary_sensor.sonoff_a480085c50
+                state_action:
+                  action: call-service
+                  service: floorplan.image_set
+                  service_data: 
+                    image: /local/floorplan/cadenas-${entity.state}.png
 
-                #################################################
-                #  SVG Modification: change text. 
-                #################################################                     
-                - name: Temperature
-                  entities:
-                    - sensor.sonoff_a4800866c4_temperature
-                    - sensor.sonoff_a4800866c9_temperature
-                  state_action:
-                    - service: floorplan.text_set
-                      service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
-                    - service: floorplan.class_set
-                      service_data:
-                        class: |
-                              >
-                              if( entity.state < 25 )
-                                  return "static-green";
-                              else if( entity.state < 35 )
-                                  return "static-orange";
-                              else 
-                                return "static-red"                                     
-                - name: Temperature armoire
-                  entities:
-                    - sensor.armoire_hwg_ste_temperature
-                  state_action:
-                    - service: floorplan.text_set
-                      service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
-                    - service: floorplan.class_set
-                      service_data:
-                        class: |
-                              >
-                              if( entity.state < 30 )
-                                  return "static-green";
-                              else if( entity.state < 40 )
-                                  return "static-orange";
-                              else 
-                                return "static-red"                                               
-                - name: Humidity
-                  entities:
-                    - sensor.sonoff_a4800866c4_humidity
-                    - sensor.sonoff_a4800866c9_humidity
-                  state_action:
-                    - service: floorplan.text_set
-                      service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "%" : "unknown"}'
-                    - service: floorplan.class_set
-                      service_data:
-                        class: |
-                              >
-                              if( entity.state > 39 && entity.state < 81 )
-                                  return "static-green";
-                              else 
-                                return "static-red"  
- 
+              #################################################
+              #  SVG Modification: change text. 
+              #################################################                     
+              - name: Temperature
+                entities:
+                  - sensor.sonoff_a4800866c4_temperature
+                  - sensor.sonoff_a4800866c9_temperature
+                state_action:
+                  - service: floorplan.text_set
+                    service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
+                  - service: floorplan.class_set
+                    service_data:
+                      class: |
+                            >
+                            if( entity.state < 25 )
+                                return "static-green";
+                            else if( entity.state < 35 )
+                                return "static-orange";
+                            else 
+                              return "static-red"                                     
+              - name: Temperature armoire
+                entities:
+                  - sensor.armoire_hwg_ste_temperature
+                state_action:
+                  - service: floorplan.text_set
+                    service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
+                  - service: floorplan.class_set
+                    service_data:
+                      class: |
+                            >
+                            if( entity.state < 30 )
+                                return "static-green";
+                            else if( entity.state < 40 )
+                                return "static-orange";
+                            else 
+                              return "static-red"                                               
+              - name: Humidity
+                entities:
+                  - sensor.sonoff_a4800866c4_humidity
+                  - sensor.sonoff_a4800866c9_humidity
+                state_action:
+                  - service: floorplan.text_set
+                    service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "%" : "unknown"}'
+                  - service: floorplan.class_set
+                    service_data:
+                      class: |
+                            >
+                            if( entity.state > 39 && entity.state < 81 )
+                                return "static-green";
+                            else 
+                              return "static-red"  
+

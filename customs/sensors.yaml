@@ -1,3 +1,60 @@
+# Feeds
+- platform: feedparser
+  name: Ecran Large RSS
+  feed_url: 'https://www.ecranlarge.com/rss'
+  date_format: '%d, %m %Y %H:%M:%S %Z'
+  scan_interval:
+    hours: 1
+  inclusions:
+    - title
+    - link
+    - description
+    - image
+    - pubDate
+  exclusions:
+    - language
+- platform: feedparser
+  name: Jeux vidéos RSS
+  feed_url: 'https://www.jeuxvideo.com/rss/rss.xml'
+  date_format: '%d, %m %Y %H:%M:%S %Z'
+  scan_interval:
+    hours: 1
+  inclusions:
+    - title
+    - link
+    - description
+    - image
+    - pubDate
+  exclusions:
+    - language
+- platform: feedparser
+  name: Les alexiens RSS
+  feed_url: 'https://www.lesalexiens.fr/feed/'
+  date_format: '%d, %m %Y %H:%M:%S %Z'
+  scan_interval:
+    hours: 1
+  inclusions:
+    - title
+    - link
+    - description
+    - image
+    - pubDate
+  exclusions:
+    - language
+- platform: feedparser
+  name: Journal du Geek RSS
+  feed_url: 'https://www.journaldugeek.com/feed/'
+  date_format: '%d, %m %Y %H:%M:%S %Z'
+  scan_interval:
+    hours: 1
+  inclusions:
+    - title
+    - link
+    - description
+    - image
+    - pubDate
+  exclusions:
+    - language        
 # Plex
 - platform: plex_recently_added
   name: plex_recently_added_movies_moloch
@@ -156,3 +213,15 @@
         {% else %}
           Soirée
         {% endif %}
+    next_sunrise:
+      entity_id: sun.sun
+      friendly_name: 'Prochain lever de soleil'
+      value_template: >
+        {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %H:%M') | replace(" 0", "") }}
+      icon_template: mdi:weather-sunset-up
+    next_sunset:
+      entity_id: sun.sun
+      friendly_name: 'Prochain coucher de soleil'
+      value_template: >
+        {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %H:%M') | replace(" 0", "") }}
+      icon_template: mdi:weather-sunset-down

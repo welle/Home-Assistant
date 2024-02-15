@@ -16,7 +16,8 @@ views:
   #################################################
   # Prévisions
   #################################################              
-  - title: Prévisions
+  - type: custom:grid-layout
+    title: Prévisions
     layout:
       grid-template-columns: repeat(4, 1fr)
       grid-template-areas: |-
@@ -34,21 +35,29 @@ views:
             "a"
             "b"
             "c"
-    type: custom:grid-layout
     cards: 
     - type: custom:hourly-weather
       entity: weather.forecast_maison
       num_segments: 24 # optional, defaults to 12
       name: Prochaines 24h # optional, defaults to "Hourly Weather"
+      show_wind: true
       view_layout:
         place-self: center stretch
         grid-area: z
-    - type: entities
-      entities:
-        - entity: sensor.ws2900_v2_02_01_max_daily_gust
-          name: Rafale maximale du jour
-        - entity: sensor.ws2900_v2_02_01_total_rain
-          name: Pluie totale du jour
+    - type: horizontal-stack
+      cards:
+        - type: entities
+          entities:
+            - entity: sensor.next_sunrise
+              name: Lever du soleil
+            - entity: sensor.next_sunset
+              name: Coucher du soleil
+        - type: entities
+          entities:
+            - entity: sensor.ws2900_v2_02_01_max_daily_gust
+              name: Rafale maximale 
+            - entity: sensor.ws2900_v2_02_01_total_rain
+              name: Pluie totale    
       view_layout:
         grid-area: y
     - type: custom:weather-chart-card
