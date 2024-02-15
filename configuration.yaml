@@ -158,3 +158,4 @@ scene: !include scenes.yaml
 sensor: !include "./customs/sensors.yaml"
 switch: !include "./customs/switchs.yaml"
 template: !include "./customs/templates.yaml" 
+

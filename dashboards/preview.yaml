@@ -20,9 +20,10 @@ views:
     type: custom:grid-layout
     layout:
       grid-template-columns: 1fr 1fr 1fr 1fr
-      grid-template-rows: auto auto auto auto
+      grid-template-rows: auto auto auto auto auto
       grid-template-areas: |-
         "z z z z"
+        "x x x x"
         "y y y y"
         "a a b b"
         "e f g h"
@@ -64,6 +65,19 @@ views:
               {% endif %}             
         view_layout:
           grid-area: z 
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          name: |
+              <ha-icon icon="mdi:thermometer"></ha-icon> Températures
+          template: details
+          tap_action:
+            action: navigate
+            navigation_path: /preview-dashboard/subview-temperatures    
+          styles:
+            card:
+              - height: 60px
+              - width: 200px  
       - type: custom:hourly-weather
         entity: weather.forecast_maison
         num_segments: 24 # optional, defaults to 12
@@ -418,4 +432,115 @@ views:
       view_layout:
         grid-area: g            
 
-        
+
+###############################################################
+# SUBVIEWS
+###############################################################
+  - type: custom:horizontal-layout
+    title: Températures
+    subview: true
+    path: subview-temperatures
+    back_path: /preview-dashboard/0
+    layout:
+      max_cols: 3
+    cards:
+      - type: thermostat
+        entity: climate.kachafresh
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Pièces
+          - type: custom:decluttering-card
+            template: temperature
+            variables:
+              - entity: sensor.sonoff_a4800849a0_temperature
+              - name: Antre Cha
+          - type: custom:decluttering-card
+            template: temperature
+            variables:
+              - entity: sensor.sonoff_a4800849a3_temperature
+              - name: Antre Vanessa
+          - type: custom:decluttering-card
+            template: temperature
+            variables:
+              - entity: sensor.sonoff_a480085bf0_temperature
+              - name: Chambre à coucher
+          - type: custom:decluttering-card
+            template: temperature
+            variables:
+              - entity: sensor.sonoff_a480085bef_temperature
+              - name: Salle de bain
+          - type: custom:decluttering-card
+            template: temperature
+            variables:
+              - entity: sensor.sonoff_a4800866c4_temperature
+              - name: Cellier
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Zones
+          - type: custom:decluttering-card
+            template: temperature
+            variables:
+              - entity: sensor.sonoff_a4800866c9_temperature
+              - name: Rez-de-chaussée
+          - type: custom:decluttering-card
+            template: temperature
+            variables:
+              - entity: sensor.armoire_hwg_ste_temperature
+              - name: Armoire informatique
+
+
+###############################################################
+# Button card templates
+###############################################################
+button_card_templates:
+  details:
+    size: 2vw
+    show_icon: false
+    color: '#9da0a2'
+    styles:
+      card:
+        - color: '#97989c'
+        - width: fit-content
+        - border: 0.12vw solid rgba(115, 115, 115, 0.15)
+        - transition: none
+        - margin: 0
+        - overflow: visible
+    extra_styles: |
+      #name {
+        color: rgba(255, 255, 255);
+        font-size: var(--tihiti-footer-card-font-size);
+        letter-spacing: 0.05vw;
+        opacity: 1.0;
+      }
+
+      ha-icon {
+        width: 20px;
+        vertical-align: 7%;
+        padding-right: 0.2vw;
+        color: rgba(255, 255, 255);
+        opacity: 1.0;
+      }
+
+      #card {
+        padding: var(--tihiti-footer-card-padding-v) var(--tihiti-footer-card-padding-h);
+        border-radius: var(--ha-card-border-radius, 12px);
+        margin: 0 auto;
+        background: rgba(115, 115, 115);
+      }
+
+      /* Mobile */
+      @media screen and (max-width: 992px) { 
+        ha-card { 
+          width: 100%;
+          margin: 0 2vw;
+        }
+
+        #card { 
+          padding: calc( var( --tihiti-footer-card-padding-v ) * 4.5 ) var( --tihiti-footer-card-padding-h );
+          width: 100% !important;
+        }
+      }
