@@ -4,6 +4,8 @@ views:
   icon: "mdi:floor-plan"
   theme: floorplan
   panel: true
+  subview: true
+  back_path: /preview-dashboard/0
   cards:
     - type: vertical-stack
       cards:

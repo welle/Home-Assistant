@@ -114,12 +114,6 @@ lovelace:
       icon: mdi:floor-plan
       show_in_sidebar: true
       filename: "./dashboards/floorplan_etage.yaml"
-    meteo-dashboard:
-      mode: yaml
-      title: Meteo
-      icon: mdi:weather-partly-snowy-rainy
-      show_in_sidebar: true
-      filename: "./dashboards/meteo.yaml"      
 
 # Spotcast
 spotcast:

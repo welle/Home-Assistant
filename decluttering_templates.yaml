@@ -123,10 +123,42 @@ door:
 ##################################################
 # Température
 ##################################################
+temperature_with_feels_like:
+    card:
+      type: custom:mushroom-template-card
+      tap-action: more-info
+      primary: '[[name]]'
+      secondary: '{{ states( ''[[entity]]'' ) | round }} °C  -  {{ states( ''[[humidity]]'' ) | round }} %  -  Ressenti: {{ states( ''[[feels_like]]'' ) | round }} °C'
+      icon: |-
+        {% set state = states( '[[feels_like]]' ) | int %}
+        {% if state < 17 %}
+          mdi:snowflake-thermometer
+        {% elif state < 23 %}
+          mdi:thermometer-low
+        {% elif state < 28 %}
+          mdi:thermometer
+        {% elif state < 34 %}
+          mdi:thermometer
+        {% else %}
+          mdi:thermometer-alert
+        {% endif %}
+      icon_color: |-
+        {% set state = states( '[[feels_like]]' ) | int %}
+        {% if state < 17 %}
+          blue
+        {% elif state < 25 %}
+          green
+        {% elif state < 30 %}
+          yellow
+        {% elif state < 35 %}
+          orange
+        {% else %}
+          red
+        {% endif %}
 temperature:
     card:
       type: custom:mushroom-template-card
-      entity: '[[entity]]'
+      tap-action: more-info
       primary: '[[name]]'
       secondary: '{{ states( ''[[entity]]'' ) | round }} °C'
       icon: |-
