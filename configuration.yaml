@@ -71,6 +71,9 @@ lovelace:
       type: module 
     - url: /local/community/decluttering-card/decluttering-card.js  
       type: module
+    - url: /local/community/vertical-stack-in-card/vertical-stack-in-card.js  
+      type: module
+
   dashboards:
     preview-dashboard:
       mode: yaml

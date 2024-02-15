@@ -475,58 +475,240 @@ views:
         entities:
           - type: section
             label: Pièces
-          - type: custom:decluttering-card
-            template: temperature_with_feels_like
-            variables:
-              - entity: sensor.sonoff_a4800849a0_temperature
-              - humidity: sensor.sonoff_a4800849a0_humidity
-              - feels_like: sensor.temperature_ressentie_antre_cha
-              - name: Antre Cha
-          - type: custom:decluttering-card
-            template: temperature_with_feels_like
-            variables:
-              - entity: sensor.sonoff_a4800849a3_temperature
-              - humidity: sensor.sonoff_a4800849a3_humidity
-              - feels_like: sensor.temperature_ressentie_antre_van              
-              - name: Antre Vanessa
-          - type: custom:decluttering-card
-            template: temperature_with_feels_like
-            variables:
-              - entity: sensor.sonoff_a480085bf0_temperature
-              - humidity: sensor.sonoff_a480085bf0_humidity
-              - feels_like: sensor.temperature_ressentie_chambre              
-              - name: Chambre à coucher
-          - type: custom:decluttering-card
-            template: temperature_with_feels_like
-            variables:
-              - entity: sensor.sonoff_a480085bef_temperature
-              - humidity: sensor.sonoff_a480085bef_humidity
-              - feels_like: sensor.temperature_ressentie_salle_de_bain              
-              - name: Salle de bain
-          - type: custom:decluttering-card
-            template: temperature_with_feels_like
-            variables:
-              - entity: sensor.sonoff_a4800866c4_temperature
-              - humidity: sensor.sonoff_a4800866c4_humidity
-              - feels_like: sensor.temperature_ressentie_cellier              
-              - name: Cellier
+          - type: custom:stack-in-card
+            mode: horizontal  
+            cards:
+            - type: custom:decluttering-card
+              template: temperature_with_feels_like
+              variables:
+                - entity: sensor.sonoff_a4800849a0_temperature
+                - humidity: sensor.sonoff_a4800849a0_humidity
+                - feels_like: sensor.temperature_ressentie_antre_cha
+                - name: Antre Cha  
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.temperature_ressentie_antre_cha
+                  color: '#B694E7'  
+              hours_to_show: 24
+              line_width: 2
+              color_thresholds:
+                - value: 0
+                  color: "#45b6fe"
+                - value: 20
+                  color: "#08f26e"
+                - value: 25
+                  color: "#f94449"
+              show:
+                name: false
+                icon: false
+                state: false
+                legend: false
+                fill: gradient
+              card_mod:
+                style: |
+                  :host { flex: 0.5 0.5 0% !important; } 
+                  ha-card {border-radius: 25px !important;background: none;box-shadow: none;--ha-card-border-width: 0;padding-top: 0 !important;padding-right: 12px !important;-webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0));}
+          - type: custom:stack-in-card
+            mode: horizontal  
+            cards:
+            - type: custom:decluttering-card
+              template: temperature_with_feels_like
+              variables:
+                - entity: sensor.sonoff_a4800849a3_temperature
+                - humidity: sensor.sonoff_a4800849a3_humidity
+                - feels_like: sensor.temperature_ressentie_antre_van
+                - name: Antre Vanessa
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.temperature_ressentie_antre_van
+                  color: '#B694E7'
+              hours_to_show: 24
+              line_width: 2
+              color_thresholds:
+                - value: 0
+                  color: "#45b6fe"
+                - value: 20
+                  color: "#08f26e"
+                - value: 25
+                  color: "#f94449"
+              show:
+                name: false
+                icon: false
+                state: false
+                legend: false
+                fill: gradient
+              card_mod:
+                style: |
+                  :host { flex: 0.5 0.5 0% !important; } 
+                  ha-card {border-radius: 25px !important;background: none;box-shadow: none;--ha-card-border-width: 0;padding-top: 0 !important;padding-right: 12px !important;-webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0));}   
+          - type: custom:stack-in-card
+            mode: horizontal  
+            cards:
+            - type: custom:decluttering-card
+              template: temperature_with_feels_like
+              variables:
+                - entity: sensor.sonoff_a480085bf0_temperature
+                - humidity: sensor.sonoff_a480085bf0_humidity
+                - feels_like: sensor.temperature_ressentie_chambre
+                - name: Chambre à coucher
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.temperature_ressentie_chambre
+                  color: '#B694E7'
+              hours_to_show: 24
+              line_width: 2
+              color_thresholds:
+                - value: 0
+                  color: "#45b6fe"
+                - value: 20
+                  color: "#08f26e"
+                - value: 25
+                  color: "#f94449"
+              show:
+                name: false
+                icon: false
+                state: false
+                legend: false
+                fill: gradient
+              card_mod:
+                style: |
+                  :host { flex: 0.5 0.5 0% !important; } 
+                  ha-card {border-radius: 25px !important;background: none;box-shadow: none;--ha-card-border-width: 0;padding-top: 0 !important;padding-right: 12px !important;-webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0));}   
+          - type: custom:stack-in-card
+            mode: horizontal  
+            cards:
+            - type: custom:decluttering-card
+              template: temperature_with_feels_like
+              variables:
+                - entity: sensor.sonoff_a480085bef_temperature
+                - humidity: sensor.sonoff_a480085bef_humidity
+                - feels_like: sensor.temperature_ressentie_salle_de_bain
+                - name: Salle de bain
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.temperature_ressentie_salle_de_bain
+                  color: '#B694E7'
+              hours_to_show: 24
+              line_width: 2
+              color_thresholds:
+                - value: 0
+                  color: "#45b6fe"
+                - value: 20
+                  color: "#08f26e"
+                - value: 25
+                  color: "#f94449"
+              show:
+                name: false
+                icon: false
+                state: false
+                legend: false
+                fill: gradient
+              card_mod:
+                style: |
+                  :host { flex: 0.5 0.5 0% !important; } 
+                  ha-card {border-radius: 25px !important;background: none;box-shadow: none;--ha-card-border-width: 0;padding-top: 0 !important;padding-right: 12px !important;-webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0));}   
+          - type: custom:stack-in-card
+            mode: horizontal  
+            cards:
+            - type: custom:decluttering-card
+              template: temperature_with_feels_like
+              variables:
+                - entity: sensor.sonoff_a4800866c4_temperature
+                - humidity: sensor.sonoff_a4800866c4_humidity
+                - feels_like: sensor.temperature_ressentie_cellier
+                - name: Cellier
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.temperature_ressentie_cellier
+                  color: '#B694E7'
+              hours_to_show: 24
+              line_width: 2
+              color_thresholds:
+                - value: 0
+                  color: "#45b6fe"
+                - value: 20
+                  color: "#08f26e"
+                - value: 25
+                  color: "#f94449"
+              show:
+                name: false
+                icon: false
+                state: false
+                legend: false
+                fill: gradient
+              card_mod:
+                style: |
+                  :host { flex: 0.5 0.5 0% !important; } 
+                  ha-card {border-radius: 25px !important;background: none;box-shadow: none;--ha-card-border-width: 0;padding-top: 0 !important;padding-right: 12px !important;-webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0));}   
       - type: entities
         show_header_toggle: false
         entities:
           - type: section
             label: Zones
-          - type: custom:decluttering-card
-            template: temperature_with_feels_like
-            variables:
-              - entity: sensor.sonoff_a4800866c9_temperature
-              - humidity: sensor.sonoff_a4800866c9_humidity
-              - feels_like: sensor.temperature_ressentie_salon              
-              - name: Rez-de-chaussée
-          - type: custom:decluttering-card
-            template: temperature
-            variables:
-              - entity: sensor.armoire_hwg_ste_temperature
-              - name: Armoire informatique
+          - type: custom:stack-in-card
+            mode: horizontal  
+            cards:
+            - type: custom:decluttering-card
+              template: temperature_with_feels_like
+              variables:
+                - entity: sensor.sonoff_a4800866c9_temperature
+                - humidity: sensor.sonoff_a4800866c9_humidity
+                - feels_like: sensor.temperature_ressentie_salon
+                - name: Rez-de-chaussée
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.temperature_ressentie_salon
+                  color: '#B694E7'
+              hours_to_show: 24
+              line_width: 2
+              color_thresholds:
+                - value: 0
+                  color: "#45b6fe"
+                - value: 20
+                  color: "#08f26e"
+                - value: 25
+                  color: "#f94449"
+              show:
+                name: false
+                icon: false
+                state: false
+                legend: false
+                fill: gradient
+              card_mod:
+                style: |
+                  :host { flex: 0.5 0.5 0% !important; } 
+                  ha-card {border-radius: 25px !important;background: none;box-shadow: none;--ha-card-border-width: 0;padding-top: 0 !important;padding-right: 12px !important;-webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0));}              
+          - type: custom:stack-in-card
+            mode: horizontal  
+            cards:
+            - type: custom:decluttering-card
+              template: temperature
+              variables:
+                - entity: sensor.armoire_hwg_ste_temperature
+                - name: Armoire informatique
+            - type: custom:mini-graph-card
+              entities:
+                - entity: sensor.armoire_hwg_ste_temperature
+                  color: '#B694E7'
+              hours_to_show: 24
+              line_width: 2
+              color_thresholds:
+                - value: 0
+                  color: "#45b6fe"
+                - value: 20
+                  color: "#08f26e"
+                - value: 25
+                  color: "#f94449"
+              show:
+                name: false
+                icon: false
+                state: false
+                legend: false
+                fill: gradient
+              card_mod:
+                style: |
+                  :host { flex: 0.5 0.5 0% !important; } 
+                  ha-card {border-radius: 25px !important;background: none;box-shadow: none;--ha-card-border-width: 0;padding-top: 0 !important;padding-right: 12px !important;-webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 85%, rgba(0,0,0,0));} 
 
 ###############################################################
 # SUBVIEWS : Energie

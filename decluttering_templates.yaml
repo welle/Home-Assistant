@@ -155,6 +155,7 @@ temperature_with_feels_like:
         {% else %}
           red
         {% endif %}
+
 temperature:
     card:
       type: custom:mushroom-template-card
