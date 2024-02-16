@@ -2,20 +2,34 @@ decluttering_templates: !include "../decluttering_templates.yaml"
 title: Dashboard Principal
 views:
   ########################################
-  # Apercu
+  # Principal
   ########################################
-  - title: Aperçu
+  - title: Principal
     type: custom:grid-layout
     layout:
       grid-template-columns: 1fr 1fr 1fr 1fr
       grid-template-rows: auto auto auto auto auto
       grid-template-areas: |-
         "z z z z"
-        "x x x x"
+        "x x w w"
         "y y y y"
         "a a b b"
         "e f g h"
       place-content: stretch
+      mediaquery:
+        '(max-width: 1000px)':
+          grid-template-columns: 1fr
+          grid-template-areas: |-
+            "z"
+            "x"
+            "w"
+            "y"
+            "a"
+            "b"
+            "e"
+            "f"
+            "g"
+            "h"
     cards:   
       - type: horizontal-stack
         cards:    
@@ -100,7 +114,55 @@ views:
               - height: 60px
               - width: 200px   
         view_layout:
-          grid-area: x                           
+          grid-area: x 
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          name: |
+              <ha-icon icon="mdi:home"></ha-icon> Aperçu
+          template: details
+          tap_action:
+            action: navigate
+            navigation_path: /preview-dashboard/subview-apercu   
+          styles:
+            card:
+              - height: 60px
+              - width: 200px  
+        - type: custom:button-card
+          name: |
+              <ha-icon icon="mdi:floor-plan"></ha-icon> Etage
+          template: details
+          tap_action:
+            action: navigate
+            navigation_path: /floorplan-etage-dashboard/floorplan    
+          styles:
+            card:
+              - height: 60px
+              - width: 200px                        
+        - type: custom:button-card
+          name: |
+              <ha-icon icon="mdi:thermometer"></ha-icon> Températures
+          template: details
+          tap_action:
+            action: navigate
+            navigation_path: /preview-dashboard/subview-temperatures    
+          styles:
+            card:
+              - height: 60px
+              - width: 200px  
+        - type: custom:button-card
+          name: |
+              <ha-icon icon="mdi:lightning-bolt"></ha-icon> Energie
+          template: details
+          tap_action:
+            action: navigate
+            navigation_path: /preview-dashboard/subview-energie    
+          styles:
+            card:
+              - height: 60px
+              - width: 200px   
+        view_layout:
+          grid-area: w                                    
       - type: custom:hourly-weather
         entity: weather.forecast_maison
         num_segments: 24 # optional, defaults to 12
@@ -166,12 +228,16 @@ views:
         "d e f"
       place-content: stretch
       mediaquery:
+        '(max-width: 1000px)':
           grid-template-columns: 1fr
           grid-template-areas: |-
+            "z"
             "a"
             "b"
             "c"
             "d"
+            "e"
+            "f"
     cards:   
       - type: horizontal-stack
         cards:    
@@ -286,7 +352,12 @@ views:
             template: door
             variables:
               - entity: binary_sensor.sonoff_a4800866c1
-              - name: Fenêtre gauche    
+              - name: Fenêtre gauche   
+          - type: custom:decluttering-card
+            template: door
+            variables:
+              - entity: binary_sensor.sonoff_a480087588
+              - name: Fenêtre droite                 
         view_layout:
           grid-area: d                                                       
   #################################################
@@ -299,11 +370,23 @@ views:
       grid-template-rows: auto auto auto auto
       grid-template-areas: |-
         "z z z z"
-        "y y y y"
+        "y y x x"
         "a b b b"
         "c b b b"
         "d e f g"
       place-content: stretch
+      mediaquery:
+        '(max-width: 1000px)':
+          grid-template-columns: 1fr
+          grid-template-areas: |-
+            "z"
+            "y"
+            "a"
+            "c"
+            "d"
+            "e"
+            "f"
+            "g"      
     cards: 
     - type: custom:hourly-weather
       entity: weather.forecast_maison
@@ -313,22 +396,23 @@ views:
       view_layout:
         place-self: center stretch
         grid-area: z
-    - type: horizontal-stack
-      cards:
-        - type: entities
-          entities:
-            - entity: sensor.next_sunrise
-              name: Lever du soleil
-            - entity: sensor.next_sunset
-              name: Coucher du soleil
-        - type: entities
-          entities:
-            - entity: sensor.ws2900_v2_02_01_max_daily_gust
-              name: Rafale maximale 
-            - entity: sensor.ws2900_v2_02_01_total_rain
-              name: Pluie totale    
+    - type: entities
+      entities:
+        - entity: sensor.next_sunrise
+          name: Lever du soleil
+        - entity: sensor.next_sunset
+          name: Coucher du soleil
       view_layout:
-        grid-area: y
+        place-self: center stretch
+        grid-area: y          
+    - type: entities
+      entities:
+        - entity: sensor.ws2900_v2_02_01_max_daily_gust
+          name: Rafale maximale 
+        - entity: sensor.ws2900_v2_02_01_total_rain
+          name: Pluie totale    
+      view_layout:
+        grid-area: x
     - type: custom:weather-chart-card
       entity: weather.forecast_maison
       show_main: false
@@ -727,6 +811,15 @@ views:
         "d d d"
         "e e e"
       place-content: stretch
+      mediaquery:
+        '(max-width: 1000px)':
+          grid-template-columns: 1fr
+          grid-template-areas: |-
+            "a"
+            "b"
+            "c"
+            "d"
+            "e"       
     cards:
       - type: energy-usage-graph
         view_layout:
@@ -743,7 +836,110 @@ views:
           grid-area: d   
       - type: energy-devices-graph
         view_layout:
-          grid-area: e                       
+          grid-area: e       
+###############################################################
+# SUBVIEWS : Aperçu
+###############################################################
+  - type: custom:horizontal-layout
+    title: Aperçu
+    subview: true
+    path: subview-apercu
+    back_path: /preview-dashboard/0
+    layout:
+      max_cols: 3         
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Accès extérieur
+          - type: custom:decluttering-card
+            template: door
+            variables:
+              - entity: binary_sensor.sonoff_a480085c50
+              - name: Porte d'entrée
+          - type: custom:decluttering-card
+            template: door
+            variables:
+              - entity: binary_sensor.sonoff_a48007e0ab
+              - name: Porte terrasse
+          - type: custom:decluttering-card
+            template: door
+            variables:
+              - entity: binary_sensor.sonoff_a4800866c1
+              - name: Fenêtre salon gauche
+          - type: custom:decluttering-card
+            template: door
+            variables:
+              - entity: binary_sensor.sonoff_a480087588
+              - name: Fenêtre salon droite              
+          - type: section
+            label: Antre Cha
+          - type: custom:decluttering-card
+            template: media_tv
+            variables:
+              - entity: media_player.tv_antre_cha
+              - name: Television    
+          - type: custom:decluttering-card
+            template: media_tv
+            variables:
+              - entity: media_player.jbl_bar_300_f5bb
+              - name: Barre son                          
+          - type: custom:decluttering-card
+            template: light
+            variables:
+              - entity: light.hue_color_light_1
+              - name: Lampe sous bureau        
+          - type: custom:decluttering-card
+            template: light
+            variables:
+              - entity: light.hue_lightstrip_plus_3
+              - name: Lightstrip derrière bureau     
+          - type: custom:decluttering-card
+            template: light
+            variables:
+              - entity: light.bandeau_tv_antre_cha
+              - name: Television, Lumière d'ambiance    
+          - type: custom:decluttering-card
+            template: light
+            variables:
+              - entity: light.ecran_pc_cha_haut_droite
+              - name: Lampe au dessus du canapé        
+          - type: custom:decluttering-card
+            template: humidifier
+            variables:
+              - entity: humidifier.mod150_d2de_humidifier_dehumidifier
+              - name: Diffuseur huile essentielle   
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Chambre à coucher
+          - type: custom:decluttering-card
+            template: media_tv
+            variables:
+              - entity: media_player.tv_chambre_a_coucher
+              - name: Television                 
+          - type: custom:decluttering-card
+            template: light
+            variables:
+              - entity: light.projecteur_chambre
+              - name: Projecteur             
+          - type: section
+            label: Salon
+          - type: custom:decluttering-card
+            template: media_tv
+            variables:
+              - entity: media_player.tv_salon
+              - name: Television            
+          - type: custom:decluttering-card
+            template: humidifier
+            variables:
+              - entity: humidifier.mod150_d153_humidifier_dehumidifier
+              - name: Diffuseur huile essentielle                               
+          
+                 
 ###############################################################
 # Templates Button card 
 ###############################################################

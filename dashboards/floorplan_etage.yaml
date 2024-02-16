@@ -27,7 +27,8 @@ views:
                   background: none !important;
               }
           config:
-
+            log_level: debug
+            console_log_level: debug  
             image: "/local/floorplan/loft_etage.svg"
             stylesheet: "/local/floorplan/loft.css"
             rules:
@@ -174,6 +175,16 @@ views:
                           service: script.turn_on
                           service_data:
                             entity_id: script.shutdown_pc_cha
+              #################################################
+              # Barre son Cha.
+              #################################################                                 
+              - entities:
+                  - media_player.jbl_bar_300_f5bb
+                tap_action: more-info
+                state_action:
+                  action: call-service
+                  service: floorplan.class_set
+                  service_data: "media-player-${entity.state}"                            
               #################################################
               #  Caméras 
               #################################################                                 

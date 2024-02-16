@@ -219,6 +219,11 @@ z"  style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; str
 v -80.97171
 l 8.3808,-7.60721 186.8279,126.09922 0.3868,80.4559 -9.0255,7.7361 -37.7781,-25.9161 -56.216,-25.5292 -38.165,-37.9072
 z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
+        <!-- 
+          Barre son Antre Cha. 
+          -->
+        <path id="media_player.jbl_bar_300_f5bb" d="m 2377.8335,1074.5507 40.4858,26.9476 38.6807,38.4228 55.8292,24.6268 10.9596,7.6072 -0.129,3.2234 -9.6701,9.4123 -4.2549,0.7736 -141.8938,-98.7648 0.1289,-2.8366 6.9625,-8.6387
+z" style="fill:none; stroke-width:2px; stroke:#0052ff; stroke-linecap:butt; stroke-linejoin:bevel; stroke-opacity:1;"/>
 <!-- 
   PC Cha. 
 -->  
