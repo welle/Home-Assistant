@@ -188,9 +188,15 @@
 # Seasons
 - platform: season
   name: "Saison"
-# Change the date display
+# Templates
 - platform: template
   sensors:
+    # PI CPU Usage
+    cpu_usage:
+      friendly_name: "CPU Usage"
+      unit_of_measurement: '%'
+      value_template: "{{ states('sensor.load_1m') | int * 100 }}"
+    # Change the date display
     date_long:
       friendly_name: "Date"
       value_template: >
@@ -213,12 +219,14 @@
         {% else %}
           Soirée
         {% endif %}
+    # Next sunrise
     next_sunrise:
       entity_id: sun.sun
       friendly_name: 'Prochain lever de soleil'
       value_template: >
         {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %H:%M') | replace(" 0", "") }}
       icon_template: mdi:weather-sunset-up
+    # Next sunset
     next_sunset:
       entity_id: sun.sun
       friendly_name: 'Prochain coucher de soleil'

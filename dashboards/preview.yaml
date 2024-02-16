@@ -10,7 +10,7 @@ views:
       grid-template-columns: 1fr 1fr 1fr 1fr
       grid-template-rows: auto auto auto auto auto
       grid-template-areas: |-
-        "z z z z"
+        "z z v v"
         "x x w w"
         "y y y y"
         "a a b b"
@@ -21,6 +21,7 @@ views:
           grid-template-columns: 1fr
           grid-template-areas: |-
             "z"
+            "v"
             "x"
             "w"
             "y"
@@ -31,42 +32,42 @@ views:
             "g"
             "h"
     cards:   
-      - type: horizontal-stack
-        cards:    
-          - type: custom:mushroom-person-card
-            entity: person.cha
-            icon_type: entity-picture
-            badge_icon: |
-              {% if is_state('input_select.cha', 'Home') %}
-                mdi:home
-              {% elif is_state(config.entity, 'away') or
-                      is_state(config.entity, 'unavailable') %}
-                mdi:map-marker-question-outline
-              {% endif %}  
-            badge_color: |-
-              {% if is_state('input_select.cha', 'Home') %}
-                green
-              {% else %}
-                red
-              {% endif %}     
-          - type: custom:mushroom-person-card 
-            entity: person.kaeko
-            icon_type: entity-picture
-            badge_icon: |
-              {% if is_state('input_select.cha', 'Home') %}
-                mdi:home
-              {% elif is_state(config.entity, 'away') or
-                      is_state(config.entity, 'unavailable') %}
-                mdi:map-marker-question-outline
-              {% endif %}  
-            badge_color: |-
-              {% if is_state('input_select.cha', 'Home') %}
-                green
-              {% else %}
-                red
-              {% endif %}             
+      - type: custom:mushroom-person-card
+        entity: person.cha
+        icon_type: entity-picture
+        badge_icon: |
+          {% if is_state('input_select.cha', 'Home') %}
+            mdi:home
+          {% elif is_state(config.entity, 'away') or
+                  is_state(config.entity, 'unavailable') %}
+            mdi:map-marker-question-outline
+          {% endif %}  
+        badge_color: |-
+          {% if is_state('input_select.cha', 'Home') %}
+            green
+          {% else %}
+            red
+          {% endif %}   
         view_layout:
-          grid-area: z 
+          grid-area: z             
+      - type: custom:mushroom-person-card 
+        entity: person.kaeko
+        icon_type: entity-picture
+        badge_icon: |
+          {% if is_state('input_select.cha', 'Home') %}
+            mdi:home
+          {% elif is_state(config.entity, 'away') or
+                  is_state(config.entity, 'unavailable') %}
+            mdi:map-marker-question-outline
+          {% endif %}  
+        badge_color: |-
+          {% if is_state('input_select.cha', 'Home') %}
+            green
+          {% else %}
+            red
+          {% endif %}             
+        view_layout:
+          grid-area: v 
       - type: horizontal-stack
         cards:
         - type: custom:button-card
@@ -130,11 +131,11 @@ views:
               - width: 200px  
         - type: custom:button-card
           name: |
-              <ha-icon icon="mdi:floor-plan"></ha-icon> Etage
+              <ha-icon icon="mdi:information-slab-circle-outline"></ha-icon> Systèmes
           template: details
           tap_action:
             action: navigate
-            navigation_path: /floorplan-etage-dashboard/floorplan    
+            navigation_path: /preview-dashboard/subview-systems      
           styles:
             card:
               - height: 60px
@@ -938,7 +939,126 @@ views:
               - name: Station météo                                       
         view_layout:
           grid-area: h    
-      
+
+###############################################################
+# SUBVIEWS : Systèmes
+###############################################################
+  - type: custom:horizontal-layout
+    title: Systèmes
+    path: subview-systems
+    back_path: /preview-dashboard/0
+    subview: true
+    layout:
+      max_cols: 3
+    badges: []
+    cards:
+      - type: entities
+        title: Router & Internet
+        show_header_toggle: false
+        entities:
+          - entity: sensor.speedtest_upload
+            name: Vitesse Upload
+          - entity: sensor.speedtest_download
+            name: Vitesse Download
+          - type: divider
+          - entity: sensor.usg_pro_4_uptime
+            name: Dernier redémarrage
+      - type: entities
+        title: Home Assistant
+        show_header_toggle: false
+        entities:
+          - entity: sensor.processor_temperature
+          - type: custom:bar-card
+            width: 55%
+            height: 2em
+            decimal: 0
+            unit_of_measurement: '%'
+            positions:
+              icon: outside
+              indicator: 'off'
+              name: outside
+            severity:
+              - color: '#303435'
+                from: 0
+                to: 89
+              - color: '#6d2525'
+                from: 90
+                to: 100
+            entity_row: true
+            entities:
+              - entity: sensor.processor_use_percent
+          - type: divider
+          - entity: input_button.home_assistant_restart
+            icon: mdi:restart
+            name: Restart System
+            tap_action:
+              action: call-service
+              service: homeassistant.restart
+      - type: entities
+        title: Amazon Fire HD Tablet
+        show_header_toggle: false
+        entities:
+          - entity: switch.fire_tablet_screen
+            name: Display
+            icon: hass:tablet
+          - type: conditional
+            conditions:
+              - entity: switch.fire_tablet_screen
+                state: 'on'
+            row:
+              type: custom:slider-entity-row
+              entity: number.fire_tablet_screen_brightness
+              name: Brightness
+              icon: mdi:brightness-6
+              hide_state: false
+          - entity: light.tablet_plug
+            name: Charger
+          - type: divider
+          - type: custom:bar-card
+            width: 55%
+            height: 2em
+            decimal: 0
+            unit_of_measurement: '%'
+            positions:
+              icon: outside
+              indicator: 'off'
+              name: outside
+            severity:
+              - color: '#6d2525'
+                from: 0
+                to: 25
+              - color: '#303435'
+                from: 26
+                to: 75
+              - color: green
+                from: 76
+                to: 100
+            entity_row: true
+            entities:
+              - entity: sensor.custom_fire_tablet_battery
+                name: Battery Level
+          - type: custom:bar-card
+            width: 55%
+            height: 2em
+            decimal: 0
+            unit_of_measurement: '%'
+            positions:
+              icon: outside
+              indicator: 'off'
+              name: outside
+            severity:
+              - color: '#303435'
+                from: 0
+                to: 89
+              - color: '#6d2525'
+                from: 90
+                to: 100
+            entity_row: true
+            entities:
+              - entity: sensor.fire_tablet_ram_used_memory
+                name: Memory
+                icon: hass:memory
+
 ###############################################################
 # SUBVIEWS : Aperçu
 ###############################################################

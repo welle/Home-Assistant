@@ -73,7 +73,8 @@ lovelace:
       type: module
     - url: /local/community/vertical-stack-in-card/vertical-stack-in-card.js  
       type: module
-
+    - url: /local/community/bar-card/bar-card.js  
+      type: module
   dashboards:
     preview-dashboard:
       mode: yaml
@@ -117,6 +118,15 @@ lovelace:
       icon: mdi:floor-plan
       show_in_sidebar: true
       filename: "./dashboards/floorplan_etage.yaml"
+
+# Command line
+command_line:
+  - sensor:
+      name: CPU Temperature
+      command: "cat /sys/class/thermal/thermal_zone0/temp"
+      # If errors occur, make sure configuration file is encoded as UTF-8
+      unit_of_measurement: "°C"
+      value_template: "{{ value | multiply(0.001) | round(1) }}"
 
 # Spotcast
 spotcast:
