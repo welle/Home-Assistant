@@ -40,25 +40,7 @@ image .cadenas-off {
   display:block !important;
 }
 
-#areas .motion-on {
-  fill: #ff00002e !important;
-  stroke: #ff000087 !important;
-  stroke-width: 3px !important;
-  stroke-opacity: 1 !important;
-  filter: unset !important;
-  animation: fade-in 1s infinite alternate;
-}
-
 .motion-on {
-  fill: #ff00002e !important;
-  stroke: #ff000087 !important;
-  stroke-width: 3px !important;
-  stroke-opacity: 1 !important;
-  filter: unset !important;
-  animation: fade-in 1s infinite alternate;
-}
-
-#areas .media-player-on {
   fill: #ff00002e !important;
   stroke: #ff000087 !important;
   stroke-width: 3px !important;

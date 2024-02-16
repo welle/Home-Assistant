@@ -810,6 +810,7 @@ views:
         "a a c"
         "d d d"
         "e e e"
+        "f g h"  
       place-content: stretch
       mediaquery:
         '(max-width: 1000px)':
@@ -820,6 +821,9 @@ views:
             "c"
             "d"
             "e"       
+            "f"
+            "g"
+            "h"            
     cards:
       - type: energy-usage-graph
         view_layout:
@@ -836,7 +840,105 @@ views:
           grid-area: d   
       - type: energy-devices-graph
         view_layout:
-          grid-area: e       
+          grid-area: e    
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Devices
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sm_g986b_battery_level
+              - battery: sensor.sm_g986b_battery_level
+              - name: GSM Cha  
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sm_t800_battery_level
+              - battery: sensor.sm_t800_battery_level
+              - name: Tablette
+          - type: section
+            label: Antre Cha
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sonoff_a4800849a0_battery
+              - battery: sensor.sonoff_a4800849a0_battery
+              - name: Thermomètre     
+          - type: section
+            label: Antre Vanessa
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sonoff_a4800849a3_battery
+              - battery: sensor.sonoff_a4800849a3_battery
+              - name: Thermomètre                    
+        view_layout:
+          grid-area: f         
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Chambre à coucher
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sonoff_a480085bf0_battery
+              - battery: sensor.sonoff_a480085bf0_battery
+              - name: Thermomètre 
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sonoff_a48007e0ab_battery
+              - battery: sensor.sonoff_a48007e0ab_battery
+              - name: Détecteur porte terrasse
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.minus_batterie
+              - battery: sensor.minus_batterie
+              - name: Minus              
+          - type: section
+            label: Salle de bain
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sonoff_a480085bef_battery
+              - battery: sensor.sonoff_a480085bef_battery
+              - name: Thermomètre                       
+        view_layout:
+          grid-area: g                
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Cellier
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sonoff_a4800866c4_battery
+              - battery: sensor.sonoff_a4800866c4_battery
+              - name: Thermomètre            
+          - type: section
+            label: Salon
+          - type: custom:decluttering-card
+            template: battery
+            variables:
+              - entity: sensor.sonoff_a4800866c1_battery
+              - battery: sensor.sonoff_a4800866c1_battery
+              - name: Thermomètre
+          - type: section
+            label: Autres
+          - type: custom:decluttering-card
+            template: battery_no_percent
+            variables:
+              - entity: binary_sensor.ws2900_v2_02_01_wh65_battery
+              - battery: binary_sensor.ws2900_v2_02_01_wh65_battery
+              - name: Station météo                                       
+        view_layout:
+          grid-area: h    
+      
 ###############################################################
 # SUBVIEWS : Aperçu
 ###############################################################

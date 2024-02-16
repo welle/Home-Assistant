@@ -141,6 +141,109 @@ media_tv:
       - volume_buttons
 
 ##################################################
+# Batterie
+##################################################
+battery:
+  card:
+    type: custom:mushroom-template-card
+    entity: '[[entity]]'
+    primary: '[[name]]'
+    secondary: |-
+      {% set ignore = ['null', 'unknown', 'unavailable'] %}
+      {% set state_battery = states( '[[battery]]' ) | lower %}
+
+      {% if state_battery in ignore %}
+        Unavailable
+      {% else %}
+        {% set state_battery = states( '[[battery]]' ) | int %}
+        Batterie: {{ iif( ( state_battery > 100 ), '100', state_battery ) }}%
+      {% endif %}
+    icon: >-
+      {% set ignore = ['null', 'unknown', 'unavailable'] %} {% set
+      state_battery = states( '[[battery]]' ) | lower %}
+
+      {% if state_battery in ignore %}
+        mdi:battery-alert-variant-outline
+      {% else %}
+        {% set int_battery = ( states( '[[battery]]' ) | int / 10 ) | round(0) | int * 10 %}
+        {% if int_battery >= 100 %}
+          mdi:battery
+        {% elif int_battery > 20 %}
+          mdi:battery-{{ int_battery }}
+        {% else %}
+          mdi:battery-alert-variant-outline
+        {% endif %}
+      {% endif %}
+    icon_color: >-
+      {% set ignore = ['null', 'unknown', 'unavailable'] %} {% set
+      state_battery = states( '[[battery]]' ) | lower %}
+
+      {% if state_battery in ignore %}
+        red
+      {% else %}
+        {% set int_battery = states( '[[battery]]' ) | int %}
+        {% if int_battery > 90 %}
+          green
+        {% elif int_battery > 75 %}
+          light-green
+        {% elif int_battery > 60 %}
+          lime
+        {% elif int_battery > 50 %}
+          yellow
+        {% elif int_battery > 40 %}
+          orange
+        {% elif int_battery > 30 %}
+          deep-orange
+        {% else %}
+          red
+        {% endif %}
+      {% endif %}
+
+battery_no_percent:
+    card:
+      type: custom:mushroom-template-card
+      entity: '[[entity]]'
+      primary: '[[name]]'
+      secondary: |-
+        {% set ignore = ['null', 'unknown', 'unavailable'] %}
+        {% set state_battery = states( '[[battery]]' ) | lower %}
+
+        {% if state_battery in ignore %}
+          Unavailable
+        {% else %}
+          {% set state_battery = states( '[[battery]]' ) | lower %}
+          Batterie: {{ state_battery }}
+        {% endif %}
+      icon: >-
+        {% set ignore = ['null', 'unknown', 'unavailable'] %} 
+        {% set state_battery = states( '[[battery]]' ) | lower %}
+
+        {% if state_battery in ignore %}
+          mdi:battery-alert-variant-outline
+        {% else %}
+          {% set state_battery = ( states( '[[battery]]' ) | lower ) %}
+          {% if state_battery == 'normal' %}
+            mdi:battery
+          {% else %}
+            mdi:battery-alert-variant-outline
+          {% endif %}
+        {% endif %}
+      icon_color: >-
+        {% set ignore = ['null', 'unknown', 'unavailable'] %} 
+        {% set state_battery = states( '[[battery]]' ) | lower %}
+
+        {% if state_battery in ignore %}
+          red
+        {% else %}
+          {% set state_battery = states( '[[battery]]' ) | lower %}
+          {% if state_battery == 'normal' %}
+            green
+          {% else %}
+            orange
+          {% endif %}
+        {% endif %}        
+
+##################################################
 # Température
 ##################################################
 temperature_with_feels_like:
