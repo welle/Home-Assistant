@@ -191,11 +191,6 @@
 # Templates
 - platform: template
   sensors:
-    # PI CPU Usage
-    cpu_usage:
-      friendly_name: "CPU Usage"
-      unit_of_measurement: '%'
-      value_template: "{{ states('sensor.load_1m') | int * 100 }}"
     # Change the date display
     date_long:
       friendly_name: "Date"

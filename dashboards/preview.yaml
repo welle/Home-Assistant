@@ -967,7 +967,7 @@ views:
         title: Home Assistant
         show_header_toggle: false
         entities:
-          - entity: sensor.processor_temperature
+          - entity: sensor.system_monitor_processor_temperature
           - type: custom:bar-card
             width: 55%
             height: 2em
@@ -986,7 +986,7 @@ views:
                 to: 100
             entity_row: true
             entities:
-              - entity: sensor.processor_use_percent
+              - entity: sensor.system_monitor_processor_use
           - type: divider
           - entity: input_button.home_assistant_restart
             icon: mdi:restart
@@ -994,70 +994,7 @@ views:
             tap_action:
               action: call-service
               service: homeassistant.restart
-      - type: entities
-        title: Amazon Fire HD Tablet
-        show_header_toggle: false
-        entities:
-          - entity: switch.fire_tablet_screen
-            name: Display
-            icon: hass:tablet
-          - type: conditional
-            conditions:
-              - entity: switch.fire_tablet_screen
-                state: 'on'
-            row:
-              type: custom:slider-entity-row
-              entity: number.fire_tablet_screen_brightness
-              name: Brightness
-              icon: mdi:brightness-6
-              hide_state: false
-          - entity: light.tablet_plug
-            name: Charger
-          - type: divider
-          - type: custom:bar-card
-            width: 55%
-            height: 2em
-            decimal: 0
-            unit_of_measurement: '%'
-            positions:
-              icon: outside
-              indicator: 'off'
-              name: outside
-            severity:
-              - color: '#6d2525'
-                from: 0
-                to: 25
-              - color: '#303435'
-                from: 26
-                to: 75
-              - color: green
-                from: 76
-                to: 100
-            entity_row: true
-            entities:
-              - entity: sensor.custom_fire_tablet_battery
-                name: Battery Level
-          - type: custom:bar-card
-            width: 55%
-            height: 2em
-            decimal: 0
-            unit_of_measurement: '%'
-            positions:
-              icon: outside
-              indicator: 'off'
-              name: outside
-            severity:
-              - color: '#303435'
-                from: 0
-                to: 89
-              - color: '#6d2525'
-                from: 90
-                to: 100
-            entity_row: true
-            entities:
-              - entity: sensor.fire_tablet_ram_used_memory
-                name: Memory
-                icon: hass:memory
+
 
 ###############################################################
 # SUBVIEWS : Aperçu
