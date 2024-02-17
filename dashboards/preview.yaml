@@ -10,7 +10,7 @@ views:
       grid-template-columns: 1fr 1fr 1fr 1fr
       grid-template-rows: auto auto auto auto auto
       grid-template-areas: |-
-        "z z v v"
+        "p z v o"
         "x x w w"
         "y y y y"
         "a a b b"
@@ -72,6 +72,17 @@ views:
         cards:
         - type: custom:button-card
           name: |
+              <ha-icon icon="mdi:home"></ha-icon> Aperçu
+          template: details
+          tap_action:
+            action: navigate
+            navigation_path: /preview-dashboard/subview-apercu   
+          styles:
+            card:
+              - height: 60px
+              - width: 200px          
+        - type: custom:button-card
+          name: |
               <ha-icon icon="mdi:floor-plan"></ha-icon> Rez-de-chaussée
           template: details
           tap_action:
@@ -103,6 +114,10 @@ views:
             card:
               - height: 60px
               - width: 200px  
+        view_layout:
+          grid-area: x 
+      - type: horizontal-stack
+        cards:
         - type: custom:button-card
           name: |
               <ha-icon icon="mdi:lightning-bolt"></ha-icon> Energie
@@ -110,21 +125,6 @@ views:
           tap_action:
             action: navigate
             navigation_path: /preview-dashboard/subview-energie    
-          styles:
-            card:
-              - height: 60px
-              - width: 200px   
-        view_layout:
-          grid-area: x 
-      - type: horizontal-stack
-        cards:
-        - type: custom:button-card
-          name: |
-              <ha-icon icon="mdi:home"></ha-icon> Aperçu
-          template: details
-          tap_action:
-            action: navigate
-            navigation_path: /preview-dashboard/subview-apercu   
           styles:
             card:
               - height: 60px
@@ -224,7 +224,7 @@ views:
       grid-template-columns: 1fr 1fr 1fr
       grid-template-rows: auto auto auto
       grid-template-areas: |-
-        "z z z"
+        "y z x"
         "a b c"
         "d e f"
       place-content: stretch
@@ -276,9 +276,7 @@ views:
               {% endif %}             
         view_layout:
           grid-area: z       
-      - type: grid
-        square: false
-        columns: 1
+      - type: custom:vertical-stack-in-card
         cards:
           - type: picture-entity
             show_state: true
@@ -295,9 +293,7 @@ views:
               - entity: binary_sensor.cam_hall_is_dark
         view_layout:
           grid-area: a      
-      - type: grid
-        square: false
-        columns: 1
+      - type: custom:vertical-stack-in-card
         cards:
           - type: picture-entity
             show_state: true
@@ -315,9 +311,7 @@ views:
         view_layout:
           place-self: center stretch
           grid-area: b               
-      - type: grid
-        square: false
-        columns: 1
+      - type: custom:vertical-stack-in-card
         cards:
           - type: picture-entity
             show_state: true
@@ -539,7 +533,45 @@ views:
         - entity: sensor.ws2900_v2_02_01_humidity
           name: Humidité
       view_layout:
-        grid-area: g            
+        grid-area: g     
+
+  #################################################
+  # Media
+  #################################################
+  - title: Media          
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: repeat(4, 1fr)
+      grid-template-rows: auto auto auto auto
+      grid-template-areas: |-
+        "z z z z"
+        "y y x x"
+        "a b b b"
+        "c b b b"
+        "d e f g"
+      place-content: stretch
+      mediaquery:
+        '(max-width: 1000px)':
+          grid-template-columns: 1fr
+          grid-template-areas: |-
+            "z"
+            "y"
+            "a"
+            "c"
+            "d"
+            "e"
+            "f"
+            "g"      
+    cards: 
+    - type: custom:hourly-weather
+      entity: weather.forecast_maison
+      num_segments: 24 # optional, defaults to 12
+      name: Prochaines 24h # optional, defaults to "Hourly Weather"
+      show_wind: true
+      view_layout:
+        place-self: center stretch
+        grid-area: z
+    
 
 
 ###############################################################
@@ -987,14 +1019,79 @@ views:
             entity_row: true
             entities:
               - entity: sensor.system_monitor_processor_use
+          - type: custom:bar-card
+            width: 55%
+            height: 2em
+            decimal: 0
+            unit_of_measurement: '%'
+            positions:
+              icon: outside
+              indicator: 'off'
+              name: outside
+            severity:
+              - color: '#303435'
+                from: 0
+                to: 89
+              - color: '#6d2525'
+                from: 90
+                to: 100
+            entity_row: true
+            entities:
+              - entity: sensor.system_monitor_memory_use_percent
+          - type: custom:bar-card
+            width: 55%
+            height: 2em
+            decimal: 0
+            unit_of_measurement: '%'
+            positions:
+              icon: outside
+              indicator: 'off'
+              name: outside
+            severity:
+              - color: '#303435'
+                from: 0
+                to: 89
+              - color: '#6d2525'
+                from: 90
+                to: 100
+            entity_row: true
+            entities:
+              - entity: sensor.system_monitor_swap_use_percent              
           - type: divider
+          - entity: sensor.system_monitor_last_boot
+            name: Dernier redémarrage
           - entity: input_button.home_assistant_restart
             icon: mdi:restart
             name: Restart System
             tap_action:
               action: call-service
               service: homeassistant.restart
-
+      - type: entities
+        title: Mise à jour ?
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Home assistant
+          - entity: update.home_assistant_core_update
+          - entity: update.home_assistant_supervisor_update
+          - entity: update.home_assistant_operating_system_update
+          - entity: update.hacs_update
+          - type: section
+            label: Pi-hole
+          - entity: update.pi_hole_core_update_available
+          - entity: update.pi_hole_ftl_update_available
+          - entity: update.pi_hole_web_update_available
+          - type: section
+            label: Plex          
+          - entity: update.plex_media_server_hephaistos
+          - entity: update.plex_media_server_moloch
+          - type: section
+            label: Unifi
+          - entity: update.usg_pro_4
+          - entity: update.us_24_250w
+          - entity: update.us_48_500w
+          - entity: update.borne_wifi_etage
+          - entity: update.borne_wifi_rdc
 
 ###############################################################
 # SUBVIEWS : Aperçu

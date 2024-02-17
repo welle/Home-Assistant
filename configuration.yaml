@@ -94,18 +94,6 @@ lovelace:
       icon: mdi:multimedia
       show_in_sidebar: true
       filename: "./dashboards/media.yaml"
-    status-dashboard:
-      mode: yaml
-      title: Status
-      icon: mdi:floor-lamp
-      show_in_sidebar: true
-      filename: "./dashboards/status.yaml"
-    monitoring-dashboard:
-      mode: yaml
-      title: Monitoring
-      icon: mdi:radar
-      show_in_sidebar: true
-      filename: "./dashboards/monitoring.yaml"
     floorplan-rdc-dashboard:
       mode: yaml
       title: Floorplan RDC

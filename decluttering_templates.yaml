@@ -60,7 +60,7 @@ door:
     - icon_unknown: alert-circle-outline
   card:
     type: custom:mushroom-template-card
-    entity: '[[entity]]'
+    tap-action: none
     primary: '[[name]]'
     secondary: >-
       {% if '[[battery]]' != 'false' and not is_state( '[[battery]]',

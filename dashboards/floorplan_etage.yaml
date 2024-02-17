@@ -1,3 +1,4 @@
+decluttering_templates: !include "../decluttering_templates.yaml"
 views:
 - title: Etage
   path: floorplan
@@ -9,8 +10,8 @@ views:
   cards:
     - type: vertical-stack
       cards:
-        #- type: custom:decluttering-card
-        #  template: battery_states
+        - type: custom:decluttering-card
+          template: battery_states
         #################################################
         # Floorplan
         #################################################
