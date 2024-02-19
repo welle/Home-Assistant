@@ -180,7 +180,7 @@ views:
               # Barre son Cha.
               #################################################                                 
               - entities:
-                  - media_player.jbl_bar_300_f5bb
+                  - media_player.jbl_bar_300_f5bb_5
                 tap_action: more-info
                 state_action:
                   action: call-service

@@ -113,3 +113,5 @@ cha-theme:
   paper-input-container-color: "hsl(var(--huesat) 60%)"
   label-badge-border-color: "var(--label-badge-red)"
   state-media_player-active-color: "#FFFFFF"
+
+  calendar-height: 1000px;

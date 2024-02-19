@@ -75,6 +75,8 @@ lovelace:
       type: module
     - url: /local/community/bar-card/bar-card.js  
       type: module
+    - url: /local/community/atomic-calendar-revive/atomic-calendar-revive.js  
+      type: module      
   dashboards:
     preview-dashboard:
       mode: yaml
@@ -82,18 +84,6 @@ lovelace:
       icon: mdi:eye-outline
       show_in_sidebar: true
       filename: "./dashboards/preview.yaml"
-    vacuums-dashboard:
-      mode: yaml
-      title: Neato
-      icon: mdi:robot-vacuum-variant
-      show_in_sidebar: true
-      filename: "./dashboards/vacuums.yaml"
-    streaming-dashboard:
-      mode: yaml
-      title: Media
-      icon: mdi:multimedia
-      show_in_sidebar: true
-      filename: "./dashboards/media.yaml"
     floorplan-rdc-dashboard:
       mode: yaml
       title: Floorplan RDC
@@ -106,6 +96,22 @@ lovelace:
       icon: mdi:floor-plan
       show_in_sidebar: true
       filename: "./dashboards/floorplan_etage.yaml"
+
+# ICS (calendar) integration
+ics_calendar:
+  calendars:
+    - name: "Sonarr"
+      url: "http://10.191.107.50:8989/feed/v3/calendar/Sonarr.ics?apikey=0d5a05dc52d249208293c732c96e5c6e"
+      include_all_day: true
+      download_interval: 5
+    - name: "Cha"
+      url: "https://calendar.google.com/calendar/ical/chacha327%40gmail.com/public/basic.ics"
+      include_all_day: true
+      download_interval: 5
+    - name: "Van"
+      url: "https://p61-caldav.icloud.com/published/2/MTk0MTQ2ODEzOTE5NDE0NqGvZpoRCnDQONmXT0t3csmq_WeOzKe1EVXeSXxGXmDoQ_K5FcQrEeHwtTyLEuhBZ1ci-yIQYk--fO8PyDdLGII"
+      include_all_day: true
+      download_interval: 5
 
 # Spotcast
 spotcast:

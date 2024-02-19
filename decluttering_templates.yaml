@@ -131,7 +131,7 @@ media_tv:
     entity: '[[entity]]'
     name: '[[name]]'
     collapsible_controls: true
-    use_media_info: false
+    use_media_info: true
     media_controls:
       - on_off
     show_volume_level: true
@@ -144,6 +144,8 @@ media_tv:
 # Batterie
 ##################################################
 battery:
+  default:
+    - battery_state: discharging
   card:
     type: custom:mushroom-template-card
     entity: '[[entity]]'
@@ -161,18 +163,29 @@ battery:
     icon: >-
       {% set ignore = ['null', 'unknown', 'unavailable'] %} {% set
       state_battery = states( '[[battery]]' ) | lower %}
-
       {% if state_battery in ignore %}
         mdi:battery-alert-variant-outline
       {% else %}
-        {% set int_battery = ( states( '[[battery]]' ) | int / 10 ) | round(0) | int * 10 %}
-        {% if int_battery >= 100 %}
-          mdi:battery
-        {% elif int_battery > 20 %}
-          mdi:battery-{{ int_battery }}
+        {% set battery_state = states('[[battery_state]]')| lower %}
+        {% if battery_state == 'charging' %}
+          {% set int_battery = ( states( '[[battery]]' ) | int / 10 ) | round(0) | int * 10 %}
+          {% if int_battery >= 100 %}
+            mdi:battery-charging
+          {% elif int_battery > 20 %}
+            mdi:battery-charging-{{ int_battery }}
+          {% else %}
+            mdi:battery-alert-variant-outline
+          {% endif %}          
         {% else %}
-          mdi:battery-alert-variant-outline
-        {% endif %}
+          {% set int_battery = ( states( '[[battery]]' ) | int / 10 ) | round(0) | int * 10 %}
+          {% if int_battery >= 100 %}
+            mdi:battery
+          {% elif int_battery > 20 %}
+            mdi:battery-{{ int_battery }}
+          {% else %}
+            mdi:battery-alert-variant-outline
+          {% endif %}
+        {% endif %}  
       {% endif %}
     icon_color: >-
       {% set ignore = ['null', 'unknown', 'unavailable'] %} {% set

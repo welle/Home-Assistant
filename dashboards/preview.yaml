@@ -14,6 +14,8 @@ views:
         "x x w w"
         "y y y y"
         "a a b b"
+        "upcoming_movie upcoming_movie upcoming_tv upcoming_tv"
+        "plex_h_movies plex_h_movies plex_h_movies plex_h_series"
         "e f g h"
       place-content: stretch
       mediaquery:
@@ -27,6 +29,10 @@ views:
             "y"
             "a"
             "b"
+            "upcoming_movie"
+            "plex_h_movies"
+            "upcoming_tv"
+            "plex_h_series"
             "e"
             "f"
             "g"
@@ -174,7 +180,43 @@ views:
           grid-area: y  
         tap_action:
           action: navigate
-          navigation_path: /preview-dashboard/2        
+          navigation_path: /preview-dashboard/2         
+      - type: 'custom:plex-meets-homeassistant'
+        title: Derniers ajouts de films
+        token: kXSsXdoY4A1MxVqDaDZG
+        ip: nl6236.dediseedbox.com
+        port: 36293
+        maxRows: 1
+        showSearch: false
+        useHorizontalScroll: true
+        libraryName: Films H
+        sort: addedAt:desc
+        entity:
+          plexPlayer:
+            - TV 2020
+            - TV 2018
+            - TV 2021
+        view_layout:
+          place-self: center stretch
+          grid-area: plex_h_movies     
+      - type: 'custom:plex-meets-homeassistant'
+        title: Derniers ajouts de séries      
+        token: kXSsXdoY4A1MxVqDaDZG
+        ip: nl6236.dediseedbox.com
+        port: 36293
+        maxRows: 1
+        libraryName: Series TV H
+        showSearch: false
+        useHorizontalScroll: true        
+        sort: addedAt:desc
+        entity:
+          plexPlayer:
+            - TV 2020
+            - TV 2018  
+            - TV 2021    
+        view_layout:
+          place-self: center stretch
+          grid-area: plex_h_series                                     
       - type: markdown
         title: Ecran large
         content: |
@@ -376,12 +418,14 @@ views:
           grid-template-areas: |-
             "z"
             "y"
+            "x"
             "a"
             "c"
             "d"
             "e"
             "f"
-            "g"      
+            "g" 
+            "b"     
     cards: 
     - type: custom:hourly-weather
       entity: weather.forecast_maison
@@ -563,16 +607,49 @@ views:
             "f"
             "g"      
     cards: 
-    - type: custom:hourly-weather
-      entity: weather.forecast_maison
-      num_segments: 24 # optional, defaults to 12
-      name: Prochaines 24h # optional, defaults to "Hourly Weather"
-      show_wind: true
-      view_layout:
-        place-self: center stretch
-        grid-area: z
-    
+    - type: custom:mini-media-player
+      entity: media_player.spotify_akazukin_chacha       
 
+#################################################
+# Calendar
+#################################################
+  - title: Rendez-vous          
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: repeat(4, 1fr)
+      grid-template-rows: auto auto auto auto
+      grid-template-areas: |-
+        "z z z z"
+        "z z z z"
+        "y y x x"
+        "a b b b"
+        "c b b b"
+        "d e f g"
+      place-content: stretch
+      mediaquery:
+        '(max-width: 1000px)':
+          grid-template-columns: 1fr
+          grid-template-areas: |-
+            "z"
+            "y"
+            "a"
+            "c"
+            "d"
+            "e"
+            "f"
+            "g"      
+    cards: 
+    - type: calendar
+      initial_view: dayGridMonth
+      entities:
+      - calendar.cha
+      - calendar.van
+      card_mod:
+        style: |
+          ha-full-calendar { height: calc(100vh - (2 * var(--header-height))) !important;}
+      view_layout:
+        place-self: stretch stretch
+        grid-area: z
 
 ###############################################################
 # SUBVIEWS : Températures
@@ -884,12 +961,14 @@ views:
             variables:
               - entity: sensor.sm_g986b_battery_level
               - battery: sensor.sm_g986b_battery_level
+              - battery_state: sensor.sm_g986b_battery_level
               - name: GSM Cha  
           - type: custom:decluttering-card
             template: battery
             variables:
               - entity: sensor.sm_t800_battery_level
               - battery: sensor.sm_t800_battery_level
+              - battery_state: sensor.sm_t800_battery_state              
               - name: Tablette
           - type: section
             label: Antre Cha
@@ -1000,6 +1079,7 @@ views:
         show_header_toggle: false
         entities:
           - entity: sensor.system_monitor_processor_temperature
+            name: Température du processeur
           - type: custom:bar-card
             width: 55%
             height: 2em
@@ -1019,6 +1099,7 @@ views:
             entity_row: true
             entities:
               - entity: sensor.system_monitor_processor_use
+                name: Utilisation du processeur
           - type: custom:bar-card
             width: 55%
             height: 2em
@@ -1038,6 +1119,7 @@ views:
             entity_row: true
             entities:
               - entity: sensor.system_monitor_memory_use_percent
+                name: Utilisation de la mémoire
           - type: custom:bar-card
             width: 55%
             height: 2em
@@ -1056,16 +1138,20 @@ views:
                 to: 100
             entity_row: true
             entities:
-              - entity: sensor.system_monitor_swap_use_percent              
+              - entity: sensor.system_monitor_swap_use_percent   
+                name: Utilisation du swap
           - type: divider
           - entity: sensor.system_monitor_last_boot
             name: Dernier redémarrage
           - entity: input_button.home_assistant_restart
             icon: mdi:restart
-            name: Restart System
+            type: button
+            name: Redémarrer le système
             tap_action:
+              confirmation:
+                text: Confirmer le redémarrage du système ?
               action: call-service
-              service: homeassistant.restart
+              service: script.homeassistant_restart
       - type: entities
         title: Mise à jour ?
         show_header_toggle: false
@@ -1138,8 +1224,9 @@ views:
               - name: Television    
           - type: custom:decluttering-card
             template: media_tv
+            secondary_info: state
             variables:
-              - entity: media_player.jbl_bar_300_f5bb
+              - entity: media_player.jbl_bar_300_f5bb_5
               - name: Barre son                          
           - type: custom:decluttering-card
             template: light
@@ -1166,7 +1253,6 @@ views:
             variables:
               - entity: humidifier.mod150_d2de_humidifier_dehumidifier
               - name: Diffuseur huile essentielle   
-
       - type: entities
         show_header_toggle: false
         entities:
@@ -1181,7 +1267,18 @@ views:
             template: light
             variables:
               - entity: light.projecteur_chambre
-              - name: Projecteur             
+              - name: Projecteur 
+          - type: custom:xiaomi-vacuum-map-card
+            entity: vacuum.minus
+            vacuum_platform: Neato
+            map_source:
+              camera: camera.minus_plan_de_nettoyage
+            map_locked: false
+            title: Minus
+            two_finger_pan: false                          
+      - type: entities
+        show_header_toggle: false
+        entities:
           - type: section
             label: Salon
           - type: custom:decluttering-card
@@ -1193,8 +1290,7 @@ views:
             template: humidifier
             variables:
               - entity: humidifier.mod150_d153_humidifier_dehumidifier
-              - name: Diffuseur huile essentielle                               
-          
+              - name: Diffuseur huile essentielle               
                  
 ###############################################################
 # Templates Button card 

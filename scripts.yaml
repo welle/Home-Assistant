@@ -187,17 +187,9 @@ chambre_a_coucher_eteindre_tv_chambre_a_coucher:
       milliseconds: 0
   mode: queued
   max: 10
-'1707821869026':
-  alias: Nouveau script
+homeassistant_restart:
+  alias: 'Homeassistant: Restart'
   sequence:
-  - service: mass.search
-    data:
-      limit: 5
-      name: Nostalgie
-      media_type:
-      - radio
-      - artist
-      - album
-      - playlist
-      - track
-    response_variable: temp
+  - service: homeassistant.restart
+    data: {}
+  mode: single
