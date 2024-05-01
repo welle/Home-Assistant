@@ -145,36 +145,6 @@
   accept_errors: true
   unit_of_measurement: "°C"
 
-# Waste collection sensors (configuration is in configuration.yaml)
-# next collection
-- platform: waste_collection_schedule
-  name: next_collection
-# next PMD collection
-- platform: waste_collection_schedule
-  name: next_pmd_collection
-  types:
-    - PMD
-# next Déchets résiduels collection
-- platform: waste_collection_schedule
-  name: next_residuels_collection
-  types:
-    - Déchets résiduels
-# next Déchets organiques collection
-- platform: waste_collection_schedule
-  name: next_organiques_collection
-  types:
-    - Déchets organiques
-# next Glass collection
-- platform: waste_collection_schedule
-  name: next_glass_collection
-  types:
-    - Glass
-# next Paper-cardboard collection
-- platform: waste_collection_schedule
-  name: next_paper_collection
-  types:
-    - Paper-cardboard
-
 # Time & date
 - platform: time_date
   display_options:

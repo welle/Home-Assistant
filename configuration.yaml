@@ -113,6 +113,17 @@ ics_calendar:
       include_all_day: true
       download_interval: 5
 
+# Ping Sonarr, Radarr and others servers.
+command_line:
+  - sensor:
+      name: Ping Sonarr Status
+      command: "nc -z 10.191.107.50 8989 > /dev/null 2>&1 && echo on || echo off"
+      scan_interval: 10
+  - sensor:
+      name: Ping Radarr Status
+      command: "nc -z 10.191.107.50 7878 > /dev/null 2>&1 && echo on || echo off"
+      scan_interval: 10           
+
 # Spotcast
 spotcast:
   sp_dc: !secret primary_sp_dc
@@ -122,27 +133,6 @@ spotcast:
   #  niklas:
   #    sp_dc: !secret niklas_sp_dc
   #    sp_key: !secret niklas_sp_key
-
-# Waste collection schedule
-# sensor are in sensors.yaml
-waste_collection_schedule:
-  sources:
-    - name: recycleapp
-      args:
-        postcode: 7800
-        street: Rue Carton
-        house_number: 28
-      customize:
-        - type: PMD
-          alias: PMC
-        - type: Déchets résiduels
-          alias: Résiduels
-        - type: Déchets organiques
-          alias: Organiques
-        - type: Glass
-          alias: Verre
-        - type: Paper-cardboard
-          alias: Papiers-Cartons
 
 automation: !include automations.yaml
 script: !include scripts.yaml

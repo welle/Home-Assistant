@@ -1,4 +1,5 @@
-"""Spook - Not your homie."""
+"""Spook - Your homie."""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
@@ -13,7 +14,7 @@ if TYPE_CHECKING:
     from homeassistant.core import ServiceCall
 
 
-class SpookService(AbstractSpookEntityComponentService):
+class SpookService(AbstractSpookEntityComponentService[NumberEntity]):
     """Number entity service, increase value by a single step."""
 
     domain = DOMAIN

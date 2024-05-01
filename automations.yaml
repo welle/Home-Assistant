@@ -425,3 +425,80 @@
     data:
       message: Caméra Hall Débranchée
   mode: single
+- id: '1708444413298'
+  alias: Nouvelle automatisation
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id:
+    - sensor.smart_switch_2310200006805651080248e1e9de8136_power
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+    below: 1
+  condition: []
+  action:
+  - service: notify.pushover
+    metadata: {}
+    data:
+      message: La machine a fini
+  mode: single
+- id: '1713949970434'
+  alias: 'Ping: Sonarr ne répond plus.'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.ping_sonarr_status
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+    from: 'on'
+  condition: []
+  action:
+  - service: notify.pushover
+    metadata: {}
+    data:
+      message: Sonarr ne répond plus.
+      title: Sonarr Status
+  mode: single
+- id: '1714033190120'
+  alias: 'Ping: Radarr ne répond plus.'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.ping_radarr_status
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+    from: 'on'
+  condition: []
+  action:
+  - service: notify.pushover
+    metadata: {}
+    data:
+      message: Radarr ne répond plus.
+      title: Radarr Status
+  mode: single
+- id: '1714033814724'
+  alias: 'Ping: Plex Moloch ne répond plus'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - update.plex_media_server_moloch
+    to: unavailable
+  condition: []
+  action:
+  - service: notify.pushover
+    metadata: {}
+    data:
+      message: Plex Moloch ne répond plus
+      title: Plex Moloch
+  mode: single

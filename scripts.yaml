@@ -193,3 +193,16 @@ homeassistant_restart:
   - service: homeassistant.restart
     data: {}
   mode: single
+chambre_a_coucher_minuteur_tv:
+  alias: 'Chambre à coucher: minuteur tv'
+  sequence:
+  - delay:
+      hours: 2
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - service: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.chambre_a_coucher_eteindre_tv
+  mode: single

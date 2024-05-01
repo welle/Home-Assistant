@@ -12,10 +12,9 @@ views:
       grid-template-areas: |-
         "p z v o"
         "x x w w"
+        "c c d d"
         "y y y y"
         "a a b b"
-        "upcoming_movie upcoming_movie upcoming_tv upcoming_tv"
-        "plex_h_movies plex_h_movies plex_h_movies plex_h_series"
         "e f g h"
       place-content: stretch
       mediaquery:
@@ -29,10 +28,6 @@ views:
             "y"
             "a"
             "b"
-            "upcoming_movie"
-            "plex_h_movies"
-            "upcoming_tv"
-            "plex_h_series"
             "e"
             "f"
             "g"
@@ -169,7 +164,21 @@ views:
               - height: 60px
               - width: 200px   
         view_layout:
-          grid-area: w                                    
+          grid-area: w   
+      - type: custom:weather-card
+        entity: weather.forecast_maison
+        current: true
+        details: true
+        forecast: false  
+        view_layout:
+          grid-area: c     
+      - type: entities
+        entities:
+        - sensor.pmc
+        - sensor.papiers_cartons
+        - sensor.ordures_menageres   
+        view_layout:
+          grid-area: d                                              
       - type: custom:hourly-weather
         entity: weather.forecast_maison
         num_segments: 24 # optional, defaults to 12
@@ -181,42 +190,7 @@ views:
         tap_action:
           action: navigate
           navigation_path: /preview-dashboard/2         
-      - type: 'custom:plex-meets-homeassistant'
-        title: Derniers ajouts de films
-        token: kXSsXdoY4A1MxVqDaDZG
-        ip: nl6236.dediseedbox.com
-        port: 36293
-        maxRows: 1
-        showSearch: false
-        useHorizontalScroll: true
-        libraryName: Films H
-        sort: addedAt:desc
-        entity:
-          plexPlayer:
-            - TV 2020
-            - TV 2018
-            - TV 2021
-        view_layout:
-          place-self: center stretch
-          grid-area: plex_h_movies     
-      - type: 'custom:plex-meets-homeassistant'
-        title: Derniers ajouts de séries      
-        token: kXSsXdoY4A1MxVqDaDZG
-        ip: nl6236.dediseedbox.com
-        port: 36293
-        maxRows: 1
-        libraryName: Series TV H
-        showSearch: false
-        useHorizontalScroll: true        
-        sort: addedAt:desc
-        entity:
-          plexPlayer:
-            - TV 2020
-            - TV 2018  
-            - TV 2021    
-        view_layout:
-          place-self: center stretch
-          grid-area: plex_h_series                                     
+                                   
       - type: markdown
         title: Ecran large
         content: |
@@ -589,6 +563,8 @@ views:
       grid-template-rows: auto auto auto auto
       grid-template-areas: |-
         "z z z z"
+        "upcoming_movie upcoming_movie upcoming_tv upcoming_tv"
+        "plex_h_movies plex_h_movies plex_h_movies plex_h_series"
         "y y x x"
         "a b b b"
         "c b b b"
@@ -608,7 +584,43 @@ views:
             "g"      
     cards: 
     - type: custom:mini-media-player
-      entity: media_player.spotify_akazukin_chacha       
+      entity: media_player.spotify_akazukin_chacha  
+    - type: 'custom:plex-meets-homeassistant'
+      title: Derniers ajouts de films
+      token: kXSsXdoY4A1MxVqDaDZG
+      ip: nl6236.dediseedbox.com
+      port: 36293
+      maxRows: 1
+      showSearch: false
+      useHorizontalScroll: true
+      libraryName: Films H
+      sort: addedAt:desc
+      entity:
+        plexPlayer:
+          - TV 2020
+          - TV 2018
+          - TV 2021
+      view_layout:
+        place-self: center stretch
+        grid-area: plex_h_movies     
+    - type: 'custom:plex-meets-homeassistant'
+      title: Derniers ajouts de séries      
+      token: kXSsXdoY4A1MxVqDaDZG
+      ip: nl6236.dediseedbox.com
+      port: 36293
+      maxRows: 1
+      libraryName: Series TV H
+      showSearch: false
+      useHorizontalScroll: true        
+      sort: addedAt:desc
+      entity:
+        plexPlayer:
+          - TV 2020
+          - TV 2018  
+          - TV 2021    
+      view_layout:
+        place-self: center stretch
+        grid-area: plex_h_series         
 
 #################################################
 # Calendar
