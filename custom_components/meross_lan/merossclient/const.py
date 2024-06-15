@@ -197,6 +197,7 @@ KEY_BIND = "bind"
 KEY_BINDTIME = "bindTime"
 KEY_REPORT = "report"
 KEY_ONLINE = "online"
+KEY_TRIGGER = "trigger"
 KEY_TRIGGERX = "triggerx"
 KEY_TIMER = "timer"
 KEY_TIMERX = "timerx"
@@ -225,6 +226,7 @@ KEY_ONOFF = "onoff"
 KEY_LIGHT = "light"
 KEY_EFFECT = "effect"
 KEY_EFFECTNAME = "effectName"
+KEY_MEMBER = "member"
 KEY_ID_ = "Id"
 KEY_CAPACITY = "capacity"
 KEY_RGB = "rgb"
@@ -364,48 +366,6 @@ KEY_RESERVEDDOMAIN = "reservedDomain"
 KEY_SUBDEVICEID = "subDeviceId"
 KEY_SUBDEVICENAME = "subDeviceName"
 
-
-# 'well-know' static map for get_default_payload and get_namespacekey
-# Those functions use euristics but sometimes they need to be overriden by defining
-# the custom namespace structure here
-PAYLOAD_GET = {
-    NS_APPLIANCE_CONTROL_CONSUMPTIONX: {KEY_CONSUMPTIONX: []},
-    NS_APPLIANCE_CONTROL_ELECTRICITY: {KEY_ELECTRICITY: {}},
-    NS_APPLIANCE_CONTROL_FILTERMAINTENANCE: {KEY_FILTER: {}},
-    NS_APPLIANCE_CONTROL_LIGHT: {KEY_LIGHT: {}},
-    NS_APPLIANCE_CONTROL_LIGHT_EFFECT: {KEY_EFFECT: []},
-    NS_APPLIANCE_CONTROL_MP3: {KEY_MP3: {}},
-    NS_APPLIANCE_CONTROL_PHYSICALLOCK: {KEY_LOCK: {}},
-    NS_APPLIANCE_CONTROL_SPRAY: {KEY_SPRAY: {}},
-    NS_APPLIANCE_CONTROL_TEMPUNIT: {KEY_TEMPUNIT: [{KEY_CHANNEL: 0}]},
-    NS_APPLIANCE_CONTROL_TIMERX: {KEY_TIMERX: {}},
-    NS_APPLIANCE_CONTROL_TOGGLE: {KEY_TOGGLE: []},
-    NS_APPLIANCE_CONTROL_TOGGLEX: {KEY_TOGGLEX: []},
-    NS_APPLIANCE_CONTROL_TRIGGERX: {KEY_TRIGGERX: {}},
-    NS_APPLIANCE_CONTROL_DIFFUSER_SENSOR: {KEY_SENSOR: {}},
-    NS_APPLIANCE_CONTROL_SCREEN_BRIGHTNESS: {KEY_BRIGHTNESS: [{KEY_CHANNEL: 0}]},
-    NS_APPLIANCE_CONTROL_SENSOR_HISTORY: {KEY_HISTORY: [{KEY_CHANNEL: 0}]},
-    # Appliance.Control.Thermostat. namespace typically handled with euristics in get_default_payload
-    NS_APPLIANCE_CONTROL_THERMOSTAT_COMPRESSORDELAY: {KEY_DELAY: [{KEY_CHANNEL: 0}]},
-    NS_APPLIANCE_DIGEST_TRIGGERX: {KEY_DIGEST: []},
-    NS_APPLIANCE_DIGEST_TIMERX: {KEY_DIGEST: []},
-    NS_APPLIANCE_GARAGEDOOR_CONFIG: {KEY_CONFIG: {}},
-    NS_APPLIANCE_GARAGEDOOR_MULTIPLECONFIG: {KEY_CONFIG: [{KEY_CHANNEL: 0}]},
-    # Appliance.Hub. namespace typically handled with euristics in get_default_payload
-    NS_APPLIANCE_HUB_MTS100_SCHEDULEB: {KEY_SCHEDULE: []},
-    NS_APPLIANCE_HUB_SENSOR_SMOKE: {KEY_SMOKEALARM: []},
-    NS_APPLIANCE_HUB_SUBDEVICE_MOTORADJUST: {
-        KEY_ADJUST: []
-    },  # unconfirmed but 'motoradjust' is wrong for sure
-    NS_APPLIANCE_SYSTEM_DNDMODE: {KEY_DNDMODE: {}},
-}
-# these namespaces do not provide the GET/GETACK methods
-# hence querying works by issuing an empty PUSH. SET/SETACK might work though
-PUSH_ONLY_NAMESPACES = {
-    NS_APPLIANCE_CONTROL_FILTERMAINTENANCE,
-    NS_APPLIANCE_CONTROL_PHYSICALLOCK,  # SET works
-    NS_APPLIANCE_ROLLERSHUTTER_ADJUST,
-}
 # error codes as reported by Meross device protocol
 ERROR_INVALIDKEY = 5001
 
@@ -504,20 +464,20 @@ DIFFUSER_SPRAY_MODE_FULL = 1
 DIFFUSER_LIGHT_MODE_RAINBOW = 0  # color modes taken from 'homebridge-meross' plugin
 DIFFUSER_LIGHT_MODE_COLOR = 1
 DIFFUSER_LIGHT_MODE_TEMPERATURE = 2
-DIFFUSER_LIGHT_EFFECT_MAP = {
-    DIFFUSER_LIGHT_MODE_RAINBOW: "Rainbow",
-    DIFFUSER_LIGHT_MODE_COLOR: "Color",
-    DIFFUSER_LIGHT_MODE_TEMPERATURE: "Temperature",
-}
+DIFFUSER_LIGHT_MODE_LIST = [
+    "Rainbow",
+    "Color",
+    "Temperature",
+]
 
 # cherub machine
-HP110A_LIGHT_EFFECT_MAP = {
-    0: "Color",
-    1: "Scene 1",
-    2: "Scene 2",
-    3: "Scene 3",
-    4: "Scene 4",
-}
+HP110A_LIGHT_EFFECT_LIST = [
+    "Color",
+    "Scene 1",
+    "Scene 2",
+    "Scene 3",
+    "Scene 4",
+]
 HP110A_MP3_SONG_MIN = 1
 HP110A_MP3_SONG_MAX = 11
 HP110A_MP3_SONG_MAP = {
@@ -567,6 +527,10 @@ TYPE_MSL100 = "msl100"  # smart bulb
 TYPE_NAME_MAP[TYPE_MSL100] = "Smart Bulb"
 TYPE_MSL120 = "msl120"  # smart bulb with color/temp
 TYPE_NAME_MAP[TYPE_MSL120] = "Smart RGB Bulb"
+TYPE_MSL320_PRO = "msl320cp"  # smart led strip pro
+TYPE_NAME_MAP[TYPE_MSL320_PRO] = "Smart RGB Pro Led Strip"
+TYPE_MSL320 = "msl320"  # smart led strip
+TYPE_NAME_MAP[TYPE_MSL320] = "Smart RGB Led Strip"
 TYPE_NAME_MAP["msl"] = "Smart Light"
 
 TYPE_MSS310 = "mss310"  # smart plug with energy meter

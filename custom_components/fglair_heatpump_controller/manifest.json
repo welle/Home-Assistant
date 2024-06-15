@@ -15,7 +15,7 @@
     "pyfujitsugeneral"
   ],
   "requirements": [
-    "pyfujitsugeneral==2.0.18"
+    "pyfujitsugeneral==2.0.21"
   ],
-  "version": "0.3.7"
+  "version": "0.3.13"
 }

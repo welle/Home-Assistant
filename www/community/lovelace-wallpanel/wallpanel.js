@@ -107,7 +107,7 @@ class ScreenWakeLock {
 	}
 }
 
-const version = "4.25.0";
+const version = "4.25.2";
 const defaultConfig = {
 	enabled: false,
 	enabled_on_tabs: [],
@@ -1142,7 +1142,8 @@ class WallpanelView extends HuiView {
 					cardConfig.collection_key = "energy_wallpanel";
 					this.energyCollectionUpdateEnabled = true;
 				}
-				const cardElement = this.createCardElement(cardConfig);
+				const createCardElement = this._createCardElement ? this._createCardElement : this.createCardElement;
+				const cardElement = createCardElement.bind(this)(cardConfig);
 				cardElement.hass = this.hass;
 
 				this.__cards.push(cardElement);
@@ -1616,6 +1617,9 @@ class WallpanelView extends HuiView {
 				}
 				val = date.toLocaleDateString(elHass.__hass.locale.language, options);
 			}
+			if (typeof val === 'object') {
+				val = JSON.stringify(val);
+			}
 			return prefix + val + suffix;
 		});
 		infoElement.innerHTML = html;
@@ -1778,7 +1782,7 @@ class WallpanelView extends HuiView {
 		http.send();
 	}
 
-	updateImageFromUrl(img, url) {
+	fillPlaceholders(url) {
 		let width = this.screensaverContainer.clientWidth;
 		let height = this.screensaverContainer.clientHeight;
 		let timestamp_ms = Date.now();
@@ -1787,12 +1791,20 @@ class WallpanelView extends HuiView {
 		url = url.replace(/\${height}/g, height);
 		url = url.replace(/\${timestamp_ms}/g, timestamp_ms);
 		url = url.replace(/\${timestamp}/g, timestamp);
-		img.imageUrl = url;
-		logger.debug(`Updating image '${img.id}' from '${url}'`);
+		return url;
+	}
+
+	updateImageFromUrl(img, url) {
+		const realUrl = this.fillPlaceholders(url);
+		if (realUrl != url && imageInfoCache[url]) {
+			imageInfoCache[realUrl] = imageInfoCache[url];
+		}
+		img.imageUrl = realUrl;
+		logger.debug(`Updating image '${img.id}' from '${realUrl}'`);
 		if (imageSourceType() == "media-entity") {
-			this.updateImageUrlWithHttpFetch(img, url);
+			this.updateImageUrlWithHttpFetch(img, realUrl);
 		} else {
-			img.src = url;
+			img.src = realUrl;
 		}
 	}
 
@@ -3610,3 +3622,4 @@ EXIF.pretty = function(img) {
 EXIF.readFromBinaryFile = function(file) {
 	return findEXIFinJPEG(file);
 }
+

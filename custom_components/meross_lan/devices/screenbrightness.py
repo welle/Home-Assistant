@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import typing
 
-from ..helpers.namespaces import NamespaceHandler, SmartPollingStrategy
+from ..helpers.namespaces import NamespaceHandler
 from ..merossclient import const as mc
 from ..number import MLConfigNumber
 
@@ -11,7 +9,7 @@ if typing.TYPE_CHECKING:
 
 
 class MLScreenBrightnessNumber(MLConfigNumber):
-    manager: MerossDevice
+    manager: "MerossDevice"
 
     namespace = mc.NS_APPLIANCE_CONTROL_SCREEN_BRIGHTNESS
     key_namespace = mc.KEY_BRIGHTNESS
@@ -22,7 +20,7 @@ class MLScreenBrightnessNumber(MLConfigNumber):
     native_min_value = 0
     native_step = 12.5
 
-    def __init__(self, manager: MerossDevice, key: str):
+    def __init__(self, manager: "MerossDevice", key: str):
         self.key_value = key
         self.name = f"Screen brightness ({key})"
         super().__init__(
@@ -35,34 +33,32 @@ class MLScreenBrightnessNumber(MLConfigNumber):
     async def async_set_native_value(self, value: float):
         """Override base async_set_native_value since it would round
         the value to an int (common device native type)."""
-        if await self.async_request(value):
+        if await self.async_request_value(value):
             self.update_device_value(value)
 
 
 class ScreenBrightnessNamespaceHandler(NamespaceHandler):
 
+    polling_request_payload: list
+    
     __slots__ = (
         "number_brightness_operation",
         "number_brightness_standby",
     )
 
-    def __init__(self, device: MerossDevice):
-        super().__init__(
+    def __init__(self, device: "MerossDevice"):
+        NamespaceHandler.__init__(
+            self,
             device,
             mc.NS_APPLIANCE_CONTROL_SCREEN_BRIGHTNESS,
             handler=self._handle_Appliance_Control_Screen_Brightness,
         )
+        self.polling_request_payload.append({mc.KEY_CHANNEL: 0})
         self.number_brightness_operation = MLScreenBrightnessNumber(
             device, mc.KEY_OPERATION
         )
         self.number_brightness_standby = MLScreenBrightnessNumber(
             device, mc.KEY_STANDBY
-        )
-        SmartPollingStrategy(
-            device,
-            mc.NS_APPLIANCE_CONTROL_SCREEN_BRIGHTNESS,
-            payload=[{mc.KEY_CHANNEL: 0}],
-            item_count=1,
         )
 
     def _handle_Appliance_Control_Screen_Brightness(self, header: dict, payload: dict):
